@@ -1,0 +1,1883 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>룸에잇스튜디오 (room8studio) | 누구나 쉽고 재미있게, 나만의 웨딩!</title>
+  
+  <!-- SEO 메타태그 -->
+  <meta name="description" content="음악&영상 올인원 웨딩 콘텐츠 스튜디오. 10년 차 K-POP 작곡가의 1:1 보컬 프로덕션, AI 감사영상 & 맞춤 MR 제작, 정식 음반 발매.">
+  <meta property="og:title" content="룸에잇스튜디오 | room8studio">
+  <meta property="og:description" content="음악&영상 올인원 콘텐츠 스튜디오 (축가 · AI 감사영상 · 식전영상 · 어쿠스틱 MR · 음반발매)">
+  <meta property="og:image" content="./images/hero_studio.png">
+  
+  <!-- Pretendard 폰트 & Tailwind CSS CDN -->
+  <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Lucide Icons & Vue 3 CDN -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script src="https://unpkg.com/vue@3/dist/vue.global.prod.js"></script>
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Pretendard', '-apple-system', 'BlinkMacSystemFont', 'system-ui', 'Roboto', 'sans-serif'],
+          },
+          colors: {
+            brandCyan: '#00e5ff',
+            brandBlue: '#00c0f8',
+            studioDark: '#0a0f1d',
+            cardDark: '#0e1626',
+            cardBorder: '#1e293b'
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    /* 부드러운 스크롤 전환 효과 및 상단 고정 헤더 가림 방지 */
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 5rem;
+    }
+    @media (max-width: 640px) {
+      html {
+        scroll-padding-top: 4rem;
+      }
+    }
+
+    body {
+      font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, Roboto, sans-serif;
+      background-color: #ffffff;
+      color: #0f172a;
+      letter-spacing: -0.02em;
+      overflow-x: hidden;
+    }
+    .glass-nav {
+      background: rgba(255, 255, 255, 0.92);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+    }
+    [contenteditable="true"] {
+      outline: 2px dashed #00e5ff;
+      border-radius: 4px;
+      padding: 2px 4px;
+    }
+
+    /* 📱 모바일 및 가로 스크롤바 숨김 */
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+    .no-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    /* 🌟 메인 타이틀 회전(롤링) 애니메이션 */
+    .title-slide-enter-active,
+    .title-slide-leave-active {
+      transition: all 0.65s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .title-slide-enter-from {
+      opacity: 0;
+      transform: translateY(28px);
+    }
+    .title-slide-leave-to {
+      opacity: 0;
+      transform: translateY(-28px);
+    }
+
+    /* 💖 1. 우리만의 결혼식: 하트/웨딩 플로팅 애니메이션 */
+    @keyframes floatHeart1 {
+      0% { transform: translateY(0) scale(0.6) rotate(-15deg); opacity: 0; }
+      30% { opacity: 0.95; }
+      80% { opacity: 0.7; }
+      100% { transform: translateY(-44px) translateX(-10px) scale(1.15) rotate(10deg); opacity: 0; }
+    }
+    @keyframes floatHeart2 {
+      0% { transform: translateY(0) scale(0.5) rotate(10deg); opacity: 0; }
+      35% { opacity: 1; }
+      85% { opacity: 0.6; }
+      100% { transform: translateY(-50px) translateX(6px) scale(1.2) rotate(-15deg); opacity: 0; }
+    }
+    @keyframes floatHeart3 {
+      0% { transform: translateY(0) scale(0.7); opacity: 0; }
+      40% { opacity: 0.9; }
+      90% { opacity: 0.65; }
+      100% { transform: translateY(-40px) translateX(12px) scale(1.1) rotate(20deg); opacity: 0; }
+    }
+    .heart-anim-1 { animation: floatHeart1 2.7s infinite cubic-bezier(0.25, 1, 0.5, 1); }
+    .heart-anim-2 { animation: floatHeart2 3.2s infinite cubic-bezier(0.25, 1, 0.5, 1) 0.5s; }
+    .heart-anim-3 { animation: floatHeart3 2.9s infinite cubic-bezier(0.25, 1, 0.5, 1) 1.1s; }
+
+    /* ✨ 2. 가장 특별한 콘텐츠: 스파클/별빛 플로팅 애니메이션 */
+    @keyframes floatSparkle1 {
+      0% { transform: translateY(0) scale(0.5) rotate(0deg); opacity: 0; }
+      30% { opacity: 1; transform: translateY(-16px) scale(1.2) rotate(45deg); }
+      75% { opacity: 0.8; }
+      100% { transform: translateY(-45px) scale(0.6) rotate(90deg); opacity: 0; }
+    }
+    @keyframes floatSparkle2 {
+      0% { transform: translateY(0) scale(0.6) rotate(0deg); opacity: 0; }
+      40% { opacity: 1; transform: translateY(-22px) scale(1.3) rotate(-30deg); }
+      80% { opacity: 0.7; }
+      100% { transform: translateY(-52px) scale(0.5) rotate(-60deg); opacity: 0; }
+    }
+    @keyframes floatSparkle3 {
+      0% { transform: translateY(0) scale(0.5) rotate(0deg); opacity: 0; }
+      35% { opacity: 0.95; transform: translateY(-18px) scale(1.15) rotate(30deg); }
+      85% { opacity: 0.6; }
+      100% { transform: translateY(-42px) scale(0.7) rotate(60deg); opacity: 0; }
+    }
+    .sparkle-anim-1 { animation: floatSparkle1 2.5s infinite cubic-bezier(0.25, 1, 0.5, 1); }
+    .sparkle-anim-2 { animation: floatSparkle2 3.0s infinite cubic-bezier(0.25, 1, 0.5, 1) 0.4s; }
+    .sparkle-anim-3 { animation: floatSparkle3 2.8s infinite cubic-bezier(0.25, 1, 0.5, 1) 0.9s; }
+
+    /* 🎵 3. 나만의 웨딩: 음표 플로팅 애니메이션 */
+    @keyframes floatNote1 {
+      0% { transform: translateY(0) scale(0.6) rotate(-10deg); opacity: 0; }
+      30% { opacity: 0.9; }
+      80% { opacity: 0.7; }
+      100% { transform: translateY(-42px) translateX(8px) scale(1.1) rotate(15deg); opacity: 0; }
+    }
+    @keyframes floatNote2 {
+      0% { transform: translateY(0) scale(0.5) rotate(10deg); opacity: 0; }
+      35% { opacity: 0.95; }
+      85% { opacity: 0.6; }
+      100% { transform: translateY(-48px) translateX(-10px) scale(1.15) rotate(-20deg); opacity: 0; }
+    }
+    @keyframes floatNote3 {
+      0% { transform: translateY(0) scale(0.7); opacity: 0; }
+      40% { opacity: 1; }
+      90% { opacity: 0.7; }
+      100% { transform: translateY(-38px) translateX(14px) scale(1.05) rotate(10deg); opacity: 0; }
+    }
+    .note-anim-1 { animation: floatNote1 2.6s infinite cubic-bezier(0.25, 1, 0.5, 1); }
+    .note-anim-2 { animation: floatNote2 3.1s infinite cubic-bezier(0.25, 1, 0.5, 1) 0.6s; }
+    .note-anim-3 { animation: floatNote3 2.8s infinite cubic-bezier(0.25, 1, 0.5, 1) 1.2s; }
+
+    /* After 재생 시 이퀄라이저 애니메이션 */
+    @keyframes wavePulse {
+      0% { transform: scaleY(0.4); }
+      50% { transform: scaleY(1.3); }
+      100% { transform: scaleY(0.7); }
+    }
+    .wave-bar-active {
+      animation: wavePulse 0.85s ease-in-out infinite alternate;
+      transform-origin: center;
+    }
+
+    /* 💿 앨범 표지 부유 애니메이션 */
+    @keyframes floatCard1 {
+      0%, 100% { transform: translateY(0px) rotate(0deg); }
+      50% { transform: translateY(-16px) rotate(1.5deg); }
+    }
+    @keyframes floatCard2 {
+      0%, 100% { transform: translateY(-8px) rotate(-1.5deg); }
+      50% { transform: translateY(12px) rotate(1deg); }
+    }
+    @keyframes floatCard3 {
+      0%, 100% { transform: translateY(6px) rotate(2deg); }
+      50% { transform: translateY(-14px) rotate(-1deg); }
+    }
+
+    .float-item-1 { animation: floatCard1 5.8s ease-in-out infinite; }
+    .float-item-2 { animation: floatCard2 6.5s ease-in-out infinite; }
+    .float-item-3 { animation: floatCard3 5.2s ease-in-out infinite; }
+
+    .album-track-container:hover .float-card {
+      animation-play-state: paused;
+    }
+
+    /* LP 디스크 회전 */
+    .group:hover .vinyl-disc {
+      transform: translateX(38%) rotate(180deg);
+    }
+  </style>
+</head>
+<body class="selection:bg-sky-100 selection:text-sky-600 antialiased text-slate-900 bg-white">
+  <div id="app" class="relative min-h-screen flex flex-col justify-between">
+
+    <!-- 1. NAVIGATION BAR -->
+    <header class="fixed top-0 left-0 w-full z-40 glass-nav border-b border-slate-100 transition-all duration-300">
+      <div class="max-w-6xl mx-auto px-5 h-16 sm:h-20 flex items-center justify-between">
+        <!-- Brand Logo -->
+        <a href="#" class="flex items-center gap-2.5 group">
+          <div class="w-8 h-8 sm:w-9 sm:h-9 text-slate-950 flex-shrink-0 transition-transform group-hover:scale-105">
+            <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-full h-full stroke-current stroke-[5] stroke-linejoin-round stroke-linecap-round">
+              <polygon points="50,12 84,31 84,69 50,88 16,69 16,31" />
+              <line x1="50" y1="50" x2="50" y2="88" />
+              <line x1="50" y1="50" x2="16" y2="31" />
+              <line x1="50" y1="50" x2="84" y2="31" />
+              <line x1="33" y1="40" x2="33" y2="78" />
+              <circle cx="68" cy="38" r="11" fill="white" class="fill-white stroke-slate-950 stroke-[5]" />
+              <circle cx="68" cy="58" r="13" fill="white" class="fill-white stroke-slate-950 stroke-[5]" />
+            </svg>
+          </div>
+          <span class="font-black text-lg sm:text-xl tracking-tight text-slate-950 font-mono">
+            ROOM<span class="text-sky-500">8</span>STUDIO
+          </span>
+        </a>
+
+        <!-- Desktop Menu -->
+        <nav class="hidden md:flex items-center gap-7 text-sm font-semibold text-slate-600">
+          <a href="#reviews" class="hover:text-slate-950 transition-colors">실제 후기</a>
+          <a href="#services" class="hover:text-cyan-600 text-cyan-600 transition-colors">상품 소개</a>
+          <a href="#about" class="hover:text-slate-950 transition-colors">왜 룸에잇인가?</a>
+          <a href="#discography" class="hover:text-sky-500 transition-colors flex items-center gap-1 font-bold text-slate-900">
+            <span>발매 음반</span>
+            <span class="w-1.5 h-1.5 rounded-full bg-cyan-400"></span>
+          </a>
+          <a href="#pricing" class="hover:text-slate-950 transition-colors">패키지 & 가격</a>
+          <a href="#contact" class="hover:text-slate-950 transition-colors">문의 및 위치</a>
+        </nav>
+
+        <!-- Right Action Buttons -->
+        <div class="flex items-center gap-2 sm:gap-2.5">
+          <a href="#contact" 
+            class="hidden sm:inline-flex px-5 py-2.5 rounded-full bg-slate-950 hover:bg-slate-800 text-white font-semibold text-xs sm:text-sm transition-all shadow-sm active:scale-95">
+            예약 문의
+          </a>
+
+          <!-- Mobile Hamburger Toggle Button -->
+          <button 
+            @click="toggleMobileMenu" 
+            type="button"
+            class="md:hidden p-2 rounded-xl text-slate-700 hover:text-slate-950 hover:bg-slate-100 transition-colors flex items-center justify-center"
+            aria-label="모바일 메뉴 열기/닫기">
+            <i :data-lucide="isMobileMenuOpen ? 'x' : 'menu'" class="w-6 h-6"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- Mobile Navigation Dropdown Menu -->
+      <transition
+        enter-active-class="transition-all duration-300 ease-out"
+        enter-from-class="opacity-0 -translate-y-3"
+        enter-to-class="opacity-100 translate-y-0"
+        leave-active-class="transition-all duration-200 ease-in"
+        leave-from-class="opacity-100 translate-y-0"
+        leave-to-class="opacity-0 -translate-y-3">
+        <div 
+          v-if="isMobileMenuOpen" 
+          class="md:hidden bg-white/95 backdrop-blur-2xl border-b border-slate-200 shadow-2xl px-5 pt-3 pb-6">
+          <nav class="flex flex-col space-y-1 font-semibold text-slate-700">
+            <a 
+              href="#reviews" 
+              @click="closeMobileMenu" 
+              class="py-3 px-3.5 rounded-2xl hover:bg-slate-100 active:bg-slate-200 transition-colors flex items-center justify-between text-sm">
+              <span>실제 후기</span>
+              <i data-lucide="chevron-right" class="w-4 h-4 text-slate-400"></i>
+            </a>
+            <a 
+              href="#services" 
+              @click="closeMobileMenu" 
+              class="py-3 px-3.5 rounded-2xl bg-cyan-50/80 text-cyan-700 font-bold active:bg-cyan-100 transition-colors flex items-center justify-between text-sm">
+              <span>상품 소개</span>
+              <span class="text-[11px] px-2 py-0.5 bg-cyan-200 text-cyan-900 rounded-md font-extrabold">인기</span>
+            </a>
+            <a 
+              href="#about" 
+              @click="closeMobileMenu" 
+              class="py-3 px-3.5 rounded-2xl hover:bg-slate-100 active:bg-slate-200 transition-colors flex items-center justify-between text-sm">
+              <span>왜 룸에잇인가?</span>
+              <i data-lucide="chevron-right" class="w-4 h-4 text-slate-400"></i>
+            </a>
+            <a 
+              href="#discography" 
+              @click="closeMobileMenu" 
+              class="py-3 px-3.5 rounded-2xl bg-slate-900 text-white font-bold active:bg-slate-800 transition-colors flex items-center justify-between text-sm">
+              <span class="flex items-center gap-1.5">
+                <i data-lucide="disc" class="w-4 h-4 text-cyan-400"></i>
+                <span>공식 발매 음반</span>
+              </span>
+              <i data-lucide="chevron-right" class="w-4 h-4 text-slate-400"></i>
+            </a>
+            <a 
+              href="#pricing" 
+              @click="closeMobileMenu" 
+              class="py-3 px-3.5 rounded-2xl hover:bg-slate-100 active:bg-slate-200 transition-colors flex items-center justify-between text-sm">
+              <span>패키지 & 가격</span>
+              <i data-lucide="chevron-right" class="w-4 h-4 text-slate-400"></i>
+            </a>
+            <a 
+              href="#contact" 
+              @click="closeMobileMenu" 
+              class="py-3 px-3.5 rounded-2xl hover:bg-slate-100 active:bg-slate-200 transition-colors flex items-center justify-between text-sm">
+              <span>문의 및 오시는 길</span>
+              <i data-lucide="chevron-right" class="w-4 h-4 text-slate-400"></i>
+            </a>
+          </nav>
+
+          <div class="mt-4 pt-4 border-t border-slate-100 grid grid-cols-2 gap-2.5">
+            <a 
+              href="#contact" 
+              @click="closeMobileMenu" 
+              class="w-full py-3 rounded-xl bg-slate-950 active:bg-slate-800 text-white font-bold text-center text-xs shadow-sm flex items-center justify-center gap-1.5">
+              <span>예약 문의하기</span>
+              <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+            </a>
+            <a 
+              :href="kakaoFriendUrl" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              class="w-full py-3 rounded-xl bg-gradient-to-r from-[#FFE812] to-[#F5BE00] active:brightness-95 text-[#191919] font-bold text-center text-xs shadow-sm flex items-center justify-center gap-1.5">
+              <i data-lucide="message-circle" class="w-3.5 h-3.5 fill-[#191919]"></i>
+              <span>카톡 1초 상담</span>
+            </a>
+          </div>
+        </div>
+      </transition>
+    </header>
+
+    <!-- ADMIN EDIT BAR -->
+    <div v-if="isAdmin" class="fixed top-16 sm:top-20 left-0 w-full bg-amber-500 text-white px-5 py-2 z-30 flex items-center justify-between text-xs font-bold shadow-md">
+      <div class="flex items-center gap-2">
+        <i data-lucide="sparkles" class="w-4 h-4"></i>
+        <span>관리자 편집 모드: 화면의 문구를 직접 수정할 수 있습니다.</span>
+      </div>
+      <div class="flex items-center gap-2">
+        <button @click="saveContent" class="bg-black text-white px-3 py-1 rounded-md">저장</button>
+        <button @click="logoutAdmin" class="bg-white/20 text-white px-3 py-1 rounded-md">종료</button>
+      </div>
+    </div>
+
+    <main class="flex-grow pt-16 sm:pt-20">
+      
+      <!-- 2. HERO SECTION (밝고 화사한 화이트 테마 디자인) -->
+      <section class="relative min-h-[620px] sm:min-h-[700px] flex items-center justify-center px-5 py-20 overflow-hidden bg-white border-b border-slate-100">
+        
+        <!-- 은은하고 화사한 소프트 파스텔 앰비언트 글로우 -->
+        <div class="absolute -top-32 left-1/2 -translate-x-1/2 w-[760px] h-[380px] bg-gradient-to-b from-sky-100/70 via-cyan-50/50 to-transparent blur-[110px] pointer-events-none"></div>
+        <div class="absolute bottom-0 right-10 w-[420px] h-[320px] bg-rose-50/60 blur-[120px] pointer-events-none"></div>
+        <div class="absolute -bottom-10 left-10 w-[360px] h-[260px] bg-indigo-50/50 blur-[100px] pointer-events-none"></div>
+
+        <div class="relative z-10 max-w-4xl mx-auto text-center mt-4 sm:mt-2">
+          
+          <!-- 상단 뱃지: 화사한 라이트 글래스모피즘 -->
+          <div class="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-slate-50/90 backdrop-blur-xl border border-slate-200/90 text-slate-700 text-xs font-semibold mb-7 shadow-sm">
+            <span class="w-2 h-2 rounded-full bg-cyan-500 shadow-[0_0_8px_#06b6d4] animate-pulse"></span>
+            <span class="tracking-tight text-slate-700 font-medium">📍 [강남/홍대] 10년 차 K-POP 작곡가 & MV 감독의 1:1 프로덕션</span>
+          </div>
+
+          <!-- 🌟 럭셔리 톤 & 문맥별 플로팅 인터랙션 타이틀 (흰색 배경용 고대비 컬러) -->
+          <div class="min-h-[80px] sm:min-h-[96px] md:min-h-[112px] flex items-center justify-center mb-5 overflow-hidden">
+            <transition name="title-slide" mode="out-in">
+              <h1 
+                :key="currentTitleIndex"
+                class="text-2xl sm:text-3xl md:text-4xl lg:text-[44px] font-black tracking-tight text-slate-950 leading-[1.3] break-keep">
+                
+                <!-- 1) 우리만의 결혼식: 로맨틱 샴페인 로즈 톤 + 하트/링 -->
+                <template v-if="currentTitleIndex === 0">
+                  세상에 단 하나뿐인 <br class="sm:hidden" />
+                  <span class="relative inline-block">
+                    <span class="bg-gradient-to-r from-rose-500 via-pink-500 to-amber-500 bg-clip-text text-transparent drop-shadow-sm">
+                      우리만의 결혼식
+                    </span>
+                    <span class="absolute -top-3.5 left-2 text-rose-500 text-xs sm:text-sm font-bold pointer-events-none heart-anim-1 select-none">♥</span>
+                    <span class="absolute -top-4.5 left-1/2 -translate-x-1/2 text-pink-500 text-sm sm:text-base font-extrabold pointer-events-none heart-anim-2 select-none">💖</span>
+                    <span class="absolute -top-3.5 right-1 text-amber-500 text-xs sm:text-sm font-bold pointer-events-none heart-anim-3 select-none">💍</span>
+                  </span>
+                </template>
+                
+                <!-- 2) 가장 특별한 콘텐츠: 청량한 오션 에메랄드 톤 + 스파클 -->
+                <template v-else-if="currentTitleIndex === 1">
+                  가장 소중한 날 <br class="sm:hidden" />
+                  <span class="relative inline-block">
+                    <span class="bg-gradient-to-r from-sky-600 via-teal-500 to-indigo-600 bg-clip-text text-transparent drop-shadow-sm">
+                      가장 특별한 콘텐츠
+                    </span>
+                    <span class="absolute -top-3 left-2 text-amber-500 text-xs sm:text-sm font-bold pointer-events-none sparkle-anim-1 select-none">✦</span>
+                    <span class="absolute -top-4 left-1/2 -translate-x-1/2 text-teal-500 text-sm sm:text-base font-extrabold pointer-events-none sparkle-anim-2 select-none">✨</span>
+                    <span class="absolute -top-3 right-1 text-sky-500 text-[11px] sm:text-xs font-bold pointer-events-none sparkle-anim-3 select-none">★</span>
+                  </span>
+                </template>
+                
+                <!-- 3) 나만의 웨딩!: 브릴리언트 블루 사이언 톤 + 음표 -->
+                <template v-else>
+                  누구나 쉽고 재미있게, <br class="sm:hidden" />
+                  <span class="relative inline-block">
+                    <span class="bg-gradient-to-r from-cyan-600 via-sky-600 to-indigo-600 bg-clip-text text-transparent drop-shadow-sm">
+                      나만의 웨딩!
+                    </span>
+                    <span class="absolute -top-3 left-3 text-cyan-500 text-xs sm:text-sm font-bold pointer-events-none note-anim-1 select-none">♪</span>
+                    <span class="absolute -top-4 left-1/2 -translate-x-1/2 text-sky-500 text-sm sm:text-base font-extrabold pointer-events-none note-anim-2 select-none">♫</span>
+                    <span class="absolute -top-3 right-2 text-indigo-500 text-[11px] sm:text-xs font-bold pointer-events-none note-anim-3 select-none">♬</span>
+                  </span>
+                </template>
+              </h1>
+            </transition>
+          </div>
+
+          <p 
+            :contenteditable="isAdmin"
+            @blur="onInlineEdit($event, 'heroSubtitle')"
+            class="text-sm sm:text-lg md:text-xl text-slate-600 font-normal max-w-2xl mx-auto mb-11 leading-relaxed break-keep">
+            {{ siteData.heroSubtitle }}
+          </p>
+
+          <!-- 💎 CTA 버튼 2종 -->
+          <div class="flex flex-col sm:flex-row items-center justify-center gap-3.5 max-w-md mx-auto mb-14">
+            
+            <!-- 버튼 1: 아이스 사이언 & 딥 오션 입체 그라데이션 -->
+            <a 
+              href="#services" 
+              class="w-full sm:w-auto px-8 py-4 rounded-full bg-slate-950 hover:bg-slate-800 text-white font-extrabold text-sm transition-all duration-300 shadow-lg shadow-slate-900/15 hover:shadow-xl hover:-translate-y-0.5 active:translate-y-0 active:scale-95 flex items-center justify-center gap-2">
+              <span>스튜디오 대표 상품 보기</span>
+              <i data-lucide="arrow-down" class="w-4 h-4 stroke-[2.5]"></i>
+            </a>
+
+            <!-- 버튼 2: 웜 골드 & 카카오 옐로우 그라데이션 -->
+            <a 
+              :href="kakaoFriendUrl" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              class="w-full sm:w-auto px-8 py-4 rounded-full bg-gradient-to-r from-[#FFE812] via-[#FFDE00] to-[#F5BE00] hover:from-[#FFF14D] hover:via-[#FFE833] hover:to-[#FFCD1A] text-[#191919] font-extrabold text-sm transition-all duration-300 shadow-[0_10px_25px_-5px_rgba(245,190,0,0.35)] hover:shadow-[0_14px_30px_-3px_rgba(245,190,0,0.5)] hover:-translate-y-0.5 active:translate-y-0 active:scale-95 flex items-center justify-center gap-2 border border-amber-300/40">
+              <i data-lucide="message-circle" class="w-4 h-4 fill-[#191919]"></i>
+              <span>1초 빠른 카톡 상담</span>
+            </a>
+          </div>
+
+          <!-- 하단 지표 박스: 화이트 카드 & 소프트 섀도우 -->
+          <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4 p-5 sm:p-6 rounded-3xl bg-slate-50/90 sm:bg-white border border-slate-200/90 max-w-3xl mx-auto text-left sm:text-center text-slate-900 shadow-xl shadow-slate-200/50">
+            <div class="p-2">
+              <div class="text-[11px] text-slate-500 font-medium mb-0.5">프로듀서 경력</div>
+              <div class="text-2xl sm:text-3xl font-black text-slate-950 tracking-tight">10년+</div>
+              <div class="text-[10px] text-slate-400">K-POP 작곡가&영상 디렉터</div>
+            </div>
+            <div class="p-2 border-l border-slate-200/80 pl-4 sm:pl-2">
+              <div class="text-[11px] text-slate-500 font-medium mb-0.5">누적 작업</div>
+              <div class="text-2xl sm:text-3xl font-black text-cyan-600 tracking-tight">5,500건+</div>
+              <div class="text-[10px] text-slate-400">제작 음원&영상</div>
+            </div>
+            <div class="p-2 border-t sm:border-t-0 sm:border-l border-slate-200/80 pt-3 sm:pt-2">
+              <div class="text-[11px] text-slate-500 font-medium mb-0.5">이용 만족도</div>
+              <div class="text-2xl sm:text-3xl font-black text-slate-950 tracking-tight">100%</div>
+              <div class="text-[10px] text-slate-400">초보·비전공자 완벽 케어</div>
+            </div>
+            <div class="p-2 border-t sm:border-t-0 border-l border-slate-200/80 pt-3 sm:pt-2 pl-4 sm:pl-2">
+              <div class="text-[11px] text-slate-500 font-medium mb-0.5">디렉팅 시스템</div>
+              <div class="text-2xl sm:text-3xl font-black text-cyan-600 tracking-tight">1:1</div>
+              <div class="text-[10px] text-slate-400">맞춤 하이엔드 퀄리티</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 3. 실제 이용 고객님들의 솔직한 후기 섹션 -->
+      <section id="reviews" class="py-20 px-5 max-w-6xl mx-auto overflow-hidden sm:overflow-visible">
+        <div class="text-center mb-10 sm:mb-14">
+          <span class="inline-block py-1 px-3.5 mb-3 text-xs font-bold tracking-wider text-sky-600 uppercase bg-sky-50 rounded-full border border-sky-100">
+            Real Reviews
+          </span>
+          <h2 class="text-2xl sm:text-3xl md:text-4xl font-black text-slate-950 tracking-tight">
+            실제 이용 고객님들의 <span class="text-[#00c0f8]">솔직한 후기!</span>
+          </h2>
+          <p class="mt-2 text-xs sm:text-sm text-slate-500 font-medium">
+            100% 리얼 고객 후기입니다.
+            <span class="sm:hidden text-cyan-600 font-bold ml-1 inline-flex items-center gap-0.5">
+              (👉 옆으로 넘겨보세요)
+            </span>
+          </p>
+        </div>
+
+        <div class="flex sm:grid sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 overflow-x-auto sm:overflow-visible snap-x snap-mandatory -mx-5 px-5 sm:mx-0 sm:px-0 pb-4 sm:pb-0 no-scrollbar">
+          <div 
+            v-for="(review, index) in reviews" 
+            :key="index"
+            class="w-[82vw] max-w-[320px] sm:w-auto sm:max-w-none flex-shrink-0 snap-center bg-white rounded-3xl border border-slate-200/90 overflow-hidden shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between">
+            
+            <div>
+              <div class="w-full aspect-square bg-slate-100 overflow-hidden relative">
+                <img 
+                  :src="review.image" 
+                  :alt="review.name" 
+                  class="w-full h-full object-cover transition-transform duration-500 hover:scale-105">
+              </div>
+
+              <div class="p-6 pb-2">
+                <p class="text-[13px] sm:text-sm text-slate-600 leading-relaxed font-normal break-keep">
+                  {{ review.content }}
+                </p>
+              </div>
+            </div>
+
+            <div class="px-6 pb-6 pt-4 border-t border-slate-100/70 mt-2">
+              <h4 class="font-bold text-slate-900 text-sm tracking-tight">{{ review.name }}</h4>
+              <p class="text-xs text-sky-600 font-medium mt-0.5">{{ review.tag }}</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 4. 대표 상품 소개 섹션 -->
+      <section id="services" class="py-24 px-5 bg-[#0a0f1d] text-white relative overflow-hidden border-t border-slate-200">
+        <div class="absolute -top-32 left-1/2 -translate-x-1/2 w-[700px] h-64 bg-cyan-500/10 rounded-full blur-[110px] pointer-events-none"></div>
+
+        <div class="max-w-6xl mx-auto relative z-10">
+          <div class="mb-10 sm:mb-16">
+            <div class="flex items-center gap-2 mb-2">
+              <span class="w-2.5 h-2.5 rounded-full bg-cyan-400"></span>
+              <span class="text-xs font-bold uppercase tracking-widest text-cyan-400 font-mono">상품소개</span>
+            </div>
+            <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-2">
+              <div>
+                <h2 class="text-3xl sm:text-4xl md:text-5xl font-black tracking-tight text-white uppercase font-mono">
+                  SERVICE
+                </h2>
+                <p class="text-slate-400 text-sm sm:text-base mt-2.5 font-medium">
+                  세상에 단 하나뿐인 음악과 영상, 룸에잇스튜디오 전문가의 손길로 완성해 드립니다.
+                </p>
+              </div>
+              <div class="sm:hidden text-xs text-cyan-400 font-bold flex items-center gap-1">
+                <span>👉 옆으로 넘겨서 상품 확인하기</span>
+              </div>
+            </div>
+            <div class="w-full h-px bg-slate-800/80 mt-6"></div>
+          </div>
+
+          <div class="flex lg:grid lg:grid-cols-2 gap-5 sm:gap-8 overflow-x-auto lg:overflow-visible snap-x snap-mandatory -mx-5 px-5 lg:mx-0 lg:px-0 pb-6 lg:pb-0 no-scrollbar">
+            <div 
+              v-for="(service, sIdx) in studioServices" 
+              :key="sIdx"
+              :class="[
+                'w-[86vw] sm:w-[460px] lg:w-auto flex-shrink-0 snap-center bg-[#0e1626] rounded-3xl border border-slate-800 overflow-hidden shadow-2xl flex flex-col justify-between hover:border-cyan-500/50 hover:shadow-cyan-500/5 transition-all duration-300 group',
+                service.featured ? 'lg:col-span-2 bg-gradient-to-br from-[#0e1626] via-[#141f38] to-[#0c1322]' : ''
+              ]">
+              
+              <div>
+                <div class="relative w-full overflow-hidden bg-slate-900 border-b border-slate-800/80" :class="service.featured ? 'h-64 sm:h-80' : 'h-56 sm:h-72'">
+                  <div class="h-full w-full relative">
+                    <img :src="service.coverImage" :alt="service.title" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+                    <div class="absolute inset-0 bg-gradient-to-t from-[#0e1626] via-transparent to-transparent"></div>
+                  </div>
+                </div>
+
+                <div class="p-6 sm:p-9">
+                  <div class="flex items-center gap-3 mb-5 sm:mb-6">
+                    <h3 class="text-xl sm:text-3xl font-extrabold text-white tracking-tight">
+                      {{ service.title }}
+                    </h3>
+                    <span 
+                      :class="service.badgeColor || 'bg-indigo-600/30 text-indigo-300 border-indigo-500/40'"
+                      class="px-2.5 py-0.5 sm:px-3 sm:py-1 rounded-full text-[11px] sm:text-xs font-black tracking-wider uppercase border backdrop-blur-sm">
+                      {{ service.badge }}
+                    </span>
+                  </div>
+
+                  <ul class="space-y-3 sm:space-y-3.5 text-xs sm:text-base text-slate-300 mb-6 sm:mb-8 font-normal">
+                    <li v-for="(feat, fIdx) in service.features" :key="fIdx" class="flex items-start gap-2.5 sm:gap-3">
+                      <div class="w-4 h-4 sm:w-5 sm:h-5 rounded-full bg-cyan-950/70 border border-cyan-400/50 flex items-center justify-center flex-shrink-0 mt-0.5">
+                        <i data-lucide="check" class="w-2.5 h-2.5 sm:w-3 sm:h-3 text-cyan-400"></i>
+                      </div>
+                      <span class="break-keep leading-tight">{{ feat }}</span>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+
+              <div class="px-6 sm:px-9 pb-7 sm:pb-8 pt-4 border-t border-slate-800/80 flex items-center justify-between">
+                <div>
+                  <span class="text-xl sm:text-3xl font-black text-cyan-400 tracking-tight">
+                    {{ service.price }}
+                  </span>
+                  <span class="text-[11px] sm:text-sm text-slate-400 font-medium ml-1 uppercase tracking-wide">
+                    / {{ service.unit }}
+                  </span>
+                </div>
+
+                <a 
+                  :href="'#contact'"
+                  @click="selectPackage(service.title)"
+                  class="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-slate-800/90 hover:bg-cyan-400 text-slate-300 hover:text-slate-950 flex items-center justify-center transition-all duration-300 shadow-md group-hover:bg-cyan-400 group-hover:text-slate-950 group-hover:translate-x-1"
+                  :aria-label="service.title + ' 신청 및 상담'">
+                  <i data-lucide="arrow-right" class="w-4 h-4 sm:w-5 sm:h-5"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <div class="mt-10 sm:mt-14 p-6 sm:p-7 rounded-2xl bg-[#0e1626]/80 border border-slate-800 flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left">
+            <div class="flex items-center gap-3">
+              <i data-lucide="info" class="w-5 h-5 text-cyan-400 flex-shrink-0 hidden sm:block"></i>
+              <p class="text-xs sm:text-sm text-slate-300">
+                패키지 구성 외 개별 맞춤 작업(악기 트랙 추가, 영상 커스터마이징 등)도 자유롭게 조율 가능합니다.
+              </p>
+            </div>
+            <a :href="kakaoFriendUrl" target="_blank" rel="noopener noreferrer" class="px-5 py-2.5 rounded-full bg-white/10 hover:bg-white/20 text-white text-xs font-bold transition-all whitespace-nowrap border border-white/10">
+              카카오톡 맞춤 견적 문의
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- 5. WHY ROOM8STUDIO 섹션 -->
+      <section id="about" class="py-24 px-5 bg-[#090d16] text-white relative overflow-hidden border-t border-slate-800/80">
+        <div class="absolute top-1/4 -left-40 w-96 h-96 bg-cyan-500/10 rounded-full blur-[120px] pointer-events-none"></div>
+        <div class="absolute bottom-1/4 -right-40 w-96 h-96 bg-indigo-500/10 rounded-full blur-[120px] pointer-events-none"></div>
+
+        <div class="max-w-5xl mx-auto relative z-10">
+          <div class="text-center mb-12 sm:mb-20">
+            <h2 class="text-2xl sm:4xl font-extrabold text-white tracking-tight mb-3">
+              <span class="border-b-2 border-white/60 pb-1">고민되시나요?</span>
+            </h2>
+            <p class="text-2xl sm:text-4xl font-black text-cyan-400 tracking-tight">
+              룸에잇스튜디오를<br class="sm:hidden" /> 선택해야 하는 이유!
+            </p>
+            <p class="sm:hidden text-xs text-slate-400 font-medium mt-3">
+              👉 옆으로 넘겨서 4가지 특장점을 확인해보세요!
+            </p>
+          </div>
+
+          <div class="flex md:block overflow-x-auto md:overflow-visible snap-x snap-mandatory -mx-5 px-5 md:mx-0 md:px-0 pb-6 md:pb-0 gap-5 md:gap-0 no-scrollbar items-stretch">
+
+            <!-- Feature 1: 시간당 무제한 녹음 -->
+            <div class="w-[86vw] sm:w-[460px] md:w-full flex-shrink-0 snap-center bg-[#0e1626] md:bg-transparent rounded-3xl md:rounded-none border border-slate-800 md:border-0 p-6 sm:p-7 md:p-0 md:mb-24 flex flex-col justify-between">
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-10 md:gap-14 items-center">
+                <div>
+                  <span class="inline-block px-3.5 py-1 rounded-full bg-cyan-950/80 border border-cyan-500/40 text-cyan-400 text-xs font-bold mb-3 md:mb-4">
+                    01. 무제한 녹음
+                  </span>
+                  <h3 class="text-xl sm:text-2xl md:text-3xl font-extrabold text-white leading-snug mb-3 md:mb-4">
+                    원하는 만큼 자유롭게<br>
+                    <span class="text-cyan-400">시간당 무제한 녹음</span>
+                  </h3>
+                  <p class="text-slate-300 text-xs sm:text-sm md:text-base leading-relaxed break-keep font-normal mb-5 md:mb-0">
+                    시간당 곡수 제한 없이 자유로운 녹음이 가능합니다. 원하는 곡 모두 편안하게 녹음하여 최고의 결과물을 만들어보세요.
+                  </p>
+                </div>
+
+                <div class="relative rounded-2xl md:rounded-3xl overflow-hidden border border-slate-800 shadow-2xl group w-full aspect-square bg-slate-900 flex items-center justify-center">
+                  <img 
+                    :src="unlimitedRecGif" 
+                    alt="시간당 무제한 보컬 녹음 및 트랙 작업 화면" 
+                    class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                  <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent"></div>
+                  
+                  <div class="absolute bottom-3 left-4 md:bottom-4 md:left-5 text-[10px] md:text-xs font-bold text-cyan-400 flex items-center gap-2 bg-slate-950/85 px-3 py-1.5 rounded-full border border-cyan-500/30 backdrop-blur-sm">
+                    <span class="relative flex h-2 w-2">
+                      <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-cyan-400 opacity-75"></span>
+                      <span class="relative inline-flex rounded-full h-2 w-2 bg-cyan-500"></span>
+                    </span>
+                    <span>DAW MULTI-TRACK • 무제한 녹음</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Feature 2: 1:1 맞춤 디렉팅 -->
+            <div class="w-[86vw] sm:w-[460px] md:w-full flex-shrink-0 snap-center bg-[#0e1626] md:bg-transparent rounded-3xl md:rounded-none border border-slate-800 md:border-0 p-6 sm:p-7 md:p-0 md:mb-24 flex flex-col justify-between">
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-10 md:gap-14 items-center">
+                <div class="order-2 md:order-1 relative rounded-2xl md:rounded-3xl overflow-hidden border border-slate-800 shadow-2xl group w-full aspect-square bg-slate-900">
+                  <img 
+                    :src="directingGifImage" 
+                    alt="1:1 맞춤 보컬 코칭 현장" 
+                    class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                  <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20 to-transparent"></div>
+                  
+                  <div class="absolute bottom-3 left-4 md:bottom-4 md:left-5 text-[10px] md:text-xs font-bold text-cyan-400 flex items-center gap-2 bg-slate-950/80 px-3 py-1.5 rounded-full border border-cyan-500/30 backdrop-blur-sm">
+                    <span class="relative flex h-2 w-2">
+                      <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-cyan-400 opacity-75"></span>
+                      <span class="relative inline-flex rounded-full h-2 w-2 bg-cyan-500"></span>
+                    </span>
+                    <span>REC • 1:1 보컬 코칭</span>
+                  </div>
+                </div>
+
+                <div class="order-1 md:order-2">
+                  <span class="inline-block px-3.5 py-1 rounded-full bg-cyan-950/80 border border-cyan-500/40 text-cyan-400 text-xs font-bold mb-3 md:mb-4">
+                    02. 1:1 맞춤 디렉팅
+                  </span>
+                  <h3 class="text-xl sm:text-2xl md:text-3xl font-extrabold text-white leading-snug mb-3 md:mb-4">
+                    10년 차 K-POP 작곡가의<br>
+                    <span class="text-cyan-400">1:1 맞춤 보컬 코칭</span>
+                  </h3>
+                  <p class="text-slate-300 text-xs sm:text-sm md:text-base leading-relaxed break-keep font-normal mb-5 md:mb-0">
+                    K-POP 현역 작곡가이자 수많은 일반인·초보자를 녹음해 온 전문 디렉터가 발음, 호흡, 감정 표현까지 한 소절씩 친절하고 완벽하게 지도합니다.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Feature 3: 초정밀 음정 보정 -->
+            <div class="w-[86vw] sm:w-[460px] md:w-full flex-shrink-0 snap-center bg-[#0e1626] md:bg-transparent rounded-3xl md:rounded-none border border-slate-800 md:border-0 p-6 sm:p-7 md:p-0 md:mb-24 flex flex-col justify-between">
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-10 md:gap-14 items-center">
+                <div>
+                  <span class="inline-block px-3.5 py-1 rounded-full bg-cyan-950/80 border border-cyan-500/40 text-cyan-400 text-xs font-bold mb-3 md:mb-4">
+                    03. 완성도 높은 결과
+                  </span>
+                  <h3 class="text-xl sm:text-2xl md:text-3xl font-extrabold text-white leading-snug mb-3 md:mb-4">
+                    음치도 가수로 바뀐다<br>
+                    <span class="text-cyan-400">초정밀 음정·박자 보정</span>
+                  </h3>
+                  <p class="text-slate-300 text-xs sm:text-sm md:text-base leading-relaxed break-keep font-normal mb-5 md:mb-0">
+                    단순한 녹음 파일 저장을 넘어 방송·음원용 마스터링 퀄리티를 구현합니다. 프로 전용 Melodyne 보정으로 기계음 없이 자연스러운 음정과 박자를 정밀 교정합니다.
+                  </p>
+                </div>
+
+                <!-- Before / After 음원 재생 카드 -->
+                <div class="w-full max-w-[360px] md:max-w-[420px] aspect-square mx-auto bg-[#e5ebf2] text-slate-800 rounded-[28px] md:rounded-[36px] shadow-2xl p-5 sm:p-8 flex flex-col justify-between select-none">
+                  
+                  <audio ref="beforeAudioRef" :src="audioBeforeUrl" @ended="onAudioEnded('before')"></audio>
+                  <audio ref="afterAudioRef" :src="audioAfterUrl" @ended="onAudioEnded('after')"></audio>
+
+                  <!-- [TOP] BEFORE -->
+                  <div 
+                    @click="togglePlayTune('before')"
+                    class="flex-1 flex flex-col justify-center items-center cursor-pointer group/before transition-transform duration-200">
+                    
+                    <div class="flex items-center justify-center gap-2.5 mb-2 sm:mb-4">
+                      <button 
+                        @click.stop="togglePlayTune('before')"
+                        class="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-slate-700 hover:bg-slate-900 text-white flex items-center justify-center shadow-md transition-all duration-200 group-hover/before:scale-110 active:scale-95 flex-shrink-0"
+                        :title="isBeforePlaying ? '일시정지' : '보정 전 재생'">
+                        <svg v-if="!isBeforePlaying" viewBox="0 0 24 24" fill="currentColor" class="w-3.5 h-3.5 ml-0.5"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+                        <svg v-else viewBox="0 0 24 24" fill="currentColor" class="w-3.5 h-3.5"><rect x="6" y="4" width="4" height="16"></rect><rect x="14" y="4" width="4" height="16"></rect></svg>
+                      </button>
+                      <span class="font-extrabold text-xs sm:text-sm tracking-wider uppercase text-slate-700 group-hover/before:text-slate-900 transition-colors">
+                        BEFORE
+                      </span>
+                      <span v-if="isBeforePlaying" class="flex h-2 w-2 relative ml-0.5">
+                        <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-slate-500 opacity-75"></span>
+                        <span class="relative inline-flex rounded-full h-2 w-2 bg-slate-700"></span>
+                      </span>
+                    </div>
+
+                    <div class="w-full max-w-[260px] sm:max-w-[310px] h-10 sm:h-12 flex items-center justify-center relative">
+                      <svg class="w-full h-full overflow-visible" viewBox="0 0 320 50">
+                        <line x1="0" y1="36" x2="320" y2="36" stroke="#94a3b8" stroke-dasharray="2 3" stroke-width="1.2" />
+                        <path d="M 36,36 C 52,20 76,20 96,36" fill="none" stroke="#475569" stroke-width="2.6" stroke-linecap="round" />
+                        <path d="M 125,36 L 155,16" fill="none" stroke="#475569" stroke-width="2.6" stroke-linecap="round" />
+                        <path d="M 190,16 L 208,36" fill="none" stroke="#475569" stroke-width="2.6" stroke-linecap="round" />
+                        <path d="M 250,36 L 262,16" fill="none" stroke="#475569" stroke-width="2.6" stroke-linecap="round" />
+                        <path d="M 302,16 L 310,36" fill="none" stroke="#475569" stroke-width="2.6" stroke-linecap="round" />
+                      </svg>
+                    </div>
+                  </div>
+
+                  <!-- [BOTTOM] AFTER -->
+                  <div 
+                    @click="togglePlayTune('after')"
+                    class="bg-white rounded-[20px] sm:rounded-[28px] p-4 sm:p-6 shadow-[0_10px_25px_rgba(0,0,0,0.06)] flex flex-col items-center justify-center cursor-pointer group/after transition-all duration-200 hover:shadow-lg">
+                    
+                    <div class="flex items-center justify-center gap-2.5 mb-2 sm:mb-4">
+                      <button 
+                        @click.stop="togglePlayTune('after')"
+                        class="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-[#00c0f8] hover:bg-[#00a9dc] text-white flex items-center justify-center shadow-md shadow-cyan-400/35 transition-all duration-200 group-hover/after:scale-110 active:scale-95 flex-shrink-0"
+                        :title="isAfterPlaying ? '일시정지' : '보정 후 재생'">
+                        <svg v-if="!isAfterPlaying" viewBox="0 0 24 24" fill="currentColor" class="w-3.5 h-3.5 ml-0.5"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+                        <svg v-else viewBox="0 0 24 24" fill="currentColor" class="w-3.5 h-3.5"><rect x="6" y="4" width="4" height="16"></rect><rect x="14" y="4" width="4" height="16"></rect></svg>
+                      </button>
+                      <span class="font-extrabold text-xs sm:text-sm tracking-wider uppercase text-[#00c0f8]">
+                        AFTER
+                      </span>
+                      <span v-if="isAfterPlaying" class="flex h-2 w-2 relative ml-0.5">
+                        <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-cyan-400 opacity-75"></span>
+                        <span class="relative inline-flex rounded-full h-2 w-2 bg-[#00c0f8]"></span>
+                      </span>
+                    </div>
+
+                    <div class="flex items-center justify-center gap-1.5 sm:gap-2 h-8 sm:h-12 w-full">
+                      <span 
+                        v-for="(h, bIdx) in afterBars" 
+                        :key="bIdx" 
+                        class="w-1.5 sm:w-2 bg-[#00c0f8] rounded-full transition-all duration-200"
+                        :class="isAfterPlaying ? 'wave-bar-active' : ''"
+                        :style="{ 
+                          height: (h * 0.85) + 'px',
+                          animationDelay: (bIdx * 0.05) + 's' 
+                        }"></span>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+
+            <!-- Feature 4: 확실한 영상 퀄리티 -->
+            <div class="w-[86vw] sm:w-[460px] md:w-full flex-shrink-0 snap-center bg-[#0e1626] md:bg-transparent rounded-3xl md:rounded-none border border-slate-800 md:border-0 p-6 sm:p-7 md:p-0 flex flex-col justify-between">
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-10 md:gap-14 items-center">
+                <div class="order-2 md:order-1 relative rounded-2xl md:rounded-3xl overflow-hidden border border-slate-800 shadow-2xl group w-full aspect-square bg-slate-900 flex items-center justify-center">
+                  <img 
+                    :src="videoQualityGif" 
+                    alt="AI 부모님 감사영상 및 고퀄리티 영상 제작" 
+                    class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                  <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-transparent"></div>
+                  
+                  <div class="absolute bottom-3 left-4 md:bottom-4 md:left-5">
+                    <span class="px-3 py-1 md:px-3.5 md:py-1.5 rounded-full bg-cyan-400/90 text-slate-950 text-[10px] md:text-xs font-black shadow-md backdrop-blur-sm">
+                      AI 부모님 감사영상 & 디즈니풍 식전영상
+                    </span>
+                  </div>
+                </div>
+
+                <div class="order-1 md:order-2">
+                  <span class="inline-block px-3.5 py-1 rounded-full bg-cyan-950/80 border border-cyan-500/40 text-cyan-400 text-xs font-bold mb-3 md:mb-4">
+                    04. 영상 패키지
+                  </span>
+                  <h3 class="text-xl sm:text-2xl md:text-3xl font-extrabold text-white leading-snug mb-3 md:mb-4">
+                    음악부터 영상까지<br>
+                    <span class="text-cyan-400">확실한 영상 퀄리티!</span>
+                  </h3>
+                  <p class="text-slate-300 text-xs sm:text-sm md:text-base leading-relaxed break-keep font-normal mb-5 md:mb-0">
+                    감동을 극대화하는 AI 부모님 감사영상부터 환상적인 디즈니풍 식전영상까지! 전문 색보정과 컷 편집을 거쳐 평생 간직할 소장용 영상 콘텐츠를 선사합니다.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+          <div class="mt-14 sm:mt-20 p-8 sm:p-10 rounded-3xl bg-gradient-to-r from-slate-900 via-slate-800 to-slate-900 border border-cyan-500/30 text-center relative overflow-hidden">
+            <h4 class="text-xl sm:text-2xl font-black text-white mb-2">
+              고민은 원하는 날짜의 예약만 늦출 뿐입니다!
+            </h4>
+            <p class="text-xs sm:text-sm text-slate-300 mb-6 font-normal">
+              100% 사전 예약제 • 하루 한정 소수 세션 집중 디렉팅
+            </p>
+            <a href="#contact" class="inline-flex items-center gap-2 px-8 py-4 rounded-full bg-cyan-400 hover:bg-cyan-300 text-slate-950 font-black text-sm transition-all shadow-lg shadow-cyan-400/30 active:scale-95">
+              <span>내게 딱 맞는 패키지 상담받기</span>
+              <i data-lucide="arrow-right" class="w-4 h-4"></i>
+            </a>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- 7. OFFICIAL DISCOGRAPHY -->
+      <section id="discography" class="py-24 bg-gradient-to-b from-slate-950 via-[#070b14] to-slate-950 text-white relative overflow-hidden border-y border-slate-800">
+        <div class="absolute -top-24 left-1/4 w-96 h-96 bg-cyan-500/15 rounded-full blur-[140px] pointer-events-none"></div>
+        <div class="absolute -bottom-24 right-1/4 w-96 h-96 bg-indigo-600/15 rounded-full blur-[140px] pointer-events-none"></div>
+
+        <div class="max-w-6xl mx-auto px-5 mb-10 relative z-10 text-center">
+          <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-cyan-500/10 border border-cyan-400/30 text-cyan-300 text-xs font-bold mb-4 backdrop-blur-md">
+            <i data-lucide="disc-3" class="w-3.5 h-3.5 animate-spin"></i>
+            <span>작곡가 작업물</span>
+          </div>
+          <h2 class="text-3xl sm:text-5xl font-black text-white tracking-tight mb-4 break-keep">
+            MUSIC PRODUCTION <span class="bg-gradient-to-r from-cyan-400 to-sky-300 bg-clip-text text-transparent">PORTFOLIO</span>
+          </h2>
+          <p class="text-slate-400 text-sm sm:text-base max-w-xl mx-auto break-keep font-normal">
+          </p>
+
+          <div class="mt-6 flex items-center justify-center gap-2.5">
+            <button 
+              @click="scrollAlbums('left')" 
+              class="w-10 h-10 rounded-full bg-white/10 hover:bg-cyan-400 text-slate-300 hover:text-slate-950 border border-white/15 flex items-center justify-center transition-all shadow-md active:scale-90"
+              aria-label="이전 앨범 보기">
+              <i data-lucide="chevron-left" class="w-5 h-5"></i>
+            </button>
+            <button 
+              @click="scrollAlbums('right')" 
+              class="w-10 h-10 rounded-full bg-white/10 hover:bg-cyan-400 text-slate-300 hover:text-slate-950 border border-white/15 flex items-center justify-center transition-all shadow-md active:scale-90"
+              aria-label="다음 앨범 보기">
+              <i data-lucide="chevron-right" class="w-5 h-5"></i>
+            </button>
+          </div>
+        </div>
+
+        <div class="album-track-container relative w-full py-8 select-none">
+          <div class="absolute left-0 top-0 bottom-0 w-16 sm:w-36 bg-gradient-to-r from-slate-950 to-transparent z-20 pointer-events-none"></div>
+          <div class="absolute right-0 top-0 bottom-0 w-16 sm:w-36 bg-gradient-to-l from-slate-950 to-transparent z-20 pointer-events-none"></div>
+
+          <div 
+            ref="albumTrackRef"
+            @mouseenter="onTrackMouseEnter"
+            @mouseleave="onTrackMouseLeave"
+            @mousedown="onTrackMouseDown"
+            @touchstart="onTrackTouchStart"
+            @touchmove="onTrackTouchMove"
+            @touchend="onTrackTouchEnd"
+            @scroll="handleTrackScroll"
+            @wheel="onTrackWheel"
+            class="flex gap-8 sm:gap-12 px-8 sm:px-16 overflow-x-auto no-scrollbar cursor-grab active:cursor-grabbing select-none"
+            style="touch-action: pan-x; -webkit-overflow-scrolling: touch;">
+            
+            <div 
+              v-for="(album, aIdx) in loopedAlbums" 
+              :key="aIdx"
+              :class="['float-card flex-shrink-0 transition-transform duration-300 group', getFloatClass(aIdx)]"
+              style="perspective: 1000px;">
+
+              <div 
+                @click="handleAlbumClick($event, album.link)" 
+                class="block w-64 sm:w-72 relative cursor-pointer focus:outline-none"
+                :title="album.title + ' - 음원 사이트에서 듣기'">
+                
+                <div class="vinyl-disc absolute top-3 sm:top-4 right-0 w-56 sm:w-60 h-56 sm:h-60 rounded-full bg-slate-950 border-[6px] border-[#181a1f] shadow-2xl flex items-center justify-center -z-10 transition-transform duration-500 ease-out pointer-events-none">
+                  <div class="w-44 sm:w-48 h-44 sm:h-48 rounded-full border border-slate-700/40 flex items-center justify-center">
+                    <div class="w-32 h-32 rounded-full border border-slate-700/50 flex items-center justify-center">
+                      <div class="w-20 h-20 rounded-full bg-cyan-500/20 border-2 border-cyan-400/70 flex items-center justify-center shadow-inner">
+                        <div class="w-4 h-4 rounded-full bg-slate-950 border-2 border-white/60"></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="relative aspect-square w-full rounded-2xl overflow-hidden shadow-[0_15px_35px_rgba(0,0,0,0.6)] border border-white/10 group-hover:border-cyan-400/80 group-hover:shadow-[0_20px_40px_rgba(0,229,255,0.25)] transition-all duration-300 bg-slate-900 pointer-events-none">
+                  <img 
+                    :src="album.coverImage" 
+                    :alt="album.title" 
+                    class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-108 group-hover:brightness-95 pointer-events-none">
+
+                  <div class="absolute top-3 left-3 z-10 flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-slate-950/80 backdrop-blur-md border border-white/15 text-[10px] font-bold text-cyan-300">
+                    <span class="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-pulse"></span>
+                    <span>{{ album.platformName }}</span>
+                  </div>
+
+                  <div class="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-950/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-5">
+                    <div class="inline-flex items-center gap-2 self-start px-3 py-1.5 rounded-xl bg-cyan-400 text-slate-950 font-black text-xs shadow-lg mb-2 transform translate-y-2 group-hover:translate-y-0 transition-transform duration-300">
+                      <i data-lucide="play" class="w-3.5 h-3.5 fill-slate-950"></i>
+                      <span>음원 사이트 듣기</span>
+                      <i data-lucide="external-link" class="w-3 h-3 ml-0.5"></i>
+                    </div>
+                    <span class="text-[11px] text-slate-300 font-medium">{{ album.genre }} • {{ album.releaseYear }}</span>
+                  </div>
+                </div>
+
+                <div class="mt-3.5 px-1 flex items-start justify-between pointer-events-none">
+                  <div class="max-w-[80%]">
+                    <h3 class="text-sm sm:text-base font-extrabold text-white group-hover:text-cyan-300 transition-colors truncate">
+                      {{ album.title }}
+                    </h3>
+                    <p class="text-xs text-slate-400 font-medium truncate mt-0.5">
+                      {{ album.artist }}
+                    </p>
+                  </div>
+                  <div class="w-7 h-7 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-slate-400 group-hover:bg-cyan-400 group-hover:text-slate-950 transition-colors flex-shrink-0 mt-0.5">
+                    <i data-lucide="arrow-up-right" class="w-3.5 h-3.5"></i>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="max-w-4xl mx-auto px-5 mt-10 text-center relative z-10">
+          <div class="p-6 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-md flex flex-col sm:flex-row items-center justify-between gap-4">
+            <div class="text-left">
+              <h4 class="text-base font-bold text-white flex items-center gap-2">
+                <i data-lucide="sparkles" class="w-4 h-4 text-cyan-400"></i>
+                <span>나만의 음악도 전 세계 공식 플랫폼에 정식 발매할 수 있습니다.</span>
+              </h4>
+              <p class="text-xs text-slate-400 mt-0.5">자작곡, 커스텀 멜로디, 가사만 있어도 룸에잇스튜디오에서 1:1 편곡부터 믹싱, 공식 유통까지 전담 지원합니다.</p>
+            </div>
+            <a 
+              href="#contact" 
+              @click="selectPackage('음반 제작')"
+              class="px-5 py-2.5 rounded-full bg-cyan-400 hover:bg-cyan-300 text-slate-950 font-bold text-xs whitespace-nowrap transition-all shadow-md active:scale-95 flex items-center gap-1.5">
+              <span>음반 제작 상담 신청</span>
+              <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- 8. PRICING SECTION -->
+      <section id="pricing" class="py-16 px-5 max-w-5xl mx-auto border-t border-slate-100 overflow-hidden md:overflow-visible">
+        <div class="text-center max-w-lg mx-auto mb-10 sm:mb-12">
+          <p class="text-xs font-bold text-cyan-600 uppercase tracking-wider mb-1">Pricing Package</p>
+          <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-950">정직하고 투명한 패키지</h2>
+          <p class="text-xs sm:text-sm text-slate-500 mt-1.5">
+            거품 없는 합리적인 금액으로 음원과 영상을 완성해 드립니다.
+            <span class="md:hidden text-cyan-600 font-bold ml-1 inline-flex items-center gap-0.5">
+              (👉 옆으로 넘겨보세요)
+            </span>
+          </p>
+        </div>
+
+        <div class="flex md:grid md:grid-cols-2 gap-5 sm:gap-6 overflow-x-auto md:overflow-visible snap-x snap-mandatory -mx-5 px-5 md:mx-0 md:px-0 pb-6 md:pb-0 no-scrollbar">
+          <!-- 카드 1: 축가 녹음 패키지 -->
+          <div class="w-[84vw] sm:w-[420px] md:w-auto flex-shrink-0 snap-center p-7 sm:p-8 rounded-3xl bg-white border border-slate-200/90 shadow-sm hover:shadow-md transition-all flex flex-col justify-between">
+            <div>
+              <div class="inline-block px-3 py-1 rounded-full bg-slate-100 text-slate-700 text-xs font-bold mb-4">
+                👑 가장 많은 선택 (보컬 인기 No.1)
+              </div>
+              <h3 class="text-2xl font-bold text-slate-950 mb-1">축가 녹음 패키지</h3>
+              <p class="text-xs text-slate-500 mb-6">결혼식 축가, 프로포즈, 개인 소장용 고퀄리티 음원 제작</p>
+              
+              <div class="text-3xl sm:text-4xl font-black text-slate-950 mb-6">
+                100,000원<span class="text-base text-slate-500 font-normal"> / 녹음 2시간</span>
+              </div>
+
+              <ul class="space-y-3 text-xs sm:text-sm text-slate-600 mb-8">
+                <li class="flex items-center gap-2.5">
+                  <i data-lucide="check" class="w-4 h-4 text-cyan-600 flex-shrink-0"></i>
+                  <span>10년 차 K-POP 작곡가 1:1 보컬 디렉팅</span>
+                </li>
+                <li class="flex items-center gap-2.5">
+                  <i data-lucide="check" class="w-4 h-4 text-cyan-600 flex-shrink-0"></i>
+                  <span>초정밀 튠 & 기본 믹싱 후반작업 포함</span>
+                </li>
+                <li class="flex items-center gap-2.5">
+                  <i data-lucide="check" class="w-4 h-4 text-cyan-600 flex-shrink-0"></i>
+                  <span>마스터링 최종본 고음질 MP3 / WAV 파일 제공</span>
+                </li>
+              </ul>
+            </div>
+
+            <a href="#contact" class="w-full py-3.5 rounded-2xl bg-slate-100 hover:bg-slate-200 text-slate-900 font-bold text-xs sm:text-sm text-center transition-all">
+              축가 녹음 패키지 신청하기
+            </a>
+          </div>
+
+          <!-- 카드 2: 개인 음반 제작 & 발매 -->
+          <div class="w-[84vw] sm:w-[420px] md:w-auto flex-shrink-0 snap-center p-7 sm:p-8 rounded-3xl bg-slate-950 text-white shadow-xl flex flex-col justify-between relative overflow-hidden">
+            <div class="absolute top-4 right-5 text-[11px] font-bold px-3 py-1 rounded-full bg-cyan-400 text-slate-950 font-black">
+              All-In-One Pro
+            </div>
+            <div>
+              <div class="inline-block px-3 py-1 rounded-full bg-white/10 text-cyan-300 text-xs font-bold mb-4">
+                ✨ 정식 데뷔 앨범
+              </div>
+              <h3 class="text-2xl font-bold text-white mb-1">개인 음반 제작 & 발매</h3>
+              <p class="text-xs text-slate-400 mb-6">자작곡 또는 맞춤곡으로 멜론/지니 공식 음원 등록</p>
+              
+              <div class="text-3xl sm:text-4xl font-black text-white mb-6">
+                650,000<span class="text-base text-slate-400 font-normal">원부터 ~</span>
+              </div>
+
+              <ul class="space-y-3 text-xs sm:text-sm text-slate-300 mb-8">
+                <li class="flex items-center gap-2.5">
+                  <i data-lucide="check" class="w-4 h-4 text-cyan-400 flex-shrink-0"></i>
+                  <span>트랙 편곡, 악기 사운드 디자인 및 세션 총괄</span>
+                </li>
+                <li class="flex items-center gap-2.5">
+                  <i data-lucide="check" class="w-4 h-4 text-cyan-400 flex-shrink-0"></i>
+                  <span>보컬 레코딩 & 코러스 화음 빌딩</span>
+                </li>
+                <li class="flex items-center gap-2.5">
+                  <i data-lucide="check" class="w-4 h-4 text-cyan-400 flex-shrink-0"></i>
+                  <span>멜론, 지니, 벅스, 스포티파이 공식 유통 발매 대행</span>
+                </li>
+              </ul>
+            </div>
+
+            <a href="#contact" class="w-full py-3.5 rounded-2xl bg-cyan-400 hover:bg-cyan-300 text-slate-950 font-bold text-xs sm:text-sm text-center transition-all">
+              음반 제작 1:1 상담받기
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- 9. CONTACT & LOCATION -->
+      <section id="contact" class="py-16 px-5 max-w-5xl mx-auto border-t border-slate-100">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-10">
+          <div class="bg-slate-50 p-7 sm:p-9 rounded-3xl border border-slate-200/80 shadow-sm">
+            <div class="mb-6">
+              <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-cyan-50 border border-cyan-200 text-cyan-700 text-xs font-bold mb-2">
+                <span class="w-2 h-2 rounded-full bg-cyan-500 animate-ping"></span>
+                <span>카카오톡 실시간 연동 접수</span>
+              </div>
+              <h2 class="text-2xl font-extrabold text-slate-950">스튜디오 예약 및 문의</h2>
+              <p class="text-xs text-slate-500 mt-1">신청 즉시 룸에잇스튜디오 담당 디렉터의 카카오톡으로 실시간 연결 및 알림 접수됩니다.</p>
+            </div>
+
+            <form @submit.prevent="submitBooking" class="space-y-4">
+              <div>
+                <label class="block text-xs font-semibold text-slate-600 mb-1.5">작성자명*</label>
+                <input v-model="form.name" required type="text" placeholder="예: 김민수" class="w-full bg-white border border-slate-200 rounded-xl px-4 py-2.5 text-sm text-slate-900 focus:outline-none focus:border-cyan-500">
+              </div>
+
+              <div>
+                <label class="block text-xs font-semibold text-slate-600 mb-1.5">연락처*</label>
+                <input v-model="form.phone" required type="tel" placeholder="010-0000-0000" class="w-full bg-white border border-slate-200 rounded-xl px-4 py-2.5 text-sm text-slate-900 focus:outline-none focus:border-cyan-500">
+              </div>
+
+              <div>
+                <label class="block text-xs font-semibold text-slate-600 mb-1.5">희망 상품 / 패키지*</label>
+                <select v-model="form.service" class="w-full bg-white border border-slate-200 rounded-xl px-4 py-2.5 text-sm text-slate-900 focus:outline-none focus:border-cyan-500">
+                  <option value="노래 녹음(축가녹음) - 1시간 5만원">1. 노래 녹음 (축가녹음) - 50,000원 / 1시간</option>
+                  <option value="AI 부모님 감사영상 (6.5만원~)">2. AI 부모님 감사영상 - 65,000원~</option>
+                  <option value="디즈니풍 식전영상 (15만원)">3. 디즈니풍 감성 식전영상 - 150,000원</option>
+                  <option value="맞춤 어쿠스틱 MR 제작 (30만원~)">4. 맞춤 어쿠스틱 MR 제작 - 300,000원~</option>
+                  <option value="개인 음반 제작 & 발매 패키지 (65만원~)">5. 개인 음반 제작 & 공식 발매 - 650,000원~</option>
+                  <option value="축가 녹음 패키지 (2시간 10만원)">축가 녹음 패키지 (2시간 10만원)</option>
+                  <option value="기타 맞춤 상담">기타 음악 / 영상 맞춤 상담</option>
+                </select>
+              </div>
+
+              <div>
+                <label class="block text-xs font-semibold text-slate-600 mb-1.5">문의 내용 (선택)</label>
+                <textarea v-model="form.message" rows="3" placeholder="녹음 희망 곡명이나 희망 방문 날짜, 문의사항을 편하게 남겨주세요 :)" class="w-full bg-white border border-slate-200 rounded-xl px-4 py-2.5 text-sm text-slate-900 focus:outline-none focus:border-cyan-500"></textarea>
+              </div>
+
+              <button 
+                type="submit" 
+                :disabled="isSubmitting"
+                class="w-full py-3.5 rounded-xl bg-cyan-400 hover:bg-cyan-300 disabled:opacity-50 text-slate-950 font-bold text-sm transition-all shadow-md active:scale-95 flex items-center justify-center gap-2">
+                <i data-lucide="message-circle" class="w-4 h-4 fill-slate-950"></i>
+                <span>{{ isSubmitting ? '카카오톡 연동 처리 중...' : '실시간 예약 신청 & 카카오톡 알림 전송' }}</span>
+              </button>
+            </form>
+          </div>
+
+          <div class="flex flex-col justify-between py-2">
+            <div>
+              <p class="text-xs font-bold text-cyan-600 uppercase tracking-wider mb-1">Location</p>
+              <h2 class="text-2xl font-extrabold text-slate-950 mb-6">스튜디오 오시는 길</h2>
+
+              <div class="space-y-4 text-xs sm:text-sm text-slate-600">
+                <div class="flex items-start gap-3">
+                  <i data-lucide="map-pin" class="w-4 h-4 text-cyan-600 flex-shrink-0 mt-0.5"></i>
+                  <div>
+                    <div class="font-bold text-slate-900 mb-0.5">스튜디오 위치</div>
+                    <div>서울특별시 강남구 / 마포구 홍대 인근 (예약 확정 시 상세 호수 및 주차 안내)</div>
+                  </div>
+                </div>
+
+                <div class="flex items-start gap-3">
+                  <i data-lucide="clock" class="w-4 h-4 text-cyan-600 flex-shrink-0 mt-0.5"></i>
+                  <div>
+                    <div class="font-bold text-slate-900 mb-0.5">상담 및 운영 시간</div>
+                    <div>카카오톡 & 유선 상담: 매일 10:00 ~ 22:00 (100% 사전 예약제 운영)</div>
+                  </div>
+                </div>
+
+                <div class="flex items-start gap-3">
+                  <i data-lucide="shield-check" class="w-4 h-4 text-cyan-600 flex-shrink-0 mt-0.5"></i>
+                  <div>
+                    <div class="font-bold text-slate-900 mb-0.5">방문 고객 약속</div>
+                    <div>첫 녹음이신 분도 긴장하지 않도록 프라이빗 단독 부스에서 편안하게 진행됩니다.</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- 카카오톡 채널 추가 배너 카드 -->
+            <div class="mt-8 p-5 bg-[#FEE500]/15 border border-[#FEE500] rounded-2xl flex items-center justify-between gap-4">
+              <div>
+                <p class="font-bold text-xs text-slate-900">룸에잇스튜디오(room8studio) 공식 카카오톡</p>
+                <p class="text-[11px] text-slate-500 mt-0.5">친구 추가 시 예약 일정 우선 배정 혜택을 드립니다.</p>
+              </div>
+              <a :href="kakaoFriendUrl" target="_blank" rel="noopener noreferrer" class="px-4 py-2 bg-[#FEE500] text-[#191919] font-bold text-xs rounded-xl shadow-sm hover:scale-105 active:scale-95 transition-all whitespace-nowrap">
+                친구 추가
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- 10. FOOTER -->
+    <footer class="border-t border-slate-100 py-10 px-5 bg-slate-50 text-slate-400 text-xs">
+      <div class="max-w-5xl mx-auto flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+        <div>
+          <div class="flex items-center gap-2 mb-1">
+            <div class="w-5 h-5 text-slate-900">
+              <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-full h-full stroke-current stroke-[6] stroke-linejoin-round">
+                <polygon points="50,12 84,31 84,69 50,88 16,69 16,31" />
+                <line x1="50" y1="50" x2="50" y2="88" />
+                <line x1="50" y1="50" x2="16" y2="31" />
+                <line x1="50" y1="50" x2="84" y2="31" />
+                <circle cx="68" cy="38" r="11" fill="white" class="fill-white stroke-slate-950 stroke-[6]" />
+                <circle cx="68" cy="58" r="13" fill="white" class="fill-white stroke-slate-950 stroke-[6]" />
+              </svg>
+            </div>
+            <span class="font-bold text-slate-900 text-sm">ROOM8STUDIO (룸에잇스튜디오)</span>
+          </div>
+          <div>사업자명: Room8studio | 사업자등록번호: 518-03-04473</div>
+          <div class="mt-0.5">서울시 강남·홍대 스튜디오 운영 | 100% 사전 예약제</div>
+        </div>
+        <div class="flex items-center gap-4 text-xs font-semibold text-slate-600">
+          <a :href="kakaoFriendUrl" target="_blank" rel="noopener noreferrer" class="hover:text-slate-950 flex items-center gap-1">
+            <span class="w-2 h-2 rounded-full bg-yellow-400"></span>
+            카카오톡 상담
+          </a>
+          <button @click="openLoginModal" class="text-slate-400 hover:text-slate-600">관리자 로그인</button>
+        </div>
+      </div>
+    </footer>
+
+    <!-- 플로팅 카카오톡 1초 상담 -->
+    <a 
+      :href="kakaoFriendUrl" 
+      target="_blank" 
+      rel="noopener noreferrer" 
+      class="fixed bottom-6 right-5 z-30 flex items-center gap-2 bg-gradient-to-r from-[#FFE812] to-[#F5BE00] hover:brightness-105 text-[#191919] font-extrabold text-xs px-4 py-3 rounded-full shadow-[0_8px_20px_rgba(245,190,0,0.35)] hover:scale-105 active:scale-95 transition-all border border-white/20"
+      title="카카오톡 1초 상담 바로가기">
+      <i data-lucide="message-circle" class="w-4 h-4 fill-[#191919]"></i>
+      <span>카톡 1초 상담</span>
+    </a>
+
+    <!-- 관리자 로그인 모달 -->
+    <div 
+      v-if="showLoginModal" 
+      @click.self="showLoginModal = false"
+      class="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+      <div class="bg-white border border-slate-200 rounded-3xl p-6 max-w-sm w-full shadow-2xl relative">
+        <button @click="showLoginModal = false" class="absolute top-4 right-4 text-slate-400 hover:text-slate-700 font-bold">✕</button>
+        <h3 class="text-base font-bold text-slate-900 mb-1">관리자 CMS 로그인</h3>
+        <p class="text-xs text-slate-500 mb-4">기본 비밀번호: <code class="text-cyan-600 font-mono font-bold">admin1234</code></p>
+        <input v-model="adminPassword" type="password" placeholder="비밀번호 입력" @keyup.enter="loginAdmin" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-2.5 text-sm text-slate-900 mb-4 focus:outline-none focus:border-cyan-500">
+        <div class="flex gap-2">
+          <button @click="loginAdmin" class="flex-1 bg-slate-950 text-white font-bold text-xs py-2.5 rounded-xl">확인</button>
+          <button @click="showLoginModal = false" class="bg-slate-100 text-slate-600 text-xs px-4 py-2.5 rounded-xl">취소</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- 사이트 문구 설정 모달 -->
+    <div 
+      v-if="showAdminModal" 
+      @click.self="showAdminModal = false"
+      class="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+      <div class="bg-white border border-slate-200 rounded-3xl p-6 max-w-md w-full shadow-2xl relative">
+        <div class="flex items-center justify-between mb-4 pb-3 border-b border-slate-100">
+          <h3 class="text-base font-bold text-slate-900">사이트 문구 설정</h3>
+          <button @click="showAdminModal = false" class="text-slate-400 hover:text-slate-700 font-bold p-1">닫기 ✕</button>
+        </div>
+
+        <div class="space-y-4 text-xs">
+          <div>
+            <label class="block font-semibold text-slate-700 mb-1">서브 타이틀</label>
+            <input type="text" v-model="siteData.heroSubtitle" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-slate-900 focus:outline-none focus:border-cyan-500">
+          </div>
+        </div>
+
+        <div class="mt-6 pt-4 border-t border-slate-100 flex items-center justify-between">
+          <button @click="resetToDefault" class="text-red-500 text-xs px-2 py-1 font-semibold">기본값 복원</button>
+          <div class="flex gap-2">
+            <button @click="showAdminModal = false" class="bg-slate-100 text-slate-700 text-xs px-3 py-2 rounded-xl">취소</button>
+            <button @click="saveContent(); showAdminModal = false" class="bg-cyan-400 text-slate-950 font-bold text-xs px-4 py-2 rounded-xl">저장 완료</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- VUE 3 APPLICATION SCRIPT -->
+  <script>
+    const { createApp, ref, computed, onMounted, onUnmounted, nextTick } = Vue;
+
+    createApp({
+      setup() {
+        const isAdmin = ref(false);
+        const showLoginModal = ref(false);
+        const showAdminModal = ref(false);
+        const adminPassword = ref('');
+        const isSubmitting = ref(false);
+
+        // 🌟 메인 타이틀 롤링 제어
+        const currentTitleIndex = ref(0);
+        let titleIntervalId = null;
+
+        const startTitleRotation = () => {
+          titleIntervalId = setInterval(() => {
+            currentTitleIndex.value = (currentTitleIndex.value + 1) % 3;
+          }, 3200);
+        };
+
+        // 모바일 메뉴 열림/닫힘
+        const isMobileMenuOpen = ref(false);
+
+        const toggleMobileMenu = () => {
+          isMobileMenuOpen.value = !isMobileMenuOpen.value;
+          nextTick(() => {
+            if (window.lucide) lucide.createIcons();
+          });
+        };
+
+        const closeMobileMenu = () => {
+          isMobileMenuOpen.value = false;
+          nextTick(() => {
+            if (window.lucide) lucide.createIcons();
+          });
+        };
+
+        // 카카오톡 링크 주소
+        const kakaoFriendUrl = ref('http://pf.kakao.com/_xadxoJX/friend');
+        const kakaoChatUrl = ref('http://pf.kakao.com/_xadxoJX/chat');
+
+        // 로컬 GIF 이미지 경로
+        const directingGifImage = ref('./images/directing_vocal.gif');
+        const unlimitedRecGif = ref('./images/unlimited_rec.gif');
+        const videoQualityGif = ref('./images/video_quality.gif');
+
+        // Before / After 음원 파일 경로
+        const audioBeforeUrl = ref('./audio/before.mp3');
+        const audioAfterUrl = ref('./audio/after.mp3');
+
+        // 오디오 엘리먼트 Ref 및 상태 변수
+        const beforeAudioRef = ref(null);
+        const afterAudioRef = ref(null);
+        const isBeforePlaying = ref(false);
+        const isAfterPlaying = ref(false);
+
+        const afterBars = ref([14, 20, 24, 20, 14, 10, 8, 8, 10, 14, 20, 24, 26, 24, 20, 14, 10, 8, 8, 10, 14]);
+
+        const togglePlayTune = (type) => {
+          if (type === 'before') {
+            if (isBeforePlaying.value) {
+              if (beforeAudioRef.value) beforeAudioRef.value.pause();
+              isBeforePlaying.value = false;
+            } else {
+              if (afterAudioRef.value && isAfterPlaying.value) {
+                afterAudioRef.value.pause();
+                isAfterPlaying.value = false;
+              }
+              if (beforeAudioRef.value) {
+                beforeAudioRef.value.play().catch(e => console.warn('Before 음원 재생 정책:', e));
+                isBeforePlaying.value = true;
+              }
+            }
+          } else if (type === 'after') {
+            if (isAfterPlaying.value) {
+              if (afterAudioRef.value) afterAudioRef.value.pause();
+              isAfterPlaying.value = false;
+            } else {
+              if (beforeAudioRef.value && isBeforePlaying.value) {
+                beforeAudioRef.value.pause();
+                isBeforePlaying.value = false;
+              }
+              if (afterAudioRef.value) {
+                afterAudioRef.value.play().catch(e => console.warn('After 음원 재생 정책:', e));
+                isAfterPlaying.value = true;
+              }
+            }
+          }
+        };
+
+        const onAudioEnded = (type) => {
+          if (type === 'before') isBeforePlaying.value = false;
+          if (type === 'after') isAfterPlaying.value = false;
+        };
+
+        const studioServices = ref([
+          {
+            title: "노래 녹음(축가녹음)",
+            badge: "HOT",
+            badgeColor: "bg-indigo-600/30 text-indigo-300 border-indigo-500/40",
+            coverImage: "./images/room8sound.jpg",
+            features: [
+              "처음이어도 긴장 ZERO! 친절한 담당 디렉터 1:1 보컬 코칭",
+              "스마트폰·노래방과는 차원이 다른 깨끗하고 선명한 스튜디오 레코딩",
+              "완벽하게 완곡하지 않아도 OK! 최고의 순간만 모으는 A컷 편집",
+              "디테일을 살린 꼼꼼한 믹싱 & 마스터링 완성본(WAV, MP3) 전달"
+            ],
+            price: "50,000원",
+            unit: "1 HOURS"
+          },
+          {
+            title: "AI 부모님 감사영상",
+            badge: "POPULAR",
+            badgeColor: "bg-cyan-600/30 text-cyan-300 border-cyan-500/40",
+            coverImage: "./images/thanks.jpg",
+            features: [
+              "부모님의 옛날 흑백·빛바랜 사진 고화질 AI 복원 및 자연스러운 모션 생성",
+              "마음을 울리는 1:1 맞춤 스토리 & 감성 편지글 구성",
+              "환갑·칠순, 결혼식, 은퇴식 분위기에 맞춘 눈물 감동 연출",
+              "예식장 스크린 최적화 FULL HD / 4K 고화질 영상 파일 제공"
+            ],
+            price: "65,000원~",
+            unit: "PACKAGE"
+          },
+          {
+            title: "디즈니풍 감성 식전영상",
+            badge: "STEADY",
+            badgeColor: "bg-fuchsia-600/30 text-fuchsia-300 border-fuchsia-500/40",
+            coverImage: "./images/desney.png",
+            features: [
+              "한 편의 동화 같은 로맨틱 디즈니풍 무빙 그래픽 & 트랜지션 연출",
+              "웨딩 스튜디오 원본 사진 색감 업그레이드 & 감성적 타이포그래피",
+              "예식장 하객들의 몰입도를 극대화하는 음악 비트 싱크 컷 편집",
+              "식전 상영용 16:9, FULL HD 규격 제공"
+            ],
+            price: "150,000원",
+            unit: "CUSTOM"
+          },
+          {
+            title: "어쿠스틱 MR 맞춤 제작",
+            badge: "NEW",
+            badgeColor: "bg-amber-600/30 text-amber-300 border-amber-500/40",
+            coverImage: "https://images.unsplash.com/photo-1510915361894-db8b60106cb1?auto=format&fit=crop&w=1200&q=80",
+            features: [
+              "기성 MR이 내 음역대와 맞지 않을 때 키(Key) & 템포 1:1 맞춤 편곡",
+              "리얼 어쿠스틱 기타 or 어쿠스틱 피아노 기반의 따뜻한 반주 트랙",
+              "원곡의 느낌을 살리면서도 부르는 사람의 목소리가 돋보이게 사운드 조율",
+              "곡의 길이 조절(1절만, 브릿지 생략 등) 자유로운 커스텀 가능"
+            ],
+            price: "300,000원",
+            unit: "FROM ~"
+          },
+          {
+            title: "개인 음반 제작 & 공식 발매",
+            badge: "ALL-IN-ONE PRO",
+            badgeColor: "bg-emerald-600/30 text-emerald-300 border-emerald-500/40",
+            featured: true,
+            coverImage: "./images/room8sound2.jpg",
+            features: [
+              "나만의 색깔과 무드를 담은 1:1 맞춤형 오리지널 곡 올인원 프로덕션",
+              "SUNO AI로 스케치한 음원을 프로 수준의 완성형 트랙으로 완벽 편곡",
+              "전문 보컬 디렉팅부터 메이저급 믹싱·마스터링까지 하이엔드 사운드 완성",
+              "멜론, 유튜브부터 스포티파이까지, 국내외 모든 음원 플랫폼 공식 발매 및 유통 대행"
+            ],
+            price: "650,000원~",
+            unit: "OFFICIAL RELEASE"
+          }
+        ]);
+
+        const defaultData = {
+          heroSubtitle: '음악&영상 올인원 웨딩 콘텐츠 스튜디오.'
+        };
+
+        const releasedAlbums = ref([
+          {
+            title: "Holiday",
+            artist: "캐치 (Katch)",
+            genre: "R&B/Soul",
+            releaseYear: "작사,작곡 : WOOJU",
+            platformName: "Melon",
+            coverImage: "./images/katch_holiday.png",
+            link: "https://www.melon.com/album/detail.htm?albumId=11084216#"
+          },
+          {
+            title: "너를 만난 계절",
+            artist: "한도윤",
+            genre: "K-POP Pop / R&B",
+            releaseYear: "2024",
+            platformName: "Genie / Apple",
+            coverImage: "./images/weather.jpg",
+            link: "https://www.genie.co.kr"
+          },
+          {
+            title: "Blue Hour (푸른 시간)",
+            artist: "Lucid Blue",
+            genre: "City Pop / Indie",
+            releaseYear: "2024",
+            platformName: "YouTube Music",
+            coverImage: "https://images.unsplash.com/photo-1508700115892-45ecd05ae2ad?auto=format&fit=crop&w=600&q=80",
+            link: "https://music.youtube.com"
+          },
+          {
+            title: "그대라는 기적",
+            artist: "이지현",
+            genre: "Wedding Ballad",
+            releaseYear: "2024",
+            platformName: "Melon",
+            coverImage: "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?auto=format&fit=crop&w=600&q=80",
+            link: "https://www.melon.com"
+          },
+          {
+            title: "속초",
+            artist: "박도수",
+            genre: "성인가요/트로트",
+            releaseYear: "편곡 : XIWOOJU",
+            platformName: "Melon",
+            coverImage: "./images/park.png",
+            link: "https://www.melon.com/album/detail.htm?albumId=14435466"
+          },
+          {
+            title: "Nostalgia",
+            artist: "제이플랜",
+            genre: "랩/힙합",
+            releaseYear: "작곡,편곡 : WOOJU",
+            platformName: "Melon",
+            coverImage: "./images/nostalgia.png",
+            link: "https://www.melon.com/album/detail.htm?albumId=11069599#"
+          },
+          {
+            title: "내일이 오면",
+            artist: "진준우(feat.Huiii)",
+            genre: "랩/힙합",
+            releaseYear: "작곡,편곡 : WOOJU",
+            platformName: "Melon",
+            coverImage: "./images/when comes.png",
+            link: "https://www.melon.com/album/detail.htm?albumId=11098602#"
+          },
+          {
+            title: "편지",
+            artist: "제이플랜(feat.이한울)",
+            genre: "랩/힙합/인디",
+            releaseYear: "작곡,편곡 : WOOJU",
+            platformName: "Melon",
+            coverImage: "./images/letter.png",
+            link: "https://www.melon.com/song/detail.htm?songId=36757831"
+          }
+        ]);
+
+        const loopedAlbums = computed(() => {
+          return [...releasedAlbums.value, ...releasedAlbums.value, ...releasedAlbums.value];
+        });
+
+        // 💿 앨범 가로 스크롤 & 모바일 터치 제어
+        const albumTrackRef = ref(null);
+        let animFrameId = null;
+        const isHovered = ref(false);
+        const isInteracting = ref(false);
+        let resumeTimer = null;
+
+        let isMouseDown = false;
+        let startX = 0;
+        let startScrollLeft = 0;
+        let dragMoved = false;
+        let touchStartX = 0;
+
+        const pauseAutoScroll = () => {
+          isInteracting.value = true;
+          if (resumeTimer) clearTimeout(resumeTimer);
+        };
+
+        const resumeAutoScrollDelayed = (delay = 2000) => {
+          if (resumeTimer) clearTimeout(resumeTimer);
+          resumeTimer = setTimeout(() => {
+            isInteracting.value = false;
+          }, delay);
+        };
+
+        const handleTrackScroll = () => {
+          const el = albumTrackRef.value;
+          if (!el) return;
+          const oneSetWidth = el.scrollWidth / 3;
+          if (oneSetWidth > 0) {
+            if (el.scrollLeft >= oneSetWidth * 2) {
+              el.scrollLeft -= oneSetWidth;
+            } else if (el.scrollLeft <= 5) {
+              el.scrollLeft += oneSetWidth;
+            }
+          }
+        };
+
+        const startAutoScroll = () => {
+          const step = () => {
+            const el = albumTrackRef.value;
+            if (el && !isHovered.value && !isInteracting.value) {
+              el.scrollLeft += 0.8;
+              handleTrackScroll();
+            }
+            animFrameId = requestAnimationFrame(step);
+          };
+          animFrameId = requestAnimationFrame(step);
+        };
+
+        const onTrackMouseEnter = () => { isHovered.value = true; };
+        const onTrackMouseLeave = () => { isHovered.value = false; };
+
+        const onTrackMouseDown = (e) => {
+          const el = albumTrackRef.value;
+          if (!el) return;
+          isMouseDown = true;
+          pauseAutoScroll();
+          dragMoved = false;
+          startX = e.pageX - el.getBoundingClientRect().left;
+          startScrollLeft = el.scrollLeft;
+
+          window.addEventListener('mousemove', onWindowMouseMove);
+          window.addEventListener('mouseup', onWindowMouseUp);
+        };
+
+        const onWindowMouseMove = (e) => {
+          if (!isMouseDown) return;
+          const el = albumTrackRef.value;
+          if (!el) return;
+          
+          const currentX = e.pageX - el.getBoundingClientRect().left;
+          const walk = currentX - startX;
+          if (Math.abs(walk) > 4) {
+            dragMoved = true;
+          }
+          el.scrollLeft = startScrollLeft - walk;
+        };
+
+        const onWindowMouseUp = () => {
+          if (!isMouseDown) return;
+          isMouseDown = false;
+          window.removeEventListener('mousemove', onWindowMouseMove);
+          window.removeEventListener('mouseup', onWindowMouseUp);
+          handleTrackScroll();
+          resumeAutoScrollDelayed(2000);
+        };
+
+        const onTrackTouchStart = (e) => {
+          pauseAutoScroll();
+          dragMoved = false;
+          if (e.touches && e.touches[0]) {
+            touchStartX = e.touches[0].clientX;
+          }
+        };
+
+        const onTrackTouchMove = (e) => {
+          pauseAutoScroll();
+          if (e.touches && e.touches[0]) {
+            const diff = Math.abs(e.touches[0].clientX - touchStartX);
+            if (diff > 8) {
+              dragMoved = true;
+            }
+          }
+        };
+
+        const onTrackTouchEnd = () => {
+          handleTrackScroll();
+          resumeAutoScrollDelayed(2000);
+        };
+
+        const onTrackWheel = (e) => {
+          const el = albumTrackRef.value;
+          if (!el) return;
+          if (Math.abs(e.deltaY) > Math.abs(e.deltaX)) {
+            el.scrollLeft += e.deltaY;
+            pauseAutoScroll();
+            resumeAutoScrollDelayed(1500);
+            e.preventDefault();
+          }
+        };
+
+        const scrollAlbums = (direction) => {
+          const el = albumTrackRef.value;
+          if (!el) return;
+          pauseAutoScroll();
+          const offset = direction === 'left' ? -320 : 320;
+          el.scrollBy({ left: offset, behavior: 'smooth' });
+          resumeAutoScrollDelayed(2500);
+        };
+
+        const handleAlbumClick = (event, link) => {
+          if (dragMoved) {
+            event.preventDefault();
+            return;
+          }
+          if (link) {
+            window.open(link, '_blank', 'noopener,noreferrer');
+          }
+        };
+
+        const getFloatClass = (idx) => {
+          const classes = ['float-item-1', 'float-item-2', 'float-item-3'];
+          return classes[idx % classes.length];
+        };
+
+        const reviews = ref([
+          {
+            name: "김oo",
+            tag: "결혼식 축가 녹음",
+            image: "./images/review_wedding.jpg",
+            content: "축가를 부탁했는데 친구들이 아무래도 긴장할 것 같아서 룸에잇스튜디오 녹음실을 예약했어요! 결혼식 당일에 조금 덜 긴장할 것 같고 실수도 없으니까 마음도 편할 것 같아서 너무 기대됩니다!!"
+          },
+          {
+            name: "박oo",
+            tag: "첫 녹음실 체험",
+            image: "./images/review_booth.jpg",
+            content: "일반인 입장에서 처음으로 녹음실에 방문했는데 너무 신기하고 재밌었어요! 담당 디렉터가 배정되니까 셀프녹음과는 차원이 다르네요!! 룸에잇스튜디오 짱 추천 :)"
+          },
+          {
+            name: "이oo",
+            tag: "AI 부모님 감사영상",
+            image: "./images/review_family.gif",
+            content: "부모님 감사영상을 식장에서 틀어드리니 양가 부모님 모두 눈물 흘리실 정도로 정말 감동하셨어요ㅠㅠ 모션도 너무 자연스럽고 훌륭해서 부모님께 평생 잊지 못할 선물이 되었습니다!"
+          },
+          {
+            name: "최oo",
+            tag: "싱글 음반 제작 & 발매",
+            image: "./images/review_producer.jpg",
+            content: "혼자 자작곡 만들고 막막했는데, 편곡부터 보컬 튜닝까지 1:1로 꼼꼼하게 만져주셔서 진짜 프로 음원으로 탄생했어요! 멜론에 제 이름으로 발매된 곡이 올라온 거 보고 감격했습니다... 꿈을 이뤄주셔서 감사해요 :)"
+          }
+        ]);
+
+        const siteData = ref({ ...defaultData });
+        const form = ref({
+          name: '',
+          phone: '',
+          service: '노래 녹음(축가녹음) - 1시간 5만원',
+          message: ''
+        });
+
+        onMounted(() => {
+          showLoginModal.value = false;
+          showAdminModal.value = false;
+
+          startTitleRotation();
+
+          const saved = localStorage.getItem('room8studio_data_v1');
+          if (saved) {
+            try { 
+              const parsed = JSON.parse(saved);
+              siteData.value = { ...defaultData, ...parsed };
+            } catch (e) {}
+          } else {
+            siteData.value = { ...defaultData };
+          }
+
+          nextTick(() => {
+            if (window.lucide) lucide.createIcons();
+            
+            const el = albumTrackRef.value;
+            if (el) {
+              const oneSetWidth = el.scrollWidth / 3;
+              el.scrollLeft = oneSetWidth;
+            }
+            startAutoScroll();
+          });
+        });
+
+        onUnmounted(() => {
+          if (titleIntervalId) clearInterval(titleIntervalId);
+          if (animFrameId) cancelAnimationFrame(animFrameId);
+          if (resumeTimer) clearTimeout(resumeTimer);
+          window.removeEventListener('mousemove', onWindowMouseMove);
+          window.removeEventListener('mouseup', onWindowMouseUp);
+        });
+
+        const selectPackage = (serviceName) => {
+          if (serviceName.includes('노래 녹음')) {
+            form.value.service = '노래 녹음(축가녹음) - 1시간 5만원';
+          } else if (serviceName.includes('AI 부모님')) {
+            form.value.service = 'AI 부모님 감사영상 (6.5만원~)';
+          } else if (serviceName.includes('디즈니풍')) {
+            form.value.service = '디즈니풍 식전영상 (15만원)';
+          } else if (serviceName.includes('어쿠스틱 MR')) {
+            form.value.service = '맞춤 어쿠스틱 MR 제작 (30만원~)';
+          } else if (serviceName.includes('음반 제작')) {
+            form.value.service = '개인 음반 제작 & 발매 패키지 (65만원~)';
+          }
+        };
+
+        const onInlineEdit = (event, field) => {
+          siteData.value[field] = event.target.innerText.trim();
+        };
+
+        const saveContent = () => {
+          localStorage.setItem('room8studio_data_v1', JSON.stringify(siteData.value));
+          alert('저장되었습니다.');
+          nextTick(() => {
+            if (window.lucide) lucide.createIcons();
+          });
+        };
+
+        const resetToDefault = () => {
+          if (confirm('모든 문구를 기본값으로 복원하시겠습니까?')) {
+            siteData.value = JSON.parse(JSON.stringify(defaultData));
+            localStorage.removeItem('room8studio_data_v1');
+            showAdminModal.value = false;
+            nextTick(() => {
+              if (window.lucide) lucide.createIcons();
+            });
+          }
+        };
+
+        const openLoginModal = () => { adminPassword.value = ''; showLoginModal.value = true; };
+        const openAdminModal = () => { 
+          showAdminModal.value = true; 
+          nextTick(() => {
+            if (window.lucide) lucide.createIcons();
+          }); 
+        };
+        const loginAdmin = () => {
+          if (adminPassword.value === 'admin1234') {
+            isAdmin.value = true;
+            showLoginModal.value = false;
+            nextTick(() => {
+              if (window.lucide) lucide.createIcons();
+            });
+          } else {
+            alert('비밀번호가 일치하지 않습니다. (admin1234)');
+          }
+        };
+        const logoutAdmin = () => {
+          isAdmin.value = false;
+          showAdminModal.value = false;
+          nextTick(() => {
+            if (window.lucide) lucide.createIcons();
+          });
+        };
+
+        const submitBooking = async () => {
+          isSubmitting.value = true;
+
+          const GAS_WEBAPP_URL = "https://script.google.com/macros/s/AKfycbzvv-Y1uq8ukfM-tT5skWDM4rGI2uLZlMGHHClT-HlF-d2s424VZ85YKCg1ls-e-e5_/exec";
+
+          const payload = {
+            name: form.value.name,
+            phone: form.value.phone,
+            service: form.value.service,
+            message: form.value.message || ""
+          };
+
+          try {
+            await fetch(GAS_WEBAPP_URL, {
+              method: "POST",
+              mode: "no-cors",
+              headers: { "Content-Type": "text/plain" },
+              body: JSON.stringify(payload)
+            });
+
+            alert(`✅ 예약 문의가 성공적으로 접수되었습니다!\n\n성함: ${form.value.name}\n연락처: ${form.value.phone}\n\n입력하신 정보가 룸에잇스튜디오 담당자 카카오톡으로 실시간 전달되었습니다. 확인 후 빠르게 연락드리겠습니다!`);
+
+            form.value = {
+              name: '',
+              phone: '',
+              service: '노래 녹음(축가녹음) - 1시간 5만원',
+              message: ''
+            };
+          } catch (error) {
+            console.error('전송 에러:', error);
+            alert("전송 중 일시적인 오류가 발생했습니다. 카카오톡 1초 상담으로 직접 문의 부탁드립니다.");
+            window.open(kakaoChatUrl.value, '_blank');
+          } finally {
+            isSubmitting.value = false;
+          }
+        };
+
+        return {
+          isAdmin,
+          showLoginModal,
+          showAdminModal,
+          adminPassword,
+          siteData,
+          studioServices,
+          releasedAlbums,
+          loopedAlbums,
+          albumTrackRef,
+          onTrackMouseEnter,
+          onTrackMouseLeave,
+          onTrackMouseDown,
+          onTrackTouchStart,
+          onTrackTouchMove,
+          onTrackTouchEnd,
+          onTrackWheel,
+          scrollAlbums,
+          handleAlbumClick,
+          handleTrackScroll,
+          getFloatClass,
+          reviews,
+          form,
+          isSubmitting,
+          isMobileMenuOpen,
+          toggleMobileMenu,
+          closeMobileMenu,
+          kakaoFriendUrl,
+          kakaoChatUrl,
+          directingGifImage,
+          unlimitedRecGif,
+          videoQualityGif,
+          audioBeforeUrl,
+          audioAfterUrl,
+          beforeAudioRef,
+          afterAudioRef,
+          isBeforePlaying,
+          isAfterPlaying,
+          afterBars,
+          togglePlayTune,
+          onAudioEnded,
+          selectPackage,
+          openLoginModal,
+          openAdminModal,
+          loginAdmin,
+          logoutAdmin,
+          onInlineEdit,
+          saveContent,
+          resetToDefault,
+          submitBooking,
+          currentTitleIndex
+        };
+      }
+    }).mount('#app');
+  </script>
+</body>
+</html>
