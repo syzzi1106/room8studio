@@ -349,30 +349,24 @@
 
     <main class="flex-grow pt-16 sm:pt-20">
       
-      <!-- 2. HERO SECTION (밝고 화사한 화이트 테마 디자인) -->
+      <!-- 2. HERO SECTION -->
       <section class="relative min-h-[620px] sm:min-h-[700px] flex items-center justify-center px-5 py-20 overflow-hidden bg-white border-b border-slate-100">
-        
-        <!-- 은은하고 화사한 소프트 파스텔 앰비언트 글로우 -->
         <div class="absolute -top-32 left-1/2 -translate-x-1/2 w-[760px] h-[380px] bg-gradient-to-b from-sky-100/70 via-cyan-50/50 to-transparent blur-[110px] pointer-events-none"></div>
         <div class="absolute bottom-0 right-10 w-[420px] h-[320px] bg-rose-50/60 blur-[120px] pointer-events-none"></div>
         <div class="absolute -bottom-10 left-10 w-[360px] h-[260px] bg-indigo-50/50 blur-[100px] pointer-events-none"></div>
 
         <div class="relative z-10 max-w-4xl mx-auto text-center mt-4 sm:mt-2">
           
-          <!-- 상단 뱃지: 화사한 라이트 글래스모피즘 -->
           <div class="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-slate-50/90 backdrop-blur-xl border border-slate-200/90 text-slate-700 text-xs font-semibold mb-7 shadow-sm">
             <span class="w-2 h-2 rounded-full bg-cyan-500 shadow-[0_0_8px_#06b6d4] animate-pulse"></span>
             <span class="tracking-tight text-slate-700 font-medium">📍 [강남/홍대] 10년 차 K-POP 작곡가 & MV 감독의 1:1 프로덕션</span>
           </div>
 
-          <!-- 🌟 럭셔리 톤 & 문맥별 플로팅 인터랙션 타이틀 (흰색 배경용 고대비 컬러) -->
           <div class="min-h-[80px] sm:min-h-[96px] md:min-h-[112px] flex items-center justify-center mb-5 overflow-hidden">
             <transition name="title-slide" mode="out-in">
               <h1 
                 :key="currentTitleIndex"
                 class="text-2xl sm:text-3xl md:text-4xl lg:text-[44px] font-black tracking-tight text-slate-950 leading-[1.3] break-keep">
-                
-                <!-- 1) 우리만의 결혼식: 로맨틱 샴페인 로즈 톤 + 하트/링 -->
                 <template v-if="currentTitleIndex === 0">
                   세상에 단 하나뿐인 <br class="sm:hidden" />
                   <span class="relative inline-block">
@@ -385,7 +379,6 @@
                   </span>
                 </template>
                 
-                <!-- 2) 가장 특별한 콘텐츠: 청량한 오션 에메랄드 톤 + 스파클 -->
                 <template v-else-if="currentTitleIndex === 1">
                   가장 소중한 날 <br class="sm:hidden" />
                   <span class="relative inline-block">
@@ -398,7 +391,6 @@
                   </span>
                 </template>
                 
-                <!-- 3) 나만의 웨딩!: 브릴리언트 블루 사이언 톤 + 음표 -->
                 <template v-else>
                   누구나 쉽고 재미있게, <br class="sm:hidden" />
                   <span class="relative inline-block">
@@ -421,10 +413,7 @@
             {{ siteData.heroSubtitle }}
           </p>
 
-          <!-- 💎 CTA 버튼 2종 -->
           <div class="flex flex-col sm:flex-row items-center justify-center gap-3.5 max-w-md mx-auto mb-14">
-            
-            <!-- 버튼 1: 아이스 사이언 & 딥 오션 입체 그라데이션 -->
             <a 
               href="#services" 
               class="w-full sm:w-auto px-8 py-4 rounded-full bg-slate-950 hover:bg-slate-800 text-white font-extrabold text-sm transition-all duration-300 shadow-lg shadow-slate-900/15 hover:shadow-xl hover:-translate-y-0.5 active:translate-y-0 active:scale-95 flex items-center justify-center gap-2">
@@ -432,7 +421,6 @@
               <i data-lucide="arrow-down" class="w-4 h-4 stroke-[2.5]"></i>
             </a>
 
-            <!-- 버튼 2: 웜 골드 & 카카오 옐로우 그라데이션 -->
             <a 
               :href="kakaoFriendUrl" 
               target="_blank" 
@@ -443,7 +431,6 @@
             </a>
           </div>
 
-          <!-- 하단 지표 박스: 화이트 카드 & 소프트 섀도우 -->
           <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4 p-5 sm:p-6 rounded-3xl bg-slate-50/90 sm:bg-white border border-slate-200/90 max-w-3xl mx-auto text-left sm:text-center text-slate-900 shadow-xl shadow-slate-200/50">
             <div class="p-2">
               <div class="text-[11px] text-slate-500 font-medium mb-0.5">프로듀서 경력</div>
@@ -494,9 +481,12 @@
             
             <div>
               <div class="w-full aspect-square bg-slate-100 overflow-hidden relative">
+                <!-- ⚡ 지연 로딩 적용 -->
                 <img 
                   :src="review.image" 
                   :alt="review.name" 
+                  loading="lazy"
+                  decoding="async"
                   class="w-full h-full object-cover transition-transform duration-500 hover:scale-105">
               </div>
 
@@ -553,7 +543,13 @@
               <div>
                 <div class="relative w-full overflow-hidden bg-slate-900 border-b border-slate-800/80" :class="service.featured ? 'h-64 sm:h-80' : 'h-56 sm:h-72'">
                   <div class="h-full w-full relative">
-                    <img :src="service.coverImage" :alt="service.title" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+                    <!-- ⚡ 지연 로딩 적용 -->
+                    <img 
+                      :src="service.coverImage" 
+                      :alt="service.title" 
+                      loading="lazy"
+                      decoding="async"
+                      class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
                     <div class="absolute inset-0 bg-gradient-to-t from-[#0e1626] via-transparent to-transparent"></div>
                   </div>
                 </div>
@@ -636,7 +632,7 @@
 
           <div class="flex md:block overflow-x-auto md:overflow-visible snap-x snap-mandatory -mx-5 px-5 md:mx-0 md:px-0 pb-6 md:pb-0 gap-5 md:gap-0 no-scrollbar items-stretch">
 
-            <!-- Feature 1: 시간당 무제한 녹음 -->
+            <!-- Feature 1: 시간당 무제한 녹음 (GIF 지연 로딩) -->
             <div class="w-[86vw] sm:w-[460px] md:w-full flex-shrink-0 snap-center bg-[#0e1626] md:bg-transparent rounded-3xl md:rounded-none border border-slate-800 md:border-0 p-6 sm:p-7 md:p-0 md:mb-24 flex flex-col justify-between">
               <div class="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-10 md:gap-14 items-center">
                 <div>
@@ -653,9 +649,12 @@
                 </div>
 
                 <div class="relative rounded-2xl md:rounded-3xl overflow-hidden border border-slate-800 shadow-2xl group w-full aspect-square bg-slate-900 flex items-center justify-center">
+                  <!-- ⚡ 용량 큰 GIF에 지연 로딩 적용 -->
                   <img 
                     :src="unlimitedRecGif" 
                     alt="시간당 무제한 보컬 녹음 및 트랙 작업 화면" 
+                    loading="lazy"
+                    decoding="async"
                     class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
                   <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent"></div>
                   
@@ -670,13 +669,16 @@
               </div>
             </div>
 
-            <!-- Feature 2: 1:1 맞춤 디렉팅 -->
+            <!-- Feature 2: 1:1 맞춤 디렉팅 (GIF 지연 로딩) -->
             <div class="w-[86vw] sm:w-[460px] md:w-full flex-shrink-0 snap-center bg-[#0e1626] md:bg-transparent rounded-3xl md:rounded-none border border-slate-800 md:border-0 p-6 sm:p-7 md:p-0 md:mb-24 flex flex-col justify-between">
               <div class="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-10 md:gap-14 items-center">
                 <div class="order-2 md:order-1 relative rounded-2xl md:rounded-3xl overflow-hidden border border-slate-800 shadow-2xl group w-full aspect-square bg-slate-900">
+                  <!-- ⚡ 용량 큰 GIF에 지연 로딩 적용 -->
                   <img 
                     :src="directingGifImage" 
                     alt="1:1 맞춤 보컬 코칭 현장" 
+                    loading="lazy"
+                    decoding="async"
                     class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
                   <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20 to-transparent"></div>
                   
@@ -704,7 +706,7 @@
               </div>
             </div>
 
-            <!-- Feature 3: 초정밀 음정 보정 -->
+            <!-- Feature 3: 초정밀 음정 보정 (음원 사전 로딩 방지) -->
             <div class="w-[86vw] sm:w-[460px] md:w-full flex-shrink-0 snap-center bg-[#0e1626] md:bg-transparent rounded-3xl md:rounded-none border border-slate-800 md:border-0 p-6 sm:p-7 md:p-0 md:mb-24 flex flex-col justify-between">
               <div class="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-10 md:gap-14 items-center">
                 <div>
@@ -720,11 +722,11 @@
                   </p>
                 </div>
 
-                <!-- Before / After 음원 재생 카드 -->
+                <!-- Before / After 음원 카드 (⚡ preload="none" 추가로 초기 데이터 차단) -->
                 <div class="w-full max-w-[360px] md:max-w-[420px] aspect-square mx-auto bg-[#e5ebf2] text-slate-800 rounded-[28px] md:rounded-[36px] shadow-2xl p-5 sm:p-8 flex flex-col justify-between select-none">
                   
-                  <audio ref="beforeAudioRef" :src="audioBeforeUrl" @ended="onAudioEnded('before')"></audio>
-                  <audio ref="afterAudioRef" :src="audioAfterUrl" @ended="onAudioEnded('after')"></audio>
+                  <audio ref="beforeAudioRef" :src="audioBeforeUrl" preload="none" @ended="onAudioEnded('before')"></audio>
+                  <audio ref="afterAudioRef" :src="audioAfterUrl" preload="none" @ended="onAudioEnded('after')"></audio>
 
                   <!-- [TOP] BEFORE -->
                   <div 
@@ -799,13 +801,16 @@
               </div>
             </div>
 
-            <!-- Feature 4: 확실한 영상 퀄리티 -->
+            <!-- Feature 4: 확실한 영상 퀄리티 (GIF 지연 로딩) -->
             <div class="w-[86vw] sm:w-[460px] md:w-full flex-shrink-0 snap-center bg-[#0e1626] md:bg-transparent rounded-3xl md:rounded-none border border-slate-800 md:border-0 p-6 sm:p-7 md:p-0 flex flex-col justify-between">
               <div class="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-10 md:gap-14 items-center">
                 <div class="order-2 md:order-1 relative rounded-2xl md:rounded-3xl overflow-hidden border border-slate-800 shadow-2xl group w-full aspect-square bg-slate-900 flex items-center justify-center">
+                  <!-- ⚡ 용량 큰 GIF에 지연 로딩 적용 -->
                   <img 
                     :src="videoQualityGif" 
                     alt="AI 부모님 감사영상 및 고퀄리티 영상 제작" 
+                    loading="lazy"
+                    decoding="async"
                     class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
                   <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-transparent"></div>
                   
@@ -849,7 +854,7 @@
         </div>
       </section>
 
-      <!-- 7. OFFICIAL DISCOGRAPHY -->
+      <!-- 7. OFFICIAL DISCOGRAPHY (24개 앨범 지연 로딩) -->
       <section id="discography" class="py-24 bg-gradient-to-b from-slate-950 via-[#070b14] to-slate-950 text-white relative overflow-hidden border-y border-slate-800">
         <div class="absolute -top-24 left-1/4 w-96 h-96 bg-cyan-500/15 rounded-full blur-[140px] pointer-events-none"></div>
         <div class="absolute -bottom-24 right-1/4 w-96 h-96 bg-indigo-600/15 rounded-full blur-[140px] pointer-events-none"></div>
@@ -862,8 +867,6 @@
           <h2 class="text-3xl sm:text-5xl font-black text-white tracking-tight mb-4 break-keep">
             MUSIC PRODUCTION <span class="bg-gradient-to-r from-cyan-400 to-sky-300 bg-clip-text text-transparent">PORTFOLIO</span>
           </h2>
-          <p class="text-slate-400 text-sm sm:text-base max-w-xl mx-auto break-keep font-normal">
-          </p>
 
           <div class="mt-6 flex items-center justify-center gap-2.5">
             <button 
@@ -909,7 +912,7 @@
                 class="block w-64 sm:w-72 relative cursor-pointer focus:outline-none"
                 :title="album.title + ' - 음원 사이트에서 듣기'">
                 
-                <div class="vinyl-disc absolute top-3 sm:top-4 right-0 w-56 sm:w-60 h-56 sm:h-60 rounded-full bg-slate-950 border-[6px] border-[#181a1f] shadow-2xl flex items-center justify-center -z-10 transition-transform duration-500 ease-out pointer-events-none">
+                <div class="vinyl-disc absolute top-3 sm:top-4 right-0 w-56 sm:w-60 h-56 sm:w-60 rounded-full bg-slate-950 border-[6px] border-[#181a1f] shadow-2xl flex items-center justify-center -z-10 transition-transform duration-500 ease-out pointer-events-none">
                   <div class="w-44 sm:w-48 h-44 sm:h-48 rounded-full border border-slate-700/40 flex items-center justify-center">
                     <div class="w-32 h-32 rounded-full border border-slate-700/50 flex items-center justify-center">
                       <div class="w-20 h-20 rounded-full bg-cyan-500/20 border-2 border-cyan-400/70 flex items-center justify-center shadow-inner">
@@ -920,9 +923,12 @@
                 </div>
 
                 <div class="relative aspect-square w-full rounded-2xl overflow-hidden shadow-[0_15px_35px_rgba(0,0,0,0.6)] border border-white/10 group-hover:border-cyan-400/80 group-hover:shadow-[0_20px_40px_rgba(0,229,255,0.25)] transition-all duration-300 bg-slate-900 pointer-events-none">
+                  <!-- ⚡ 루프되는 24개 앨범 표지에 지연 로딩 적용 -->
                   <img 
                     :src="album.coverImage" 
                     :alt="album.title" 
+                    loading="lazy"
+                    decoding="async"
                     class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-108 group-hover:brightness-95 pointer-events-none">
 
                   <div class="absolute top-3 left-3 z-10 flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-slate-950/80 backdrop-blur-md border border-white/15 text-[10px] font-bold text-cyan-300">
@@ -1265,7 +1271,7 @@
         const adminPassword = ref('');
         const isSubmitting = ref(false);
 
-        // 🌟 메인 타이틀 롤링 제어
+        // 메인 타이틀 롤링 제어
         const currentTitleIndex = ref(0);
         let titleIntervalId = null;
 
