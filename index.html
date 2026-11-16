@@ -2,6 +2,7 @@
 <html lang="ko">
 <head>
   <meta charset="UTF-8">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>룸에잇스튜디오 (room8studio) | 누구나 쉽고 재미있게, 나만의 웨딩!</title>
   
@@ -24,7 +25,7 @@
       theme: {
         extend: {
           fontFamily: {
-            sans: ['Pretendard', '-apple-system', 'BlinkMacSystemFont', 'system-ui', 'Roboto', 'sans-serif'],
+            sans: ['Pretendard', '-apple-system', 'BlinkMacSystemFont', 'system-ui', 'sans-serif'],
           },
           colors: {
             brandCyan: '#00e5ff',
@@ -51,7 +52,7 @@
     }
 
     body {
-      font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, Roboto, sans-serif;
+      font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
       background-color: #ffffff;
       color: #0f172a;
       letter-spacing: -0.02em;
@@ -198,6 +199,207 @@
     .group:hover .vinyl-disc {
       transform: translateX(38%) rotate(180deg);
     }
+
+    /* Wedding: 아이보리와 로즈 포인트, 은은한 샴페인 빛 */
+    .service-group { position: relative; isolation: isolate; }
+    .service-group::before {
+      content: ''; position: absolute; inset: -2rem auto; left: 50%;
+      width: 100vw; transform: translateX(-50%); z-index: -1;
+      pointer-events: none;
+    }
+    .service-wedding::before {
+      background: radial-gradient(ellipse at 0% 5%, #fce6e8 0, transparent 48%),
+                  radial-gradient(ellipse at 100% 90%, #f5e8d3 0, transparent 46%), #fffaf7;
+    }
+    .service-group h3 { font-weight: 800; font-style: normal; letter-spacing: -.035em; font-size: clamp(2.25rem, 5vw, 3.5rem); }
+    .service-wedding .service-description, .service-wedding .service-count { color: #78665f; }
+    .service-wedding .service-card {
+      background: rgba(255,255,255,.96); border-color: #eddcd6;
+      box-shadow: 0 12px 36px -18px rgba(117,73,63,.24);
+    }
+    .service-wedding .service-card:hover { border-color: #d6a297; box-shadow: 0 16px 40px -18px rgba(117,73,63,.32); }
+    .service-wedding .service-media { background-color: #f5e9e3; border-color: #eedfd8; }
+    .service-wedding .service-image-shade { background: linear-gradient(to top, rgba(255,250,247,.5), transparent 55%); }
+    .service-wedding .service-title { color: #44312d; font-weight: 700; line-height: 1.4; }
+    .service-wedding .service-badge { background: #fff0ee; color: #9b4d57; border-color: #efcdd0; }
+    .service-wedding .service-features { color: #6b5a54; }
+    .service-wedding .service-features li > span { line-height: 1.7; }
+    .service-wedding .service-check { background: #fff0ee; border-color: #e7c2be; }
+    .service-wedding .service-check svg { color: #a65b65; }
+    .service-wedding .service-footer { border-color: #f0e2dc; }
+    .service-wedding .service-price { color: #9a4e5c; }
+    .service-wedding .service-unit { color: #7b6861; }
+    .service-wedding .service-action { background: #f8e7e3; color: #97505b; box-shadow: none; }
+    .service-wedding .service-card:hover .service-action,
+    .service-wedding .service-action:hover { background: #9a4e5c; color: white; }
+    .service-wedding .service-action:focus-visible { outline: 3px solid #9a4e5c; outline-offset: 4px; }
+    .service-music::before { background: linear-gradient(145deg, #e5f3ff, #f3faff 60%, #e8f5ff); }
+
+    /* 전체 서체와 하늘색 계열 디자인 토큰 */
+    :root { --studio-font: 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, sans-serif; --sky-ink: #233c50; --sky-accent: #1976c9; --sky-line: #cfe4f4; }
+    body, button, input, select, textarea, .font-sans { font-family: var(--studio-font); }
+    body { background: #f7fbff; color: var(--sky-ink); }
+    h1, h2, h3, h4 { font-family: var(--studio-font); text-wrap: balance; }
+    .service-music .service-description, .service-music .service-count { color: #587084; }
+    .service-music .service-card { background: #fff; border-color: var(--sky-line); box-shadow: 0 12px 36px -18px rgba(40,101,151,.25); }
+    .service-music .service-card:hover { border-color: #8ebee3; box-shadow: 0 16px 40px -18px rgba(40,101,151,.32); }
+    .service-music .service-title { color: var(--sky-ink); font-weight: 700; line-height: 1.4; }
+    .service-music .service-badge { background: #eaf5ff; color: #286ca2; border-color: #c3def3; }
+    .service-music .service-features { color: #526b7e; }
+    .service-music .service-features li > span { line-height: 1.7; }
+    .service-music .service-check { background: #edf7ff; border-color: #b3d5ed; }
+    .service-music .service-check svg { color: #2375b2; }
+    .service-music .service-footer { border-color: #e0edf7; }
+    .service-music .service-price { color: #176cb1; }
+    .service-music .service-unit { color: #5c7385; }
+    .service-music .service-media { background: #e8f4fd; border-color: var(--sky-line); }
+    .service-music .service-image-shade { background: linear-gradient(to top, rgba(240,248,255,.35), transparent 55%); }
+    .service-music .service-action { background: #e5f2fd; color: #176cb1; box-shadow: none; }
+    .service-music .service-card:hover .service-action, .service-music .service-action:hover { background: #1976c9; color: #fff; }
+    .service-music .service-action:focus-visible { outline: 3px solid #1976c9; outline-offset: 4px; }
+    #services > div > .mt-10 { background: #edf7ff; border-color: var(--sky-line); box-shadow: none; }
+    #services > div > .mt-10 p { color: #526b7e; }
+    #services > div > .mt-10 > a { background: white; color: #176cb1; border-color: #c3def3; }
+    #about, #discography { color: var(--sky-ink); }
+    #about .shadow-2xl { box-shadow: 0 14px 36px -14px rgba(40,101,151,.2); }
+    #discography .text-transparent { background-image: linear-gradient(90deg, #267bb7, #548bd1); }
+    #discography h3.group-hover\:text-cyan-300:hover { color: #1976c9; }
+    #pricing, #contact, #reviews { position: relative; isolation: isolate; }
+    #pricing::before, #contact::before, #reviews::before { content: ''; position: absolute; top: 0; bottom: 0; left: 50%; width: 100vw; transform: translateX(-50%); z-index: -1; pointer-events: none; }
+    #reviews::before { background: #f3f9ff; }
+    #pricing::before { background: #f8fcff; }
+    #contact::before { background: #edf7ff; }
+    footer { background: #e4f2fc !important; border-color: #cfe4f4 !important; }
+    .service-category-nav {
+      display: flex; width: fit-content; margin: 0 auto 2.5rem; padding: 5px;
+      border-radius: 999px; background: #fff; border: 1px solid #edf0f4;
+      box-shadow: 0 2px 8px rgba(35,60,80,.04); gap: 4px;
+    }
+    .service-category-link {
+      display: flex; align-items: center; justify-content: center;
+      min-width: 92px; min-height: 44px; padding: 10px 24px;
+      border-radius: 999px; color: #777d87; font-weight: 700; font-size: 15px;
+      text-decoration: none; transition: background-color .2s, color .2s;
+    }
+    .service-category-link:hover { color: #006ddd; background: #edf6ff; }
+    .service-category-link.is-active { color: #fff; background: #0075eb; }
+    .service-category-link:focus-visible { outline: 3px solid #81bfff; outline-offset: 3px; }
+    #services-wedding { margin-top: 0; }
+    #services-wedding, #services-music { scroll-margin-top: 1.5rem; }
+    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+
+    /* 섹션의 시작/끝 색상을 맞춰 배경이 연속적으로 이어집니다. */
+    header, main section, footer { border-top-width: 0 !important; border-bottom-width: 0 !important; }
+    main > section:first-child { background: linear-gradient(180deg, #fff 55%, #f3f9ff 100%); }
+    #reviews::before { background: linear-gradient(180deg, #f3f9ff 0%, #f8f6fb 45%, #fffaf7 100%); }
+    #services { background: linear-gradient(180deg, #fffaf7 0%, #fff5f1 24%, #fbf6f7 44%, #eff6fc 62%, #eaf5ff 100%); padding-top: 2.5rem; padding-bottom: 5rem; }
+    .service-group::before { display: none; }
+    #services > .absolute { display: none; }
+    #about { background: linear-gradient(180deg, #eaf5ff 0%, #edf7ff 55%, #f5faff 100%); }
+    #discography { background: linear-gradient(180deg, #f5faff 0%, #eaf5ff 55%, #edf7ff 100%); }
+    #pricing { overflow: visible; }
+    #pricing::before { background: linear-gradient(180deg, #edf7ff, #f4faff); }
+    #contact::before { background: linear-gradient(180deg, #f4faff, #e4f2fc); }
+    footer { background: #e4f2fc !important; }
+    #reviews [class~="border-t"], #services .service-footer, #services .service-media { border-top-width: 0; border-bottom-width: 0; }
+    #about [class~="border-b-2"] { border-bottom-width: 0; }
+    .service-category-nav { padding: 4px; gap: 2px; margin-bottom: 2rem; }
+    .service-category-link { min-width: 70px; min-height: 34px; padding: 7px 18px; font-size: 13px; }
+    .service-grid { align-items: start; }
+    .service-card { min-width: 0; border-radius: 20px; }
+    .service-card .service-media { height: auto; aspect-ratio: 16 / 9; }
+    .service-media > img { position: absolute; inset: 0; }
+    .service-card .service-content { padding: 22px; }
+    .service-content > div { flex-wrap: wrap; gap: 8px; margin-bottom: 18px; align-items: baseline; }
+    .service-card .service-title { font-size: 20px; line-height: 1.45; }
+    .service-card .service-features { font-size: 13px; margin-bottom: 12px; }
+    .service-card .service-footer { padding: 14px 22px 22px; gap: 8px; }
+    .service-card .service-price { font-size: 22px; }
+    .service-card .service-unit { font-size: 10px; display: block; margin: 3px 0 0; }
+    .service-card .service-action { width: 36px; height: 36px; flex-shrink: 0; }
+    .service-card .service-action svg { width: 16px; height: 16px; }
+    @media (min-width: 1024px) {
+      .service-wedding .service-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+      .service-music .service-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+      .service-grid { gap: 18px; }
+      .service-card { width: auto; grid-column: auto; }
+      .service-card .service-content { padding: 20px 18px; }
+      .service-card .service-title { font-size: 18px; }
+      .service-card .service-badge { font-size: 9px; padding: 3px 8px; }
+      .service-card .service-features { font-size: 12px; }
+      .service-card .service-check { width: 16px; height: 16px; margin-top: 3px; }
+      .service-card .service-check svg { width: 10px; height: 10px; }
+      .service-card .service-footer { padding: 10px 18px 20px; }
+      .service-card .service-price { font-size: 21px; }
+    }
+
+    /* 같은 상품 행은 가장 긴 카드 기준으로 높이를 맞추고 가격을 하단 정렬합니다. */
+    #services .service-grid { align-items: stretch; }
+    #services .service-card { height: auto; align-self: stretch; justify-content: flex-start; }
+    #services .service-content { padding: 18px 18px 8px; }
+    #services .service-content > div { margin-bottom: 12px; gap: 7px; }
+    #services .service-title { font-size: 18px; line-height: 1.35; }
+    #services .service-features { font-size: 13px; margin: 0; }
+    #services .service-features > li + li { margin-top: 8px; }
+    #services .service-features li { gap: 8px; }
+    #services .service-features li > span { line-height: 1.5; }
+    #services .service-check { width: 16px; height: 16px; margin-top: 2px; }
+    #services .service-footer { padding: 14px 18px 18px; margin-top: auto; }
+    #services .service-price { font-size: 21px; }
+    #services .service-unit { display: inline; margin-left: 4px; font-size: 10px; }
+    @media (min-width: 1024px) {
+      #services .service-content { padding: 16px 16px 6px; }
+      #services .service-title { font-size: 17px; }
+      #services .service-features { font-size: 12px; }
+      #services .service-footer { padding: 12px 16px 16px; }
+      #services .service-unit { display: block; margin: 2px 0 0; }
+    }
+    /* 큰 영문 제목에도 한글 설명과 겹치지 않는 줄 높이를 보장합니다. */
+    #services .service-group h3 { line-height: 1.2; margin: 0 0 12px; padding: 0; }
+    #services .service-description { margin-top: 0; line-height: 1.6; }
+    /* 상품 영역을 확장하여 4열에서도 설명을 여유 있게 표시합니다. */
+    #services > .service-container { width: 100%; max-width: 1440px; }
+    @media (min-width: 1024px) {
+      #services { padding-left: 28px; padding-right: 28px; }
+      #services .service-grid { gap: 20px; }
+      #services .service-content { padding-left: 20px; padding-right: 20px; }
+      #services .service-footer { padding-left: 20px; padding-right: 20px; }
+    }
+    @media (min-width: 1440px) {
+      #services { padding-left: 36px; padding-right: 36px; }
+    }
+
+    /* Wedding과 Music에 동일한 3열 기준 카드 크기를 적용합니다. */
+    @media (min-width: 1024px) {
+      #services .service-wedding .service-grid,
+      #services .service-music .service-grid {
+        display: grid;
+        grid-template-columns: none;
+        grid-auto-flow: column;
+        grid-auto-columns: calc((100% - 40px) / 3);
+        gap: 20px;
+        overflow-x: auto;
+        overflow-y: hidden;
+        scroll-snap-type: x mandatory;
+        scroll-padding-inline: 0;
+        padding-bottom: 18px;
+      }
+      #services .service-card {
+        width: 100%; min-width: 0;
+        min-height: 0; aspect-ratio: auto;
+        scroll-snap-align: start;
+      }
+      #services .service-card .service-media { aspect-ratio: 16 / 9; height: auto; }
+      #services .service-wedding .service-grid { scrollbar-width: thin; scrollbar-color: #d8aaa9 transparent; }
+      #services .service-wedding .service-grid::-webkit-scrollbar { display: block; height: 5px; }
+      #services .service-wedding .service-grid::-webkit-scrollbar-thumb { background: #d8aaa9; border-radius: 999px; }
+    }
+    /* 내용에 필요한 최대 높이만 공유하고 불필요한 고정 높이는 제거합니다. */
+    #services .service-card {
+      height: var(--service-card-height, auto);
+      min-height: 0; aspect-ratio: auto;
+    }
+    #services .service-footer { padding-top: 10px; padding-bottom: 16px; }
   </style>
 </head>
 <body class="selection:bg-sky-100 selection:text-sky-600 antialiased text-slate-900 bg-white">
@@ -219,7 +421,7 @@
               <circle cx="68" cy="58" r="13" fill="white" class="fill-white stroke-slate-950 stroke-[5]" />
             </svg>
           </div>
-          <span class="font-black text-lg sm:text-xl tracking-tight text-slate-950 font-mono">
+          <span class="font-black text-lg sm:text-xl tracking-tight text-slate-950 font-sans">
             ROOM<span class="text-sky-500">8</span>STUDIO
           </span>
         </a>
@@ -240,7 +442,7 @@
         <!-- Right Action Buttons -->
         <div class="flex items-center gap-2 sm:gap-2.5">
           <a href="#contact" 
-            class="hidden sm:inline-flex px-5 py-2.5 rounded-full bg-slate-950 hover:bg-slate-800 text-white font-semibold text-xs sm:text-sm transition-all shadow-sm active:scale-95">
+            class="hidden sm:inline-flex px-5 py-2.5 rounded-full bg-sky-600 hover:bg-sky-700 text-white font-semibold text-xs sm:text-sm transition-all shadow-sm active:scale-95">
             예약 문의
           </a>
 
@@ -349,24 +551,30 @@
 
     <main class="flex-grow pt-16 sm:pt-20">
       
-      <!-- 2. HERO SECTION -->
+      <!-- 2. HERO SECTION (밝고 화사한 화이트 테마 디자인) -->
       <section class="relative min-h-[620px] sm:min-h-[700px] flex items-center justify-center px-5 py-20 overflow-hidden bg-white border-b border-slate-100">
+        
+        <!-- 은은하고 화사한 소프트 파스텔 앰비언트 글로우 -->
         <div class="absolute -top-32 left-1/2 -translate-x-1/2 w-[760px] h-[380px] bg-gradient-to-b from-sky-100/70 via-cyan-50/50 to-transparent blur-[110px] pointer-events-none"></div>
         <div class="absolute bottom-0 right-10 w-[420px] h-[320px] bg-rose-50/60 blur-[120px] pointer-events-none"></div>
         <div class="absolute -bottom-10 left-10 w-[360px] h-[260px] bg-indigo-50/50 blur-[100px] pointer-events-none"></div>
 
         <div class="relative z-10 max-w-4xl mx-auto text-center mt-4 sm:mt-2">
           
+          <!-- 상단 뱃지: 화사한 라이트 글래스모피즘 -->
           <div class="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-slate-50/90 backdrop-blur-xl border border-slate-200/90 text-slate-700 text-xs font-semibold mb-7 shadow-sm">
             <span class="w-2 h-2 rounded-full bg-cyan-500 shadow-[0_0_8px_#06b6d4] animate-pulse"></span>
             <span class="tracking-tight text-slate-700 font-medium">📍 [강남/홍대] 10년 차 K-POP 작곡가 & MV 감독의 1:1 프로덕션</span>
           </div>
 
+          <!-- 🌟 럭셔리 톤 & 문맥별 플로팅 인터랙션 타이틀 (흰색 배경용 고대비 컬러) -->
           <div class="min-h-[80px] sm:min-h-[96px] md:min-h-[112px] flex items-center justify-center mb-5 overflow-hidden">
             <transition name="title-slide" mode="out-in">
               <h1 
                 :key="currentTitleIndex"
                 class="text-2xl sm:text-3xl md:text-4xl lg:text-[44px] font-black tracking-tight text-slate-950 leading-[1.3] break-keep">
+                
+                <!-- 1) 우리만의 결혼식: 로맨틱 샴페인 로즈 톤 + 하트/링 -->
                 <template v-if="currentTitleIndex === 0">
                   세상에 단 하나뿐인 <br class="sm:hidden" />
                   <span class="relative inline-block">
@@ -379,6 +587,7 @@
                   </span>
                 </template>
                 
+                <!-- 2) 가장 특별한 콘텐츠: 청량한 오션 에메랄드 톤 + 스파클 -->
                 <template v-else-if="currentTitleIndex === 1">
                   가장 소중한 날 <br class="sm:hidden" />
                   <span class="relative inline-block">
@@ -391,6 +600,7 @@
                   </span>
                 </template>
                 
+                <!-- 3) 나만의 웨딩!: 브릴리언트 블루 사이언 톤 + 음표 -->
                 <template v-else>
                   누구나 쉽고 재미있게, <br class="sm:hidden" />
                   <span class="relative inline-block">
@@ -413,14 +623,18 @@
             {{ siteData.heroSubtitle }}
           </p>
 
+          <!-- 💎 CTA 버튼 2종 -->
           <div class="flex flex-col sm:flex-row items-center justify-center gap-3.5 max-w-md mx-auto mb-14">
+            
+            <!-- 버튼 1: 아이스 사이언 & 딥 오션 입체 그라데이션 -->
             <a 
               href="#services" 
-              class="w-full sm:w-auto px-8 py-4 rounded-full bg-slate-950 hover:bg-slate-800 text-white font-extrabold text-sm transition-all duration-300 shadow-lg shadow-slate-900/15 hover:shadow-xl hover:-translate-y-0.5 active:translate-y-0 active:scale-95 flex items-center justify-center gap-2">
+              class="w-full sm:w-auto px-8 py-4 rounded-full bg-sky-600 hover:bg-sky-700 text-white font-extrabold text-sm transition-all duration-300 shadow-lg shadow-slate-900/15 hover:shadow-xl hover:-translate-y-0.5 active:translate-y-0 active:scale-95 flex items-center justify-center gap-2">
               <span>스튜디오 대표 상품 보기</span>
               <i data-lucide="arrow-down" class="w-4 h-4 stroke-[2.5]"></i>
             </a>
 
+            <!-- 버튼 2: 웜 골드 & 카카오 옐로우 그라데이션 -->
             <a 
               :href="kakaoFriendUrl" 
               target="_blank" 
@@ -431,6 +645,7 @@
             </a>
           </div>
 
+          <!-- 하단 지표 박스: 화이트 카드 & 소프트 섀도우 -->
           <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4 p-5 sm:p-6 rounded-3xl bg-slate-50/90 sm:bg-white border border-slate-200/90 max-w-3xl mx-auto text-left sm:text-center text-slate-900 shadow-xl shadow-slate-200/50">
             <div class="p-2">
               <div class="text-[11px] text-slate-500 font-medium mb-0.5">프로듀서 경력</div>
@@ -481,12 +696,9 @@
             
             <div>
               <div class="w-full aspect-square bg-slate-100 overflow-hidden relative">
-                <!-- ⚡ 지연 로딩 적용 -->
                 <img 
                   :src="review.image" 
                   :alt="review.name" 
-                  loading="lazy"
-                  decoding="async"
                   class="w-full h-full object-cover transition-transform duration-500 hover:scale-105">
               </div>
 
@@ -506,69 +718,65 @@
       </section>
 
       <!-- 4. 대표 상품 소개 섹션 -->
-      <section id="services" class="py-24 px-5 bg-[#0a0f1d] text-white relative overflow-hidden border-t border-slate-200">
-        <div class="absolute -top-32 left-1/2 -translate-x-1/2 w-[700px] h-64 bg-cyan-500/10 rounded-full blur-[110px] pointer-events-none"></div>
+      <section id="services" class="py-24 px-5 bg-[#fffaf7] text-slate-900 relative overflow-hidden border-t border-slate-200">
+        <div class="absolute -top-32 left-1/2 -translate-x-1/2 w-[700px] h-64 bg-rose-200/30 rounded-full blur-[110px] pointer-events-none"></div>
 
-        <div class="max-w-6xl mx-auto relative z-10">
-          <div class="mb-10 sm:mb-16">
-            <div class="flex items-center gap-2 mb-2">
-              <span class="w-2.5 h-2.5 rounded-full bg-cyan-400"></span>
-              <span class="text-xs font-bold uppercase tracking-widest text-cyan-400 font-mono">상품소개</span>
-            </div>
-            <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-2">
+        <div class="service-container mx-auto relative z-10">
+          <nav class="service-category-nav" aria-label="상품 카테고리 이동">
+            <a href="#services-wedding" class="service-category-link" :class="{ 'is-active': activeServiceCategory === 'wedding' }" :aria-current="activeServiceCategory === 'wedding' ? 'location' : null" @click="activeServiceCategory = 'wedding'">웨딩</a>
+            <a href="#services-music" class="service-category-link" :class="{ 'is-active': activeServiceCategory === 'music' }" :aria-current="activeServiceCategory === 'music' ? 'location' : null" @click="activeServiceCategory = 'music'">뮤직</a>
+          </nav>
+
+          <section v-for="group in serviceGroups" :key="group.id" :id="'services-' + group.id" :aria-labelledby="'heading-' + group.id" class="service-group mt-16 sm:mt-24 py-6 sm:py-10" :class="group.id === 'wedding' ? 'service-wedding' : 'service-music'">
+            <div class="mb-6 flex flex-col sm:flex-row sm:items-end justify-between gap-2">
               <div>
-                <h2 class="text-3xl sm:text-4xl md:text-5xl font-black tracking-tight text-white uppercase font-mono">
-                  SERVICE
-                </h2>
-                <p class="text-slate-400 text-sm sm:text-base mt-2.5 font-medium">
-                  세상에 단 하나뿐인 음악과 영상, 룸에잇스튜디오 전문가의 손길로 완성해 드립니다.
-                </p>
+                <h3 :id="'heading-' + group.id" class="text-3xl sm:text-4xl font-black tracking-tight font-sans" :class="group.id === 'wedding' ? 'text-rose-700' : 'text-sky-700'">{{ group.title }}</h3>
+                <p class="service-description mt-2 text-sm text-slate-400">{{ group.description }}</p>
               </div>
-              <div class="sm:hidden text-xs text-cyan-400 font-bold flex items-center gap-1">
-                <span>👉 옆으로 넘겨서 상품 확인하기</span>
-              </div>
+              <span class="service-count text-xs text-slate-400">{{ group.services.length }}개의 상품</span>
             </div>
-            <div class="w-full h-px bg-slate-800/80 mt-6"></div>
-          </div>
-
-          <div class="flex lg:grid lg:grid-cols-2 gap-5 sm:gap-8 overflow-x-auto lg:overflow-visible snap-x snap-mandatory -mx-5 px-5 lg:mx-0 lg:px-0 pb-6 lg:pb-0 no-scrollbar">
+          <div class="service-grid flex lg:grid gap-5 sm:gap-8 overflow-x-auto lg:overflow-visible snap-x snap-mandatory -mx-5 px-5 lg:mx-0 lg:px-0 pb-6 lg:pb-0 no-scrollbar">
             <div 
-              v-for="(service, sIdx) in studioServices" 
-              :key="sIdx"
+              v-for="service in group.services" 
+              :key="service.id"
               :class="[
-                'w-[86vw] sm:w-[460px] lg:w-auto flex-shrink-0 snap-center bg-[#0e1626] rounded-3xl border border-slate-800 overflow-hidden shadow-2xl flex flex-col justify-between hover:border-cyan-500/50 hover:shadow-cyan-500/5 transition-all duration-300 group',
-                service.featured ? 'lg:col-span-2 bg-gradient-to-br from-[#0e1626] via-[#141f38] to-[#0c1322]' : ''
+                'service-card w-[86vw] sm:w-[460px] lg:w-auto flex-shrink-0 snap-center bg-[#0e1626] rounded-3xl border border-slate-800 overflow-hidden shadow-2xl flex flex-col justify-start hover:border-cyan-500/50 hover:shadow-cyan-500/5 transition-all duration-300 group',
+                service.featured ? 'bg-gradient-to-br from-[#0e1626] via-[#141f38] to-[#0c1322]' : ''
               ]">
               
               <div>
-                <div class="relative w-full overflow-hidden bg-slate-900 border-b border-slate-800/80" :class="service.featured ? 'h-64 sm:h-80' : 'h-56 sm:h-72'">
-                  <div class="h-full w-full relative">
-                    <!-- ⚡ 지연 로딩 적용 -->
-                    <img 
-                      :src="service.coverImage" 
-                      :alt="service.title" 
-                      loading="lazy"
-                      decoding="async"
-                      class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
-                    <div class="absolute inset-0 bg-gradient-to-t from-[#0e1626] via-transparent to-transparent"></div>
-                  </div>
+                <!-- 유튜브 플레이어는 화면 가까이에 왔을 때 불러옵니다. -->
+                <div v-if="service.mediaType === 'youtube'" class="service-media relative w-full aspect-video overflow-hidden bg-black">
+                  <iframe
+                    :src="getYouTubeEmbedUrl(service.youtubeUrl)"
+                    :title="service.title + ' 샘플 영상'"
+                    class="absolute inset-0 w-full h-full border-0"
+                    loading="lazy"
+                    referrerpolicy="strict-origin-when-cross-origin"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    allowfullscreen>
+                  </iframe>
+                </div>
+                <div v-else class="service-media relative w-full overflow-hidden bg-slate-900 border-b border-slate-800/80" :class="service.featured ? 'h-64 sm:h-80' : 'h-56 sm:h-72'">
+                  <img :src="service.coverImage" :alt="service.title" loading="lazy" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+                  <div class="service-image-shade absolute inset-0 bg-gradient-to-t from-[#0e1626] via-transparent to-transparent pointer-events-none"></div>
                 </div>
 
-                <div class="p-6 sm:p-9">
+                <div class="service-content p-6 sm:p-9">
                   <div class="flex items-center gap-3 mb-5 sm:mb-6">
-                    <h3 class="text-xl sm:text-3xl font-extrabold text-white tracking-tight">
+                    <h4 class="service-title text-xl sm:text-3xl font-extrabold text-white tracking-tight">
                       {{ service.title }}
-                    </h3>
+                    </h4>
                     <span 
                       :class="service.badgeColor || 'bg-indigo-600/30 text-indigo-300 border-indigo-500/40'"
-                      class="px-2.5 py-0.5 sm:px-3 sm:py-1 rounded-full text-[11px] sm:text-xs font-black tracking-wider uppercase border backdrop-blur-sm">
+                      class="service-badge px-2.5 py-0.5 sm:px-3 sm:py-1 rounded-full text-[11px] sm:text-xs font-black tracking-wider uppercase border backdrop-blur-sm">
                       {{ service.badge }}
                     </span>
                   </div>
 
-                  <ul class="space-y-3 sm:space-y-3.5 text-xs sm:text-base text-slate-300 mb-6 sm:mb-8 font-normal">
+                  <ul class="service-features space-y-3 sm:space-y-3.5 text-xs sm:text-base text-slate-300 mb-6 sm:mb-8 font-normal">
                     <li v-for="(feat, fIdx) in service.features" :key="fIdx" class="flex items-start gap-2.5 sm:gap-3">
-                      <div class="w-4 h-4 sm:w-5 sm:h-5 rounded-full bg-cyan-950/70 border border-cyan-400/50 flex items-center justify-center flex-shrink-0 mt-0.5">
+                      <div class="service-check w-4 h-4 sm:w-5 sm:h-5 rounded-full bg-cyan-950/70 border border-cyan-400/50 flex items-center justify-center flex-shrink-0 mt-0.5">
                         <i data-lucide="check" class="w-2.5 h-2.5 sm:w-3 sm:h-3 text-cyan-400"></i>
                       </div>
                       <span class="break-keep leading-tight">{{ feat }}</span>
@@ -577,12 +785,12 @@
                 </div>
               </div>
 
-              <div class="px-6 sm:px-9 pb-7 sm:pb-8 pt-4 border-t border-slate-800/80 flex items-center justify-between">
+              <div class="service-footer px-6 sm:px-9 pb-7 sm:pb-8 pt-4 border-t border-slate-800/80 flex items-center justify-between">
                 <div>
-                  <span class="text-xl sm:text-3xl font-black text-cyan-400 tracking-tight">
+                  <span class="service-price text-xl sm:text-3xl font-black text-cyan-400 tracking-tight">
                     {{ service.price }}
                   </span>
-                  <span class="text-[11px] sm:text-sm text-slate-400 font-medium ml-1 uppercase tracking-wide">
+                  <span class="service-unit text-[11px] sm:text-sm text-slate-400 font-medium ml-1 uppercase tracking-wide">
                     / {{ service.unit }}
                   </span>
                 </div>
@@ -590,75 +798,63 @@
                 <a 
                   :href="'#contact'"
                   @click="selectPackage(service.title)"
-                  class="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-slate-800/90 hover:bg-cyan-400 text-slate-300 hover:text-slate-950 flex items-center justify-center transition-all duration-300 shadow-md group-hover:bg-cyan-400 group-hover:text-slate-950 group-hover:translate-x-1"
+                  class="service-action w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-slate-800/90 hover:bg-cyan-400 text-slate-300 hover:text-slate-950 flex items-center justify-center transition-all duration-300 shadow-md group-hover:bg-cyan-400 group-hover:text-slate-950 group-hover:translate-x-1"
                   :aria-label="service.title + ' 신청 및 상담'">
                   <i data-lucide="arrow-right" class="w-4 h-4 sm:w-5 sm:h-5"></i>
                 </a>
               </div>
             </div>
           </div>
+          </section>
 
-          <div class="mt-10 sm:mt-14 p-6 sm:p-7 rounded-2xl bg-[#0e1626]/80 border border-slate-800 flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left">
-            <div class="flex items-center gap-3">
-              <i data-lucide="info" class="w-5 h-5 text-cyan-400 flex-shrink-0 hidden sm:block"></i>
-              <p class="text-xs sm:text-sm text-slate-300">
-                패키지 구성 외 개별 맞춤 작업(악기 트랙 추가, 영상 커스터마이징 등)도 자유롭게 조율 가능합니다.
-              </p>
-            </div>
-            <a :href="kakaoFriendUrl" target="_blank" rel="noopener noreferrer" class="px-5 py-2.5 rounded-full bg-white/10 hover:bg-white/20 text-white text-xs font-bold transition-all whitespace-nowrap border border-white/10">
-              카카오톡 맞춤 견적 문의
-            </a>
-          </div>
+
         </div>
       </section>
 
       <!-- 5. WHY ROOM8STUDIO 섹션 -->
-      <section id="about" class="py-24 px-5 bg-[#090d16] text-white relative overflow-hidden border-t border-slate-800/80">
+      <section id="about" class="py-24 px-5 bg-[#f0f8ff] text-slate-900 relative overflow-hidden border-t border-sky-200/80">
         <div class="absolute top-1/4 -left-40 w-96 h-96 bg-cyan-500/10 rounded-full blur-[120px] pointer-events-none"></div>
         <div class="absolute bottom-1/4 -right-40 w-96 h-96 bg-indigo-500/10 rounded-full blur-[120px] pointer-events-none"></div>
 
         <div class="max-w-5xl mx-auto relative z-10">
           <div class="text-center mb-12 sm:mb-20">
-            <h2 class="text-2xl sm:4xl font-extrabold text-white tracking-tight mb-3">
+            <h2 class="text-2xl sm:4xl font-extrabold text-slate-900 tracking-tight mb-3">
               <span class="border-b-2 border-white/60 pb-1">고민되시나요?</span>
             </h2>
-            <p class="text-2xl sm:text-4xl font-black text-cyan-400 tracking-tight">
+            <p class="text-2xl sm:text-4xl font-black text-sky-600 tracking-tight">
               룸에잇스튜디오를<br class="sm:hidden" /> 선택해야 하는 이유!
             </p>
-            <p class="sm:hidden text-xs text-slate-400 font-medium mt-3">
+            <p class="sm:hidden text-xs text-slate-500 font-medium mt-3">
               👉 옆으로 넘겨서 4가지 특장점을 확인해보세요!
             </p>
           </div>
 
           <div class="flex md:block overflow-x-auto md:overflow-visible snap-x snap-mandatory -mx-5 px-5 md:mx-0 md:px-0 pb-6 md:pb-0 gap-5 md:gap-0 no-scrollbar items-stretch">
 
-            <!-- Feature 1: 시간당 무제한 녹음 (GIF 지연 로딩) -->
-            <div class="w-[86vw] sm:w-[460px] md:w-full flex-shrink-0 snap-center bg-[#0e1626] md:bg-transparent rounded-3xl md:rounded-none border border-slate-800 md:border-0 p-6 sm:p-7 md:p-0 md:mb-24 flex flex-col justify-between">
+            <!-- Feature 1: 시간당 무제한 녹음 -->
+            <div class="w-[86vw] sm:w-[460px] md:w-full flex-shrink-0 snap-center bg-white md:bg-transparent rounded-3xl md:rounded-none border border-sky-200 md:border-0 p-6 sm:p-7 md:p-0 md:mb-24 flex flex-col justify-between">
               <div class="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-10 md:gap-14 items-center">
                 <div>
-                  <span class="inline-block px-3.5 py-1 rounded-full bg-cyan-950/80 border border-cyan-500/40 text-cyan-400 text-xs font-bold mb-3 md:mb-4">
+                  <span class="inline-block px-3.5 py-1 rounded-full bg-sky-100 border border-cyan-500/40 text-sky-600 text-xs font-bold mb-3 md:mb-4">
                     01. 무제한 녹음
                   </span>
-                  <h3 class="text-xl sm:text-2xl md:text-3xl font-extrabold text-white leading-snug mb-3 md:mb-4">
+                  <h3 class="text-xl sm:text-2xl md:text-3xl font-extrabold text-slate-900 leading-snug mb-3 md:mb-4">
                     원하는 만큼 자유롭게<br>
-                    <span class="text-cyan-400">시간당 무제한 녹음</span>
+                    <span class="text-sky-600">시간당 무제한 녹음</span>
                   </h3>
-                  <p class="text-slate-300 text-xs sm:text-sm md:text-base leading-relaxed break-keep font-normal mb-5 md:mb-0">
+                  <p class="text-slate-600 text-xs sm:text-sm md:text-base leading-relaxed break-keep font-normal mb-5 md:mb-0">
                     시간당 곡수 제한 없이 자유로운 녹음이 가능합니다. 원하는 곡 모두 편안하게 녹음하여 최고의 결과물을 만들어보세요.
                   </p>
                 </div>
 
-                <div class="relative rounded-2xl md:rounded-3xl overflow-hidden border border-slate-800 shadow-2xl group w-full aspect-square bg-slate-900 flex items-center justify-center">
-                  <!-- ⚡ 용량 큰 GIF에 지연 로딩 적용 -->
+                <div class="relative rounded-2xl md:rounded-3xl overflow-hidden border border-sky-200 shadow-2xl group w-full aspect-square bg-slate-900 flex items-center justify-center">
                   <img 
                     :src="unlimitedRecGif" 
                     alt="시간당 무제한 보컬 녹음 및 트랙 작업 화면" 
-                    loading="lazy"
-                    decoding="async"
                     class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
                   <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent"></div>
                   
-                  <div class="absolute bottom-3 left-4 md:bottom-4 md:left-5 text-[10px] md:text-xs font-bold text-cyan-400 flex items-center gap-2 bg-slate-950/85 px-3 py-1.5 rounded-full border border-cyan-500/30 backdrop-blur-sm">
+                  <div class="absolute bottom-3 left-4 md:bottom-4 md:left-5 text-[10px] md:text-xs font-bold text-sky-600 flex items-center gap-2 bg-white/95 px-3 py-1.5 rounded-full border border-cyan-500/30 backdrop-blur-sm">
                     <span class="relative flex h-2 w-2">
                       <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-cyan-400 opacity-75"></span>
                       <span class="relative inline-flex rounded-full h-2 w-2 bg-cyan-500"></span>
@@ -669,20 +865,17 @@
               </div>
             </div>
 
-            <!-- Feature 2: 1:1 맞춤 디렉팅 (GIF 지연 로딩) -->
-            <div class="w-[86vw] sm:w-[460px] md:w-full flex-shrink-0 snap-center bg-[#0e1626] md:bg-transparent rounded-3xl md:rounded-none border border-slate-800 md:border-0 p-6 sm:p-7 md:p-0 md:mb-24 flex flex-col justify-between">
+            <!-- Feature 2: 1:1 맞춤 디렉팅 -->
+            <div class="w-[86vw] sm:w-[460px] md:w-full flex-shrink-0 snap-center bg-white md:bg-transparent rounded-3xl md:rounded-none border border-sky-200 md:border-0 p-6 sm:p-7 md:p-0 md:mb-24 flex flex-col justify-between">
               <div class="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-10 md:gap-14 items-center">
-                <div class="order-2 md:order-1 relative rounded-2xl md:rounded-3xl overflow-hidden border border-slate-800 shadow-2xl group w-full aspect-square bg-slate-900">
-                  <!-- ⚡ 용량 큰 GIF에 지연 로딩 적용 -->
+                <div class="order-2 md:order-1 relative rounded-2xl md:rounded-3xl overflow-hidden border border-sky-200 shadow-2xl group w-full aspect-square bg-slate-900">
                   <img 
                     :src="directingGifImage" 
                     alt="1:1 맞춤 보컬 코칭 현장" 
-                    loading="lazy"
-                    decoding="async"
                     class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
                   <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20 to-transparent"></div>
                   
-                  <div class="absolute bottom-3 left-4 md:bottom-4 md:left-5 text-[10px] md:text-xs font-bold text-cyan-400 flex items-center gap-2 bg-slate-950/80 px-3 py-1.5 rounded-full border border-cyan-500/30 backdrop-blur-sm">
+                  <div class="absolute bottom-3 left-4 md:bottom-4 md:left-5 text-[10px] md:text-xs font-bold text-sky-600 flex items-center gap-2 bg-white/95 px-3 py-1.5 rounded-full border border-cyan-500/30 backdrop-blur-sm">
                     <span class="relative flex h-2 w-2">
                       <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-cyan-400 opacity-75"></span>
                       <span class="relative inline-flex rounded-full h-2 w-2 bg-cyan-500"></span>
@@ -692,41 +885,41 @@
                 </div>
 
                 <div class="order-1 md:order-2">
-                  <span class="inline-block px-3.5 py-1 rounded-full bg-cyan-950/80 border border-cyan-500/40 text-cyan-400 text-xs font-bold mb-3 md:mb-4">
+                  <span class="inline-block px-3.5 py-1 rounded-full bg-sky-100 border border-cyan-500/40 text-sky-600 text-xs font-bold mb-3 md:mb-4">
                     02. 1:1 맞춤 디렉팅
                   </span>
-                  <h3 class="text-xl sm:text-2xl md:text-3xl font-extrabold text-white leading-snug mb-3 md:mb-4">
+                  <h3 class="text-xl sm:text-2xl md:text-3xl font-extrabold text-slate-900 leading-snug mb-3 md:mb-4">
                     10년 차 K-POP 작곡가의<br>
-                    <span class="text-cyan-400">1:1 맞춤 보컬 코칭</span>
+                    <span class="text-sky-600">1:1 맞춤 보컬 코칭</span>
                   </h3>
-                  <p class="text-slate-300 text-xs sm:text-sm md:text-base leading-relaxed break-keep font-normal mb-5 md:mb-0">
+                  <p class="text-slate-600 text-xs sm:text-sm md:text-base leading-relaxed break-keep font-normal mb-5 md:mb-0">
                     K-POP 현역 작곡가이자 수많은 일반인·초보자를 녹음해 온 전문 디렉터가 발음, 호흡, 감정 표현까지 한 소절씩 친절하고 완벽하게 지도합니다.
                   </p>
                 </div>
               </div>
             </div>
 
-            <!-- Feature 3: 초정밀 음정 보정 (음원 사전 로딩 방지) -->
-            <div class="w-[86vw] sm:w-[460px] md:w-full flex-shrink-0 snap-center bg-[#0e1626] md:bg-transparent rounded-3xl md:rounded-none border border-slate-800 md:border-0 p-6 sm:p-7 md:p-0 md:mb-24 flex flex-col justify-between">
+            <!-- Feature 3: 초정밀 음정 보정 -->
+            <div class="w-[86vw] sm:w-[460px] md:w-full flex-shrink-0 snap-center bg-white md:bg-transparent rounded-3xl md:rounded-none border border-sky-200 md:border-0 p-6 sm:p-7 md:p-0 md:mb-24 flex flex-col justify-between">
               <div class="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-10 md:gap-14 items-center">
                 <div>
-                  <span class="inline-block px-3.5 py-1 rounded-full bg-cyan-950/80 border border-cyan-500/40 text-cyan-400 text-xs font-bold mb-3 md:mb-4">
+                  <span class="inline-block px-3.5 py-1 rounded-full bg-sky-100 border border-cyan-500/40 text-sky-600 text-xs font-bold mb-3 md:mb-4">
                     03. 완성도 높은 결과
                   </span>
-                  <h3 class="text-xl sm:text-2xl md:text-3xl font-extrabold text-white leading-snug mb-3 md:mb-4">
+                  <h3 class="text-xl sm:text-2xl md:text-3xl font-extrabold text-slate-900 leading-snug mb-3 md:mb-4">
                     음치도 가수로 바뀐다<br>
-                    <span class="text-cyan-400">초정밀 음정·박자 보정</span>
+                    <span class="text-sky-600">초정밀 음정·박자 보정</span>
                   </h3>
-                  <p class="text-slate-300 text-xs sm:text-sm md:text-base leading-relaxed break-keep font-normal mb-5 md:mb-0">
+                  <p class="text-slate-600 text-xs sm:text-sm md:text-base leading-relaxed break-keep font-normal mb-5 md:mb-0">
                     단순한 녹음 파일 저장을 넘어 방송·음원용 마스터링 퀄리티를 구현합니다. 프로 전용 Melodyne 보정으로 기계음 없이 자연스러운 음정과 박자를 정밀 교정합니다.
                   </p>
                 </div>
 
-                <!-- Before / After 음원 카드 (⚡ preload="none" 추가로 초기 데이터 차단) -->
+                <!-- Before / After 음원 재생 카드 -->
                 <div class="w-full max-w-[360px] md:max-w-[420px] aspect-square mx-auto bg-[#e5ebf2] text-slate-800 rounded-[28px] md:rounded-[36px] shadow-2xl p-5 sm:p-8 flex flex-col justify-between select-none">
                   
-                  <audio ref="beforeAudioRef" :src="audioBeforeUrl" preload="none" @ended="onAudioEnded('before')"></audio>
-                  <audio ref="afterAudioRef" :src="audioAfterUrl" preload="none" @ended="onAudioEnded('after')"></audio>
+                  <audio ref="beforeAudioRef" :src="audioBeforeUrl" @ended="onAudioEnded('before')"></audio>
+                  <audio ref="afterAudioRef" :src="audioAfterUrl" @ended="onAudioEnded('after')"></audio>
 
                   <!-- [TOP] BEFORE -->
                   <div 
@@ -736,7 +929,7 @@
                     <div class="flex items-center justify-center gap-2.5 mb-2 sm:mb-4">
                       <button 
                         @click.stop="togglePlayTune('before')"
-                        class="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-slate-700 hover:bg-slate-900 text-white flex items-center justify-center shadow-md transition-all duration-200 group-hover/before:scale-110 active:scale-95 flex-shrink-0"
+                        class="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-sky-100 hover:bg-sky-200 text-slate-900 flex items-center justify-center shadow-md transition-all duration-200 group-hover/before:scale-110 active:scale-95 flex-shrink-0"
                         :title="isBeforePlaying ? '일시정지' : '보정 전 재생'">
                         <svg v-if="!isBeforePlaying" viewBox="0 0 24 24" fill="currentColor" class="w-3.5 h-3.5 ml-0.5"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
                         <svg v-else viewBox="0 0 24 24" fill="currentColor" class="w-3.5 h-3.5"><rect x="6" y="4" width="4" height="16"></rect><rect x="14" y="4" width="4" height="16"></rect></svg>
@@ -770,7 +963,7 @@
                     <div class="flex items-center justify-center gap-2.5 mb-2 sm:mb-4">
                       <button 
                         @click.stop="togglePlayTune('after')"
-                        class="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-[#00c0f8] hover:bg-[#00a9dc] text-white flex items-center justify-center shadow-md shadow-cyan-400/35 transition-all duration-200 group-hover/after:scale-110 active:scale-95 flex-shrink-0"
+                        class="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-[#00c0f8] hover:bg-[#00a9dc] text-slate-900 flex items-center justify-center shadow-md shadow-cyan-400/35 transition-all duration-200 group-hover/after:scale-110 active:scale-95 flex-shrink-0"
                         :title="isAfterPlaying ? '일시정지' : '보정 후 재생'">
                         <svg v-if="!isAfterPlaying" viewBox="0 0 24 24" fill="currentColor" class="w-3.5 h-3.5 ml-0.5"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
                         <svg v-else viewBox="0 0 24 24" fill="currentColor" class="w-3.5 h-3.5"><rect x="6" y="4" width="4" height="16"></rect><rect x="14" y="4" width="4" height="16"></rect></svg>
@@ -801,16 +994,13 @@
               </div>
             </div>
 
-            <!-- Feature 4: 확실한 영상 퀄리티 (GIF 지연 로딩) -->
-            <div class="w-[86vw] sm:w-[460px] md:w-full flex-shrink-0 snap-center bg-[#0e1626] md:bg-transparent rounded-3xl md:rounded-none border border-slate-800 md:border-0 p-6 sm:p-7 md:p-0 flex flex-col justify-between">
+            <!-- Feature 4: 확실한 영상 퀄리티 -->
+            <div class="w-[86vw] sm:w-[460px] md:w-full flex-shrink-0 snap-center bg-white md:bg-transparent rounded-3xl md:rounded-none border border-sky-200 md:border-0 p-6 sm:p-7 md:p-0 flex flex-col justify-between">
               <div class="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-10 md:gap-14 items-center">
-                <div class="order-2 md:order-1 relative rounded-2xl md:rounded-3xl overflow-hidden border border-slate-800 shadow-2xl group w-full aspect-square bg-slate-900 flex items-center justify-center">
-                  <!-- ⚡ 용량 큰 GIF에 지연 로딩 적용 -->
+                <div class="order-2 md:order-1 relative rounded-2xl md:rounded-3xl overflow-hidden border border-sky-200 shadow-2xl group w-full aspect-square bg-slate-900 flex items-center justify-center">
                   <img 
                     :src="videoQualityGif" 
                     alt="AI 부모님 감사영상 및 고퀄리티 영상 제작" 
-                    loading="lazy"
-                    decoding="async"
                     class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
                   <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-transparent"></div>
                   
@@ -822,14 +1012,14 @@
                 </div>
 
                 <div class="order-1 md:order-2">
-                  <span class="inline-block px-3.5 py-1 rounded-full bg-cyan-950/80 border border-cyan-500/40 text-cyan-400 text-xs font-bold mb-3 md:mb-4">
+                  <span class="inline-block px-3.5 py-1 rounded-full bg-sky-100 border border-cyan-500/40 text-sky-600 text-xs font-bold mb-3 md:mb-4">
                     04. 영상 패키지
                   </span>
-                  <h3 class="text-xl sm:text-2xl md:text-3xl font-extrabold text-white leading-snug mb-3 md:mb-4">
+                  <h3 class="text-xl sm:text-2xl md:text-3xl font-extrabold text-slate-900 leading-snug mb-3 md:mb-4">
                     음악부터 영상까지<br>
-                    <span class="text-cyan-400">확실한 영상 퀄리티!</span>
+                    <span class="text-sky-600">확실한 영상 퀄리티!</span>
                   </h3>
-                  <p class="text-slate-300 text-xs sm:text-sm md:text-base leading-relaxed break-keep font-normal mb-5 md:mb-0">
+                  <p class="text-slate-600 text-xs sm:text-sm md:text-base leading-relaxed break-keep font-normal mb-5 md:mb-0">
                     감동을 극대화하는 AI 부모님 감사영상부터 환상적인 디즈니풍 식전영상까지! 전문 색보정과 컷 편집을 거쳐 평생 간직할 소장용 영상 콘텐츠를 선사합니다.
                   </p>
                 </div>
@@ -838,11 +1028,11 @@
 
           </div>
 
-          <div class="mt-14 sm:mt-20 p-8 sm:p-10 rounded-3xl bg-gradient-to-r from-slate-900 via-slate-800 to-slate-900 border border-cyan-500/30 text-center relative overflow-hidden">
-            <h4 class="text-xl sm:text-2xl font-black text-white mb-2">
+          <div class="mt-14 sm:mt-20 p-8 sm:p-10 rounded-3xl bg-gradient-to-r from-sky-100 via-sky-50 to-sky-100 border border-cyan-500/30 text-center relative overflow-hidden">
+            <h4 class="text-xl sm:text-2xl font-black text-slate-900 mb-2">
               고민은 원하는 날짜의 예약만 늦출 뿐입니다!
             </h4>
-            <p class="text-xs sm:text-sm text-slate-300 mb-6 font-normal">
+            <p class="text-xs sm:text-sm text-slate-600 mb-6 font-normal">
               100% 사전 예약제 • 하루 한정 소수 세션 집중 디렉팅
             </p>
             <a href="#contact" class="inline-flex items-center gap-2 px-8 py-4 rounded-full bg-cyan-400 hover:bg-cyan-300 text-slate-950 font-black text-sm transition-all shadow-lg shadow-cyan-400/30 active:scale-95">
@@ -854,30 +1044,32 @@
         </div>
       </section>
 
-      <!-- 7. OFFICIAL DISCOGRAPHY (24개 앨범 지연 로딩) -->
-      <section id="discography" class="py-24 bg-gradient-to-b from-slate-950 via-[#070b14] to-slate-950 text-white relative overflow-hidden border-y border-slate-800">
+      <!-- 7. OFFICIAL DISCOGRAPHY -->
+      <section id="discography" class="py-24 bg-gradient-to-b from-[#edf7ff] via-[#f7fbff] to-[#e8f4ff] text-slate-900 relative overflow-hidden border-y border-sky-200">
         <div class="absolute -top-24 left-1/4 w-96 h-96 bg-cyan-500/15 rounded-full blur-[140px] pointer-events-none"></div>
         <div class="absolute -bottom-24 right-1/4 w-96 h-96 bg-indigo-600/15 rounded-full blur-[140px] pointer-events-none"></div>
 
         <div class="max-w-6xl mx-auto px-5 mb-10 relative z-10 text-center">
-          <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-cyan-500/10 border border-cyan-400/30 text-cyan-300 text-xs font-bold mb-4 backdrop-blur-md">
+          <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-cyan-500/10 border border-cyan-400/30 text-sky-700 text-xs font-bold mb-4 backdrop-blur-md">
             <i data-lucide="disc-3" class="w-3.5 h-3.5 animate-spin"></i>
             <span>작곡가 작업물</span>
           </div>
-          <h2 class="text-3xl sm:text-5xl font-black text-white tracking-tight mb-4 break-keep">
+          <h2 class="text-3xl sm:text-5xl font-black text-slate-900 tracking-tight mb-4 break-keep">
             MUSIC PRODUCTION <span class="bg-gradient-to-r from-cyan-400 to-sky-300 bg-clip-text text-transparent">PORTFOLIO</span>
           </h2>
+          <p class="text-slate-500 text-sm sm:text-base max-w-xl mx-auto break-keep font-normal">
+          </p>
 
           <div class="mt-6 flex items-center justify-center gap-2.5">
             <button 
               @click="scrollAlbums('left')" 
-              class="w-10 h-10 rounded-full bg-white/10 hover:bg-cyan-400 text-slate-300 hover:text-slate-950 border border-white/15 flex items-center justify-center transition-all shadow-md active:scale-90"
+              class="w-10 h-10 rounded-full bg-white/10 hover:bg-cyan-400 text-slate-600 hover:text-slate-950 border border-white/15 flex items-center justify-center transition-all shadow-md active:scale-90"
               aria-label="이전 앨범 보기">
               <i data-lucide="chevron-left" class="w-5 h-5"></i>
             </button>
             <button 
               @click="scrollAlbums('right')" 
-              class="w-10 h-10 rounded-full bg-white/10 hover:bg-cyan-400 text-slate-300 hover:text-slate-950 border border-white/15 flex items-center justify-center transition-all shadow-md active:scale-90"
+              class="w-10 h-10 rounded-full bg-white/10 hover:bg-cyan-400 text-slate-600 hover:text-slate-950 border border-white/15 flex items-center justify-center transition-all shadow-md active:scale-90"
               aria-label="다음 앨범 보기">
               <i data-lucide="chevron-right" class="w-5 h-5"></i>
             </button>
@@ -885,8 +1077,8 @@
         </div>
 
         <div class="album-track-container relative w-full py-8 select-none">
-          <div class="absolute left-0 top-0 bottom-0 w-16 sm:w-36 bg-gradient-to-r from-slate-950 to-transparent z-20 pointer-events-none"></div>
-          <div class="absolute right-0 top-0 bottom-0 w-16 sm:w-36 bg-gradient-to-l from-slate-950 to-transparent z-20 pointer-events-none"></div>
+          <div class="absolute left-0 top-0 bottom-0 w-16 sm:w-36 bg-gradient-to-r from-[#f0f8ff] to-transparent z-20 pointer-events-none"></div>
+          <div class="absolute right-0 top-0 bottom-0 w-16 sm:w-36 bg-gradient-to-l from-[#f0f8ff] to-transparent z-20 pointer-events-none"></div>
 
           <div 
             ref="albumTrackRef"
@@ -912,7 +1104,7 @@
                 class="block w-64 sm:w-72 relative cursor-pointer focus:outline-none"
                 :title="album.title + ' - 음원 사이트에서 듣기'">
                 
-                <div class="vinyl-disc absolute top-3 sm:top-4 right-0 w-56 sm:w-60 h-56 sm:w-60 rounded-full bg-slate-950 border-[6px] border-[#181a1f] shadow-2xl flex items-center justify-center -z-10 transition-transform duration-500 ease-out pointer-events-none">
+                <div class="vinyl-disc absolute top-3 sm:top-4 right-0 w-56 sm:w-60 h-56 sm:h-60 rounded-full bg-slate-950 border-[6px] border-[#181a1f] shadow-2xl flex items-center justify-center -z-10 transition-transform duration-500 ease-out pointer-events-none">
                   <div class="w-44 sm:w-48 h-44 sm:h-48 rounded-full border border-slate-700/40 flex items-center justify-center">
                     <div class="w-32 h-32 rounded-full border border-slate-700/50 flex items-center justify-center">
                       <div class="w-20 h-20 rounded-full bg-cyan-500/20 border-2 border-cyan-400/70 flex items-center justify-center shadow-inner">
@@ -922,16 +1114,13 @@
                   </div>
                 </div>
 
-                <div class="relative aspect-square w-full rounded-2xl overflow-hidden shadow-[0_15px_35px_rgba(0,0,0,0.6)] border border-white/10 group-hover:border-cyan-400/80 group-hover:shadow-[0_20px_40px_rgba(0,229,255,0.25)] transition-all duration-300 bg-slate-900 pointer-events-none">
-                  <!-- ⚡ 루프되는 24개 앨범 표지에 지연 로딩 적용 -->
+                <div class="relative aspect-square w-full rounded-2xl overflow-hidden shadow-[0_12px_30px_rgba(45,101,145,0.15)] border border-white/10 group-hover:border-cyan-400/80 group-hover:shadow-[0_20px_40px_rgba(0,229,255,0.25)] transition-all duration-300 bg-slate-900 pointer-events-none">
                   <img 
                     :src="album.coverImage" 
                     :alt="album.title" 
-                    loading="lazy"
-                    decoding="async"
                     class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-108 group-hover:brightness-95 pointer-events-none">
 
-                  <div class="absolute top-3 left-3 z-10 flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-slate-950/80 backdrop-blur-md border border-white/15 text-[10px] font-bold text-cyan-300">
+                  <div class="absolute top-3 left-3 z-10 flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-white/95 backdrop-blur-md border border-sky-200 text-[10px] font-bold text-sky-700">
                     <span class="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-pulse"></span>
                     <span>{{ album.platformName }}</span>
                   </div>
@@ -942,20 +1131,20 @@
                       <span>음원 사이트 듣기</span>
                       <i data-lucide="external-link" class="w-3 h-3 ml-0.5"></i>
                     </div>
-                    <span class="text-[11px] text-slate-300 font-medium">{{ album.genre }} • {{ album.releaseYear }}</span>
+                    <span class="text-[11px] text-slate-200 font-medium">{{ album.genre }} • {{ album.releaseYear }}</span>
                   </div>
                 </div>
 
                 <div class="mt-3.5 px-1 flex items-start justify-between pointer-events-none">
                   <div class="max-w-[80%]">
-                    <h3 class="text-sm sm:text-base font-extrabold text-white group-hover:text-cyan-300 transition-colors truncate">
+                    <h3 class="text-sm sm:text-base font-extrabold text-slate-900 group-hover:text-sky-700 transition-colors truncate">
                       {{ album.title }}
                     </h3>
-                    <p class="text-xs text-slate-400 font-medium truncate mt-0.5">
+                    <p class="text-xs text-slate-500 font-medium truncate mt-0.5">
                       {{ album.artist }}
                     </p>
                   </div>
-                  <div class="w-7 h-7 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-slate-400 group-hover:bg-cyan-400 group-hover:text-slate-950 transition-colors flex-shrink-0 mt-0.5">
+                  <div class="w-7 h-7 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-slate-500 group-hover:bg-cyan-400 group-hover:text-slate-950 transition-colors flex-shrink-0 mt-0.5">
                     <i data-lucide="arrow-up-right" class="w-3.5 h-3.5"></i>
                   </div>
                 </div>
@@ -968,11 +1157,11 @@
         <div class="max-w-4xl mx-auto px-5 mt-10 text-center relative z-10">
           <div class="p-6 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-md flex flex-col sm:flex-row items-center justify-between gap-4">
             <div class="text-left">
-              <h4 class="text-base font-bold text-white flex items-center gap-2">
-                <i data-lucide="sparkles" class="w-4 h-4 text-cyan-400"></i>
+              <h4 class="text-base font-bold text-slate-900 flex items-center gap-2">
+                <i data-lucide="sparkles" class="w-4 h-4 text-sky-600"></i>
                 <span>나만의 음악도 전 세계 공식 플랫폼에 정식 발매할 수 있습니다.</span>
               </h4>
-              <p class="text-xs text-slate-400 mt-0.5">자작곡, 커스텀 멜로디, 가사만 있어도 룸에잇스튜디오에서 1:1 편곡부터 믹싱, 공식 유통까지 전담 지원합니다.</p>
+              <p class="text-xs text-slate-500 mt-0.5">자작곡, 커스텀 멜로디, 가사만 있어도 룸에잇스튜디오에서 1:1 편곡부터 믹싱, 공식 유통까지 전담 지원합니다.</p>
             </div>
             <a 
               href="#contact" 
@@ -1034,32 +1223,32 @@
           </div>
 
           <!-- 카드 2: 개인 음반 제작 & 발매 -->
-          <div class="w-[84vw] sm:w-[420px] md:w-auto flex-shrink-0 snap-center p-7 sm:p-8 rounded-3xl bg-slate-950 text-white shadow-xl flex flex-col justify-between relative overflow-hidden">
+          <div class="w-[84vw] sm:w-[420px] md:w-auto flex-shrink-0 snap-center p-7 sm:p-8 rounded-3xl bg-sky-100 text-slate-900 shadow-xl flex flex-col justify-between relative overflow-hidden">
             <div class="absolute top-4 right-5 text-[11px] font-bold px-3 py-1 rounded-full bg-cyan-400 text-slate-950 font-black">
               All-In-One Pro
             </div>
             <div>
-              <div class="inline-block px-3 py-1 rounded-full bg-white/10 text-cyan-300 text-xs font-bold mb-4">
+              <div class="inline-block px-3 py-1 rounded-full bg-white/80 text-sky-700 text-xs font-bold mb-4">
                 ✨ 정식 데뷔 앨범
               </div>
-              <h3 class="text-2xl font-bold text-white mb-1">개인 음반 제작 & 발매</h3>
-              <p class="text-xs text-slate-400 mb-6">자작곡 또는 맞춤곡으로 멜론/지니 공식 음원 등록</p>
+              <h3 class="text-2xl font-bold text-slate-900 mb-1">개인 음반 제작 & 발매</h3>
+              <p class="text-xs text-slate-500 mb-6">자작곡 또는 맞춤곡으로 멜론/지니 공식 음원 등록</p>
               
-              <div class="text-3xl sm:text-4xl font-black text-white mb-6">
-                650,000<span class="text-base text-slate-400 font-normal">원부터 ~</span>
+              <div class="text-3xl sm:text-4xl font-black text-slate-900 mb-6">
+                650,000<span class="text-base text-slate-500 font-normal">원부터 ~</span>
               </div>
 
-              <ul class="space-y-3 text-xs sm:text-sm text-slate-300 mb-8">
+              <ul class="space-y-3 text-xs sm:text-sm text-slate-600 mb-8">
                 <li class="flex items-center gap-2.5">
-                  <i data-lucide="check" class="w-4 h-4 text-cyan-400 flex-shrink-0"></i>
+                  <i data-lucide="check" class="w-4 h-4 text-sky-600 flex-shrink-0"></i>
                   <span>트랙 편곡, 악기 사운드 디자인 및 세션 총괄</span>
                 </li>
                 <li class="flex items-center gap-2.5">
-                  <i data-lucide="check" class="w-4 h-4 text-cyan-400 flex-shrink-0"></i>
+                  <i data-lucide="check" class="w-4 h-4 text-sky-600 flex-shrink-0"></i>
                   <span>보컬 레코딩 & 코러스 화음 빌딩</span>
                 </li>
                 <li class="flex items-center gap-2.5">
-                  <i data-lucide="check" class="w-4 h-4 text-cyan-400 flex-shrink-0"></i>
+                  <i data-lucide="check" class="w-4 h-4 text-sky-600 flex-shrink-0"></i>
                   <span>멜론, 지니, 벅스, 스포티파이 공식 유통 발매 대행</span>
                 </li>
               </ul>
@@ -1099,11 +1288,9 @@
               <div>
                 <label class="block text-xs font-semibold text-slate-600 mb-1.5">희망 상품 / 패키지*</label>
                 <select v-model="form.service" class="w-full bg-white border border-slate-200 rounded-xl px-4 py-2.5 text-sm text-slate-900 focus:outline-none focus:border-cyan-500">
-                  <option value="노래 녹음(축가녹음) - 1시간 5만원">1. 노래 녹음 (축가녹음) - 50,000원 / 1시간</option>
-                  <option value="AI 부모님 감사영상 (6.5만원~)">2. AI 부모님 감사영상 - 65,000원~</option>
-                  <option value="디즈니풍 식전영상 (15만원)">3. 디즈니풍 감성 식전영상 - 150,000원</option>
-                  <option value="맞춤 어쿠스틱 MR 제작 (30만원~)">4. 맞춤 어쿠스틱 MR 제작 - 300,000원~</option>
-                  <option value="개인 음반 제작 & 발매 패키지 (65만원~)">5. 개인 음반 제작 & 공식 발매 - 650,000원~</option>
+                  <optgroup v-for="group in serviceGroups" :key="group.id" :label="group.title">
+                    <option v-for="service in group.services" :key="service.id" :value="service.bookingValue">{{ service.title }} — {{ service.price }} / {{ service.unit }}</option>
+                  </optgroup>
                   <option value="축가 녹음 패키지 (2시간 10만원)">축가 녹음 패키지 (2시간 10만원)</option>
                   <option value="기타 맞춤 상담">기타 음악 / 영상 맞춤 상담</option>
                 </select>
@@ -1196,7 +1383,6 @@
             <span class="w-2 h-2 rounded-full bg-yellow-400"></span>
             카카오톡 상담
           </a>
-          <button @click="openLoginModal" class="text-slate-400 hover:text-slate-600">관리자 로그인</button>
         </div>
       </div>
     </footer>
@@ -1220,7 +1406,7 @@
       <div class="bg-white border border-slate-200 rounded-3xl p-6 max-w-sm w-full shadow-2xl relative">
         <button @click="showLoginModal = false" class="absolute top-4 right-4 text-slate-400 hover:text-slate-700 font-bold">✕</button>
         <h3 class="text-base font-bold text-slate-900 mb-1">관리자 CMS 로그인</h3>
-        <p class="text-xs text-slate-500 mb-4">기본 비밀번호: <code class="text-cyan-600 font-mono font-bold">admin1234</code></p>
+        <p class="text-xs text-slate-500 mb-4">기본 비밀번호: <code class="text-cyan-600 font-sans font-bold">admin1234</code></p>
         <input v-model="adminPassword" type="password" placeholder="비밀번호 입력" @keyup.enter="loginAdmin" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-2.5 text-sm text-slate-900 mb-4 focus:outline-none focus:border-cyan-500">
         <div class="flex gap-2">
           <button @click="loginAdmin" class="flex-1 bg-slate-950 text-white font-bold text-xs py-2.5 rounded-xl">확인</button>
@@ -1271,7 +1457,7 @@
         const adminPassword = ref('');
         const isSubmitting = ref(false);
 
-        // 메인 타이틀 롤링 제어
+        // 🌟 메인 타이틀 롤링 제어
         const currentTitleIndex = ref(0);
         let titleIntervalId = null;
 
@@ -1356,78 +1542,203 @@
           if (type === 'after') isAfterPlaying.value = false;
         };
 
+        // 상품별 유튜브 링크를 변경하려면 아래 주소를 수정하세요.
+        const serviceVideoUrls = {
+          'timelapse-video': 'https://youtu.be/BO1aJj9TsSc',
+          'parents-video': 'https://youtu.be/2blPs8N2UwM',
+          'disney-video': 'https://youtu.be/si3z2KFPwh8'
+        };
+
+        const getYouTubeEmbedUrl = (value) => {
+          if (!value) return '';
+          try {
+            const url = new URL(value);
+            if (!['http:', 'https:'].includes(url.protocol)) return '';
+            const host = url.hostname.toLowerCase();
+            let id = '';
+            if (host === 'youtu.be') {
+              id = url.pathname.split('/')[1];
+            } else if (['youtube.com', 'www.youtube.com', 'm.youtube.com', 'youtube-nocookie.com', 'www.youtube-nocookie.com'].includes(host)) {
+              const parts = url.pathname.split('/').filter(Boolean);
+              id = parts[0] === 'watch' ? url.searchParams.get('v') : ['embed', 'shorts', 'live'].includes(parts[0]) ? parts[1] : '';
+            }
+            return /^[a-zA-Z0-9_-]{11}$/.test(id || '')
+              ? 'https://www.youtube-nocookie.com/embed/' + id + '?rel=0&playsinline=1'
+              : '';
+          } catch {
+            return '';
+          }
+        };
+
         const studioServices = ref([
           {
-            title: "노래 녹음(축가녹음)",
-            badge: "HOT",
-            badgeColor: "bg-indigo-600/30 text-indigo-300 border-indigo-500/40",
-            coverImage: "./images/room8sound.jpg",
-            features: [
+            "title": "축가 녹음",
+            "badge": "HOT",
+            "badgeColor": "bg-indigo-600/30 text-indigo-300 border-indigo-500/40",
+            "coverImage": "./images/room8sound.jpg",
+            "features": [
               "처음이어도 긴장 ZERO! 친절한 담당 디렉터 1:1 보컬 코칭",
               "스마트폰·노래방과는 차원이 다른 깨끗하고 선명한 스튜디오 레코딩",
               "완벽하게 완곡하지 않아도 OK! 최고의 순간만 모으는 A컷 편집",
               "디테일을 살린 꼼꼼한 믹싱 & 마스터링 완성본(WAV, MP3) 전달"
             ],
-            price: "50,000원",
-            unit: "1 HOURS"
+            "price": "50,000원",
+            "unit": "1 HOURS",
+            "id": "wedding-recording",
+            "category": "wedding",
+            "bookingValue": "축가 녹음 - 1시간 5만원"
           },
           {
-            title: "AI 부모님 감사영상",
-            badge: "POPULAR",
-            badgeColor: "bg-cyan-600/30 text-cyan-300 border-cyan-500/40",
-            coverImage: "./images/thanks.jpg",
-            features: [
+            "id": "timelapse-video",
+            "category": "wedding",
+            "title": "AI 타임랩스 식전영상",
+            "mediaType": "youtube",
+            "badge": "NEW",
+            "badgeColor": "bg-rose-600/30 text-rose-300 border-rose-500/40",
+            "features": [
+              "어린 시절부터 지금까지, 두 사람의 시간을 잇는 AI 타임랩스 연출",
+              "사진 속 순간을 자연스러운 변화와 움직임으로 연결",
+              "두 사람의 이야기에 맞춘 음악과 감성적인 컷 편집",
+              "식전 상영용 16:9 영상 구성 및 제작 범위 맞춤 상담"
+            ],
+            "price": "360,000원",
+            "unit": "CUSTOM",
+            "bookingValue": "AI 타임랩스 식전영상 (36만원)"
+          },
+          {
+            "title": "AI 부모님 감사영상",
+            "badge": "POPULAR",
+            "badgeColor": "bg-cyan-600/30 text-cyan-300 border-cyan-500/40",
+            "features": [
               "부모님의 옛날 흑백·빛바랜 사진 고화질 AI 복원 및 자연스러운 모션 생성",
               "마음을 울리는 1:1 맞춤 스토리 & 감성 편지글 구성",
               "환갑·칠순, 결혼식, 은퇴식 분위기에 맞춘 눈물 감동 연출",
               "예식장 스크린 최적화 FULL HD / 4K 고화질 영상 파일 제공"
             ],
-            price: "65,000원~",
-            unit: "PACKAGE"
+            "price": "65,000원~",
+            "unit": "PACKAGE",
+            "id": "parents-video",
+            "category": "wedding",
+            "bookingValue": "AI 부모님 감사영상 (6.5만원~)",
+            "mediaType": "youtube"
           },
           {
-            title: "디즈니풍 감성 식전영상",
-            badge: "STEADY",
-            badgeColor: "bg-fuchsia-600/30 text-fuchsia-300 border-fuchsia-500/40",
-            coverImage: "./images/desney.png",
-            features: [
+            "title": "디즈니풍 감성 식전영상",
+            "badge": "STEADY",
+            "badgeColor": "bg-fuchsia-600/30 text-fuchsia-300 border-fuchsia-500/40",
+            "features": [
               "한 편의 동화 같은 로맨틱 디즈니풍 무빙 그래픽 & 트랜지션 연출",
               "웨딩 스튜디오 원본 사진 색감 업그레이드 & 감성적 타이포그래피",
               "예식장 하객들의 몰입도를 극대화하는 음악 비트 싱크 컷 편집",
               "식전 상영용 16:9, FULL HD 규격 제공"
             ],
-            price: "150,000원",
-            unit: "CUSTOM"
+            "price": "150,000원",
+            "unit": "CUSTOM",
+            "id": "disney-video",
+            "category": "wedding",
+            "bookingValue": "디즈니풍 식전영상 (15만원)",
+            "mediaType": "youtube"
           },
           {
-            title: "어쿠스틱 MR 맞춤 제작",
-            badge: "NEW",
-            badgeColor: "bg-amber-600/30 text-amber-300 border-amber-500/40",
-            coverImage: "https://images.unsplash.com/photo-1510915361894-db8b60106cb1?auto=format&fit=crop&w=1200&q=80",
-            features: [
+            "title": "노래 녹음",
+            "badge": "HOT",
+            "badgeColor": "bg-indigo-600/30 text-indigo-300 border-indigo-500/40",
+            "coverImage": "./images/room8sound.jpg",
+            "features": [
+              "처음이어도 긴장 ZERO! 친절한 담당 디렉터 1:1 보컬 코칭",
+              "스마트폰·노래방과는 차원이 다른 깨끗하고 선명한 스튜디오 레코딩",
+              "완벽하게 완곡하지 않아도 OK! 최고의 순간만 모으는 A컷 편집",
+              "디테일을 살린 꼼꼼한 믹싱 & 마스터링 완성본(WAV, MP3) 전달"
+            ],
+            "price": "50,000원",
+            "unit": "1 HOURS",
+            "id": "song-recording",
+            "category": "music",
+            "bookingValue": "노래 녹음(축가녹음) - 1시간 5만원"
+          },
+          {
+            "title": "어쿠스틱 MR 맞춤 제작",
+            "badge": "NEW",
+            "badgeColor": "bg-amber-600/30 text-amber-300 border-amber-500/40",
+            "coverImage": "https://images.unsplash.com/photo-1510915361894-db8b60106cb1?auto=format&fit=crop&w=1200&q=80",
+            "features": [
               "기성 MR이 내 음역대와 맞지 않을 때 키(Key) & 템포 1:1 맞춤 편곡",
               "리얼 어쿠스틱 기타 or 어쿠스틱 피아노 기반의 따뜻한 반주 트랙",
               "원곡의 느낌을 살리면서도 부르는 사람의 목소리가 돋보이게 사운드 조율",
               "곡의 길이 조절(1절만, 브릿지 생략 등) 자유로운 커스텀 가능"
             ],
-            price: "300,000원",
-            unit: "FROM ~"
+            "price": "300,000원",
+            "unit": "FROM ~",
+            "id": "acoustic-mr",
+            "category": "music",
+            "bookingValue": "맞춤 어쿠스틱 MR 제작 (30만원~)"
           },
           {
-            title: "개인 음반 제작 & 공식 발매",
-            badge: "ALL-IN-ONE PRO",
-            badgeColor: "bg-emerald-600/30 text-emerald-300 border-emerald-500/40",
-            featured: true,
-            coverImage: "./images/room8sound2.jpg",
-            features: [
+            "title": "개인 음반 제작 & 공식 발매",
+            "badge": "ALL-IN-ONE PRO",
+            "badgeColor": "bg-emerald-600/30 text-emerald-300 border-emerald-500/40",
+            "featured": true,
+            "coverImage": "./images/room8sound2.jpg",
+            "features": [
               "나만의 색깔과 무드를 담은 1:1 맞춤형 오리지널 곡 올인원 프로덕션",
               "SUNO AI로 스케치한 음원을 프로 수준의 완성형 트랙으로 완벽 편곡",
               "전문 보컬 디렉팅부터 메이저급 믹싱·마스터링까지 하이엔드 사운드 완성",
-              "멜론, 유튜브부터 스포티파이까지, 국내외 모든 음원 플랫폼 공식 발매 및 유통 대행"
+              "멜론, 유튜브부터 스포티파이까지, 국내외 모든 음원 플랫폼 공식 발매 및 유통 대행",
+              "패키지 구성 외 개별 맞춤 작업(악기 트랙 추가, 영상 커스터마이징 등)도 자유롭게 조율 가능합니다."
             ],
-            price: "650,000원~",
-            unit: "OFFICIAL RELEASE"
+            "price": "650,000원~",
+            "unit": "OFFICIAL RELEASE",
+            "id": "album-release",
+            "category": "music",
+            "bookingValue": "개인 음반 제작 & 발매 패키지 (65만원~)"
           }
+        ].map(service => ({
+          ...service,
+          youtubeUrl: serviceVideoUrls[service.id] || ''
+        })));
+
+        let serviceCardObserver = null;
+        let serviceCardFrame = null;
+        let serviceContainerWidth = 0;
+        const matchServiceCardHeights = () => {
+          const section = document.getElementById('services');
+          if (!section) return;
+          section.style.removeProperty('--service-card-height');
+          const cards = Array.from(section.querySelectorAll('.service-card'));
+          // 자연 높이를 측정한 뒤 모든 상품에 필요한 최소 공통 높이만 적용합니다.
+          const height = Math.ceil(Math.max(0, ...cards.map(card => card.getBoundingClientRect().height)));
+          if (height) section.style.setProperty('--service-card-height', height + 'px');
+        };
+        const scheduleServiceCardHeights = () => {
+          if (serviceCardFrame !== null) cancelAnimationFrame(serviceCardFrame);
+          serviceCardFrame = requestAnimationFrame(() => {
+            serviceCardFrame = null;
+            matchServiceCardHeights();
+          });
+        };
+        const observeServiceCardHeights = () => {
+          const container = document.querySelector('#services > .service-container');
+          if (!container) return;
+          scheduleServiceCardHeights();
+          if (typeof ResizeObserver !== 'undefined') {
+            serviceCardObserver = new ResizeObserver(entries => {
+              const width = entries[0].contentRect.width;
+              if (Math.abs(width - serviceContainerWidth) > 0.5) {
+                serviceContainerWidth = width;
+                scheduleServiceCardHeights();
+              }
+            });
+            serviceCardObserver.observe(container);
+          }
+          window.addEventListener('resize', scheduleServiceCardHeights);
+          if (document.fonts) document.fonts.ready.then(scheduleServiceCardHeights);
+        };
+
+        const activeServiceCategory = ref(window.location.hash === '#services-music' ? 'music' : 'wedding');
+
+        const serviceGroups = computed(() => [
+          { id: 'wedding', title: 'Wedding', description: '두 사람의 가장 특별한 날을 위한 음악과 영상', services: studioServices.value.filter(service => service.category === 'wedding') },
+          { id: 'music', title: 'Music', description: '녹음부터 맞춤 반주, 나만의 음반 발매까지', services: studioServices.value.filter(service => service.category === 'music') }
         ]);
 
         const defaultData = {
@@ -1719,10 +2030,14 @@
               el.scrollLeft = oneSetWidth;
             }
             startAutoScroll();
+            observeServiceCardHeights();
           });
         });
 
         onUnmounted(() => {
+          if (serviceCardObserver) serviceCardObserver.disconnect();
+          if (serviceCardFrame !== null) cancelAnimationFrame(serviceCardFrame);
+          window.removeEventListener('resize', scheduleServiceCardHeights);
           if (titleIntervalId) clearInterval(titleIntervalId);
           if (animFrameId) cancelAnimationFrame(animFrameId);
           if (resumeTimer) clearTimeout(resumeTimer);
@@ -1731,17 +2046,9 @@
         });
 
         const selectPackage = (serviceName) => {
-          if (serviceName.includes('노래 녹음')) {
-            form.value.service = '노래 녹음(축가녹음) - 1시간 5만원';
-          } else if (serviceName.includes('AI 부모님')) {
-            form.value.service = 'AI 부모님 감사영상 (6.5만원~)';
-          } else if (serviceName.includes('디즈니풍')) {
-            form.value.service = '디즈니풍 식전영상 (15만원)';
-          } else if (serviceName.includes('어쿠스틱 MR')) {
-            form.value.service = '맞춤 어쿠스틱 MR 제작 (30만원~)';
-          } else if (serviceName.includes('음반 제작')) {
-            form.value.service = '개인 음반 제작 & 발매 패키지 (65만원~)';
-          }
+          const service = studioServices.value.find(item => item.title === serviceName)
+            || (serviceName === '음반 제작' ? studioServices.value.find(item => item.id === 'album-release') : null);
+          if (service) form.value.service = service.bookingValue;
         };
 
         const onInlineEdit = (event, field) => {
@@ -1837,6 +2144,9 @@
           adminPassword,
           siteData,
           studioServices,
+          serviceGroups,
+          getYouTubeEmbedUrl,
+          activeServiceCategory,
           releasedAlbums,
           loopedAlbums,
           albumTrackRef,
