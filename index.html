@@ -845,7 +845,7 @@ footer>div{display:flex!important;flex-direction:column!important;align-items:fl
             
             <div>
               <div class="w-full aspect-square bg-slate-100 overflow-hidden relative">
-                <video v-if="review.video" data-loop-media data-src="./videos/review-family.mp4" poster="./images/review-family-poster.jpg" muted loop playsinline preload="none" :aria-label="review.name + ' 고객 후기 사진'" class="w-full h-full object-cover"></video><img v-else :src="review.image" :alt="review.name" loading="lazy" decoding="async" class="w-full h-full object-cover">
+                <video v-if="review.video" data-loop-media data-src="./videos/review-family.mp4" poster="./images/review-family-poster.jpg" muted loop playsinline preload="none" :aria-label="review.name + ' 고객 후기 사진'" class="w-full h-full object-cover"></video><img v-else :src="review.image" :alt="review.illustrative ? '녹음실 분위기 AI 연출 이미지' : review.name" loading="lazy" decoding="async" class="w-full h-full object-cover"><span v-if="review.illustrative" class="absolute bottom-2 right-2 rounded-full bg-white/90 px-2 py-1 text-[11px] text-slate-600">AI 연출 이미지</span>
               </div>
 
               <div class="p-6 pb-2">
@@ -1713,7 +1713,8 @@ footer>div{display:flex!important;flex-direction:column!important;align-items:fl
           {
             name: "김oo",
             tag: "결혼식 축가 녹음",
-            image: "./images/review_wedding.jpg",
+            image: "./images/review-recording-mood.jpg",
+            illustrative: true,
             content: "축가를 부탁했는데 친구들이 아무래도 긴장할 것 같아서 룸에잇스튜디오 녹음실을 예약했어요! 결혼식 당일에 조금 덜 긴장할 것 같고 실수도 없으니까 마음도 편할 것 같아서 너무 기대됩니다!!"
           },
           {
