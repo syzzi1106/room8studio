@@ -561,6 +561,12 @@ footer>div{display:flex!important;flex-direction:column!important;align-items:fl
 .story-accent::after{content:'';display:block;width:58%;height:2px;margin:2px auto 0;background:linear-gradient(90deg,#e5a4bd,#8ac8e5);transform-origin:left;animation:story-underline .8s .7s both}
 @keyframes story-reveal{from{opacity:0;transform:translateY(9px)}to{opacity:1;transform:translateY(0)}}
 @keyframes story-underline{from{transform:scaleX(0);opacity:0}to{transform:scaleX(1);opacity:1}}
+/* Swipe through the four reasons without changing their internal layout. */
+#about .why-track{display:flex!important;gap:16px!important;margin:0 -20px!important;padding:0 20px 14px!important;overflow-x:auto!important;overflow-y:hidden!important;scroll-snap-type:x mandatory;scroll-padding-inline:20px;align-items:flex-start!important;scrollbar-width:thin!important;scrollbar-color:#a9cfe6 #e6f2fa}
+#about .why-track::-webkit-scrollbar{display:block;height:5px}
+#about .why-track::-webkit-scrollbar-thumb{background:#a9cfe6;border-radius:10px}
+#about .why-card{flex:0 0 94%;min-width:0;margin-bottom:0!important;scroll-snap-align:start;scroll-snap-stop:normal}
+#about>div.relative>div:first-child>p:last-child{display:block!important;font-size:14px!important;line-height:1.7}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation:none!important;transition:none!important}}
 
 </style>
@@ -967,7 +973,7 @@ footer>div{display:flex!important;flex-direction:column!important;align-items:fl
             </p>
           </div>
 
-          <div class="why-track flex md:block overflow-x-auto md:overflow-visible snap-x snap-mandatory -mx-5 px-5 md:mx-0 md:px-0 pb-6 md:pb-0 gap-5 md:gap-0 no-scrollbar items-stretch">
+          <div tabindex="0" role="region" aria-label="룸에잇스튜디오를 선택하는 4가지 이유, 좌우로 스크롤" class="why-track flex md:block overflow-x-auto md:overflow-visible snap-x snap-mandatory -mx-5 px-5 md:mx-0 md:px-0 pb-6 md:pb-0 gap-5 md:gap-0 no-scrollbar items-stretch">
 
             <!-- Feature 1: 시간당 무제한 녹음 -->
             <div class="why-card w-[86vw] sm:w-[460px] md:w-full flex-shrink-0 snap-center bg-white md:bg-transparent rounded-3xl md:rounded-none border border-sky-200 md:border-0 p-6 sm:p-7 md:p-0 md:mb-24 flex flex-col justify-between">
