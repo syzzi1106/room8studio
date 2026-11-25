@@ -138,69 +138,11 @@ footer>div{display:flex!important;flex-direction:column!important;align-items:fl
  .mobile-bottom-bar>a{min-height:44px;font-size:14px;border-radius:12px}
 }
 @container(max-width:380px){.header-reserve{display:none!important}#hero h1{font-size:28px!important}#hero .hero-cta{grid-template-columns:1fr}.service-category-link{font-size:15px!important}#services .service-card{flex-basis:94%}.mobile-bottom-bar>a{font-size:14px}}
-/* Compact reference proportions: multiple products remain visible at phone width. */
-#hero .hero-title-wrap{min-height:102px!important;overflow:visible;margin-bottom:12px}
+/* Keep the new title styling while restoring all previous layout proportions. */
 #hero h1.story-title{font-family:'Kalam','Segoe Print',cursive!important;font-weight:400!important;font-size:clamp(32px,8.6cqw,43px)!important;letter-spacing:-.025em;line-height:1.3!important;word-break:normal}
 .story-line{display:block;animation:story-reveal .85s both cubic-bezier(.2,.7,.2,1)}
 .story-accent{font-size:.88em;color:#a05782;animation-delay:.25s;position:relative}
 .story-accent::after{content:'';display:block;width:58%;height:2px;margin:2px auto 0;background:linear-gradient(90deg,#e5a4bd,#8ac8e5);transform-origin:left;animation:story-underline .8s .7s both}
 @keyframes story-reveal{from{opacity:0;transform:translateY(9px)}to{opacity:1;transform:translateY(0)}}
 @keyframes story-underline{from{transform:scaleX(0);opacity:0}to{transform:scaleX(1);opacity:1}}
-main>section{padding-top:30px!important;padding-bottom:30px!important}
-#hero{padding-top:28px!important;padding-bottom:22px!important}
-#hero .hero-intro{margin-bottom:12px}#hero .hero-subtitle{font-size:14px!important;margin-bottom:18px!important}
-#hero .hero-cta{margin-bottom:18px!important}
-#hero .hero-metrics>div{padding:7px 10px!important}
-#hero .hero-metrics>div>div:nth-child(2){font-size:23px!important}
-main h2{font-size:22px!important}
-#services .service-category-nav{margin-bottom:18px!important}
-#services .service-category-link{min-height:42px!important;font-size:15px!important}
-#services .service-group{margin-top:24px!important}
-#services .service-group h3{font-size:26px!important}
-#services .service-group>div:first-child{margin-bottom:16px!important}
-#services .service-grid{gap:12px!important}
-#services .service-card{flex:0 0 46%!important;border-radius:17px}
-#services .service-content{padding:12px 12px 6px!important}
-#services .service-content>div{gap:5px!important;margin-bottom:8px!important;display:block;min-height:65px}
-#services .service-title{font-size:16px!important;line-height:1.4!important;margin-bottom:6px}
-#services .service-badge{font-size:11px!important;padding:2px 6px!important;display:inline-block}
-#services .service-footer{padding:8px 12px 14px!important;gap:5px!important;flex-wrap:wrap}
-#services .service-price{font-size:20px!important;white-space:nowrap}
-#services .service-unit{font-size:12px!important}
-#services .service-action{width:auto;height:32px;padding:0 10px;border-radius:9px;font-size:12px;font-weight:700}
-.service-details{font-size:14px}
-.service-details summary{cursor:pointer;min-height:40px;display:flex;align-items:center;gap:5px;color:#526b7e;list-style:none;font-size:13px}
-.service-details summary::after{content:'+';margin-left:auto;font-size:18px}
-.service-details[open] summary::after{content:'−'}
-#services .service-features{font-size:14px!important;margin:4px 0 8px!important;line-height:1.65!important}
-#services .service-features li{gap:6px!important;margin-top:8px!important}
-#services .service-check{width:14px;height:14px;margin-top:4px}
-#reviews .reviews-track{gap:12px!important}
-#reviews .review-card{flex-basis:70%!important;border-radius:18px}
-#reviews .review-card>div:first-child>div:first-child{width:88px;aspect-ratio:4/5!important;margin:14px auto 0;border-radius:12px}
-#reviews .review-card>div:first-child>div:nth-child(2){padding:12px 16px 6px!important}
-#reviews .review-card p{font-size:14px!important;line-height:1.65!important}
-#reviews .review-card>div:last-child{padding:10px 16px 14px!important}
-#about .why-track{gap:14px!important}
-#about .why-card{padding:16px!important;border-radius:18px;margin-bottom:0!important}
-#about .why-row{grid-template-columns:minmax(0,1.1fr) minmax(0,1fr)!important;gap:14px!important}
-#about .why-row>div:not(.aspect-square){order:1!important}
-#about .why-row>.aspect-square{order:2!important;border-radius:12px!important}
-#about .why-row h3{font-size:17px!important;line-height:1.45!important;margin-bottom:8px!important}
-#about .why-row p{font-size:14px!important;line-height:1.6!important;margin-bottom:0!important}
-#about .why-row span.rounded-full{font-size:11px!important;padding:3px 7px!important;margin-bottom:8px!important}
-#about .why-row .aspect-square>.absolute{display:none}
-#about .why-cta{padding:20px 16px!important;margin-top:18px!important}
-#about .why-cta h4{font-size:18px!important}
-#about .why-row .aspect-square.select-none{padding:10px!important;border-radius:15px!important}
-#about .why-row .aspect-square.select-none>div:last-child{padding:10px!important}
-#about .why-row .aspect-square.select-none .h-10{height:22px!important}
-#about .why-row .aspect-square.select-none .h-8{height:26px!important;gap:3px!important}
-@container(max-width:360px){#services .service-card{flex-basis:52%!important}#about .why-row{gap:10px!important}#about .why-card{padding:12px!important}#about .why-row h3{font-size:16px!important}}
-#hero .hero-cta{grid-template-columns:1fr 1fr!important}
-#services .service-content>div{min-height:58px}
-#services .service-content{padding-top:10px!important}
-#services .service-footer{display:block!important;padding-top:5px!important;padding-bottom:12px!important}
-#services .service-action{display:inline-flex!important;margin-top:7px}
-.service-details summary{min-height:34px}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation:none!important;transition:none!important}}
