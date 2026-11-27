@@ -567,6 +567,23 @@ footer>div{display:flex!important;flex-direction:column!important;align-items:fl
 #about .why-track::-webkit-scrollbar-thumb{background:#a9cfe6;border-radius:10px}
 #about .why-card{flex:0 0 94%;min-width:0;margin-bottom:0!important;scroll-snap-align:start;scroll-snap-stop:normal}
 #about>div.relative>div:first-child>p:last-child{display:block!important;font-size:14px!important;line-height:1.7}
+#discography{background:#f0f8ff;border-top:1px solid #dbeaf5;overflow:hidden}
+.portfolio-heading{display:flex;flex-wrap:wrap;align-items:center;gap:8px 16px}
+.portfolio-heading>p{width:100%;font-size:12px;letter-spacing:.1em;font-weight:700;color:#277ba7}
+.portfolio-heading h2{flex:1;margin:0;font-size:25px}
+.portfolio-controls{display:flex;gap:8px}
+.portfolio-controls button{width:40px;height:40px;border:1px solid #cce1ef;background:white;color:#285c7c;border-radius:50%;font-size:25px;line-height:1}
+.portfolio-guide{font-size:14px;line-height:1.7;color:#667889;margin:14px 0 20px}
+.portfolio-track{display:flex;gap:18px;margin:0 -20px;padding:0 20px 18px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-padding-inline:20px;scrollbar-width:thin;scrollbar-color:#9ecce8 #e1eff8}
+.portfolio-album{flex:0 0 68%;min-width:0;scroll-snap-align:start;color:#172b3d;text-decoration:none}
+.portfolio-cover{position:relative;aspect-ratio:1;border-radius:16px;overflow:hidden;background:#e1ebf2}
+.portfolio-cover img{width:100%;height:100%;object-fit:cover}
+.portfolio-cover>span{position:absolute;top:10px;left:10px;border-radius:20px;background:#fffffff0;color:#246386;padding:4px 9px;font-size:12px;font-weight:600}
+.portfolio-album h3{font-size:16px;font-weight:750;line-height:1.5;margin:12px 0 4px;word-break:keep-all}
+.portfolio-album p{font-size:14px;color:#566c7b;line-height:1.6}
+.portfolio-album .portfolio-credit{font-size:12px;color:#718695;margin-top:3px}
+.portfolio-listen{display:inline-block;font-size:13px;font-weight:650;color:#20739e;margin-top:10px}
+.portfolio-contact{display:flex;justify-content:center;align-items:center;min-height:48px;margin-top:24px;border-radius:13px;background:#dff1fc;color:#226b9e;font-size:15px;font-weight:700}
 .service-sale-original{display:flex;align-items:center;gap:10px;margin-bottom:6px;font-size:14px;line-height:1.5;color:#7a7883}
 .service-sale-original del{text-decoration-thickness:1px}
 .service-sale-original strong{color:#b74778;background:#ffe7f0;border-radius:6px;padding:2px 7px;font-size:12px}
@@ -1372,6 +1389,15 @@ footer>div{display:flex!important;flex-direction:column!important;align-items:fl
           </div>
         </div>
       </section>
+      <section id="discography" aria-labelledby="portfolio-heading"><div class="portfolio-heading"><p>COMPOSER PORTFOLIO</p><h2 id="portfolio-heading">작곡가 포트폴리오</h2><div class="portfolio-controls"><button type="button" aria-label="이전 작품 보기" onclick="this.closest('section').querySelector('.portfolio-track').scrollBy({left:-280,behavior:'smooth'})">‹</button><button type="button" aria-label="다음 작품 보기" onclick="this.closest('section').querySelector('.portfolio-track').scrollBy({left:280,behavior:'smooth'})">›</button></div></div><p class="portfolio-guide">옆으로 넘겨 작품을 확인하고, 앨범을 눌러 들어보세요.</p><div class="portfolio-track" tabindex="0" role="region" aria-label="작곡가 참여 음반 목록"><a class="portfolio-album" href="https://www.melon.com/album/detail.htm?albumId=15165789" target="_blank" rel="noopener noreferrer" aria-label="AMPERS&amp;ONE 일 년 만이야 (It&#39;s Been a Year) 멜론에서 듣기"><div class="portfolio-cover"><img src="./images/original-d5ae00122ae7.png" alt="일 년 만이야 (It&#39;s Been a Year) 앨범 커버" loading="lazy" decoding="async"><span>Melon</span></div><h3>일 년 만이야 (It&#39;s Been a Year)</h3><p>AMPERS&amp;ONE</p><p class="portfolio-credit">작곡·편곡 : WOOJU</p><span class="portfolio-listen">멜론에서 듣기</span></a>
+<a class="portfolio-album" href="https://www.melon.com/album/detail.htm?albumId=11084216#" target="_blank" rel="noopener noreferrer" aria-label="캐치 (Katch) Holiday 음원 듣기"><div class="portfolio-cover"><img src="./images/katch_holiday.png" alt="Holiday 앨범 커버" loading="lazy" decoding="async"><span>Melon</span></div><h3>Holiday</h3><p>캐치 (Katch)</p><p class="portfolio-credit">작사,작곡 : WOOJU</p><span class="portfolio-listen">음원 듣기</span></a>
+<a class="portfolio-album" href="https://www.genie.co.kr" target="_blank" rel="noopener noreferrer" aria-label="한도윤 너를 만난 계절 음원 듣기"><div class="portfolio-cover"><img src="./images/weather.jpg" alt="너를 만난 계절 앨범 커버" loading="lazy" decoding="async"><span>Genie / Apple</span></div><h3>너를 만난 계절</h3><p>한도윤</p><p class="portfolio-credit">2024</p><span class="portfolio-listen">음원 듣기</span></a>
+<a class="portfolio-album" href="https://music.youtube.com" target="_blank" rel="noopener noreferrer" aria-label="Lucid Blue Blue Hour (푸른 시간) 음원 듣기"><div class="portfolio-cover"><img src="https://images.unsplash.com/photo-1508700115892-45ecd05ae2ad?auto=format&amp;fit=crop&amp;w=600&amp;q=80" alt="Blue Hour (푸른 시간) 앨범 커버" loading="lazy" decoding="async"><span>YouTube Music</span></div><h3>Blue Hour (푸른 시간)</h3><p>Lucid Blue</p><p class="portfolio-credit">2024</p><span class="portfolio-listen">음원 듣기</span></a>
+<a class="portfolio-album" href="https://www.melon.com" target="_blank" rel="noopener noreferrer" aria-label="이지현 그대라는 기적 음원 듣기"><div class="portfolio-cover"><img src="https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?auto=format&amp;fit=crop&amp;w=600&amp;q=80" alt="그대라는 기적 앨범 커버" loading="lazy" decoding="async"><span>Melon</span></div><h3>그대라는 기적</h3><p>이지현</p><p class="portfolio-credit">2024</p><span class="portfolio-listen">음원 듣기</span></a>
+<a class="portfolio-album" href="https://www.melon.com/album/detail.htm?albumId=14435466" target="_blank" rel="noopener noreferrer" aria-label="박도수 속초 음원 듣기"><div class="portfolio-cover"><img src="./images/park.png" alt="속초 앨범 커버" loading="lazy" decoding="async"><span>Melon</span></div><h3>속초</h3><p>박도수</p><p class="portfolio-credit">편곡 : XIWOOJU</p><span class="portfolio-listen">음원 듣기</span></a>
+<a class="portfolio-album" href="https://www.melon.com/album/detail.htm?albumId=11069599#" target="_blank" rel="noopener noreferrer" aria-label="제이플랜 Nostalgia 음원 듣기"><div class="portfolio-cover"><img src="./images/nostalgia.png" alt="Nostalgia 앨범 커버" loading="lazy" decoding="async"><span>Melon</span></div><h3>Nostalgia</h3><p>제이플랜</p><p class="portfolio-credit">작곡,편곡 : WOOJU</p><span class="portfolio-listen">음원 듣기</span></a>
+<a class="portfolio-album" href="https://www.melon.com/album/detail.htm?albumId=11098602#" target="_blank" rel="noopener noreferrer" aria-label="진준우(feat.Huiii) 내일이 오면 음원 듣기"><div class="portfolio-cover"><img src="./images/when comes.png" alt="내일이 오면 앨범 커버" loading="lazy" decoding="async"><span>Melon</span></div><h3>내일이 오면</h3><p>진준우(feat.Huiii)</p><p class="portfolio-credit">작곡,편곡 : WOOJU</p><span class="portfolio-listen">음원 듣기</span></a>
+<a class="portfolio-album" href="https://www.melon.com/song/detail.htm?songId=36757831" target="_blank" rel="noopener noreferrer" aria-label="제이플랜(feat.이한울) 편지 음원 듣기"><div class="portfolio-cover"><img src="./images/letter.png" alt="편지 앨범 커버" loading="lazy" decoding="async"><span>Melon</span></div><h3>편지</h3><p>제이플랜(feat.이한울)</p><p class="portfolio-credit">작곡,편곡 : WOOJU</p><span class="portfolio-listen">음원 듣기</span></a></div><a href="#contact" class="portfolio-contact">음반 제작 상담하기</a></section>
     </main>
 
     <!-- 10. FOOTER -->
