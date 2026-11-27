@@ -567,6 +567,10 @@ footer>div{display:flex!important;flex-direction:column!important;align-items:fl
 #about .why-track::-webkit-scrollbar-thumb{background:#a9cfe6;border-radius:10px}
 #about .why-card{flex:0 0 94%;min-width:0;margin-bottom:0!important;scroll-snap-align:start;scroll-snap-stop:normal}
 #about>div.relative>div:first-child>p:last-child{display:block!important;font-size:14px!important;line-height:1.7}
+.service-sale-original{display:flex;align-items:center;gap:10px;margin-bottom:6px;font-size:14px;line-height:1.5;color:#7a7883}
+.service-sale-original del{text-decoration-thickness:1px}
+.service-sale-original strong{color:#b74778;background:#ffe7f0;border-radius:6px;padding:2px 7px;font-size:12px}
+.service-sale-label{display:block;font-size:13px;font-weight:600;color:#a84b77;margin-bottom:2px}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation:none!important;transition:none!important}}
 
 </style>
@@ -933,6 +937,8 @@ footer>div{display:flex!important;flex-direction:column!important;align-items:fl
 
               <div class="service-footer px-6 sm:px-9 pb-7 sm:pb-8 pt-4 border-t border-slate-800/80 flex items-center justify-between">
                 <div>
+                  <div v-if="service.originalPrice" class="service-sale-original"><span>정가 <del>{{ service.originalPrice }}</del></span><strong>{{ service.discountLabel }}</strong></div>
+                  <span v-if="service.originalPrice" class="service-sale-label">할인가</span>
                   <span class="service-price text-xl sm:text-3xl font-black text-cyan-400 tracking-tight">
                     {{ service.price }}
                   </span>
@@ -1602,9 +1608,11 @@ footer>div{display:flex!important;flex-direction:column!important;align-items:fl
               "두 사람의 이야기에 맞춘 음악과 감성적인 컷 편집",
               "식전 상영용 16:9 영상 구성 및 제작 범위 맞춤 상담"
             ],
-            "price": "360,000원",
+            "originalPrice": "280,000원",
+            "discountLabel": "50% 할인",
+            "price": "140,000원",
             "unit": "CUSTOM",
-            "bookingValue": "AI 타임랩스 식전영상 (36만원)"
+            "bookingValue": "AI 타임랩스 식전영상 (할인가 14만원 / 정가 28만원)"
           },
           {
             "title": "AI 부모님 감사영상",
