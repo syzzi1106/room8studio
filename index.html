@@ -7,7 +7,7 @@
   <title>룸에잇스튜디오 (room8studio) | 누구나 쉽고 재미있게, 나만의 웨딩!</title>
   
   <!-- SEO 메타태그 -->
-  <meta name="description" content="음악&영상 올인원 콘텐츠 스튜디오. 10년 차 K-POP 작곡가의 1:1 보컬 프로덕션, AI 감사영상 & 맞춤 MR 제작, 정식 음반 발매.">
+  <meta name="description" content="음악&영상 올인원 웨딩 콘텐츠 스튜디오. 10년 차 K-POP 작곡가의 1:1 보컬 프로덕션, AI 감사영상 & 맞춤 MR 제작, 정식 음반 발매.">
   <meta property="og:title" content="룸에잇스튜디오 | room8studio">
   <meta property="og:description" content="음악&영상 올인원 콘텐츠 스튜디오 (축가 · AI 감사영상 · 식전영상 · 어쿠스틱 MR · 음반발매)">
   <meta property="og:image" content="./images/original-3f89290e057d.jpg">
@@ -1165,12 +1165,12 @@ footer>div{display:flex!important;flex-direction:column!important;align-items:fl
             <div class="why-card w-[86vw] sm:w-[460px] md:w-full flex-shrink-0 snap-center bg-white md:bg-transparent rounded-3xl md:rounded-none border border-sky-200 md:border-0 p-6 sm:p-7 md:p-0 flex flex-col justify-between">
               <div class="why-row grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-10 md:gap-14 items-center">
                 <div class="order-2 md:order-1 relative rounded-2xl md:rounded-3xl overflow-hidden border border-sky-200 shadow-2xl group w-full aspect-square bg-slate-900 flex items-center justify-center">
-                  <video data-loop-media data-src="./videos/video-quality.mp4" poster="./images/video-quality-poster.jpg" muted loop playsinline preload="none" aria-label="AI 부모님 감사영상 및 고퀄리티 영상 제작" class="w-full h-full object-cover"></video>
+                  <video data-loop-media data-src="./videos/video-quality.mp4" poster="./images/video-quality-poster.jpg" muted loop playsinline preload="none" aria-label="고퀄리티 식전영상 제작" class="w-full h-full object-cover"></video>
                   <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-transparent"></div>
                   
                   <div class="absolute bottom-3 left-4 md:bottom-4 md:left-5">
                     <span class="px-3 py-1 md:px-3.5 md:py-1.5 rounded-full bg-cyan-400/90 text-slate-950 text-[10px] md:text-xs font-black shadow-md backdrop-blur-sm">
-                      AI 부모님 감사영상 & 디즈니풍 식전영상
+                      AI 타임랩스 & 디즈니풍 식전영상
                     </span>
                   </div>
                 </div>
@@ -1184,7 +1184,7 @@ footer>div{display:flex!important;flex-direction:column!important;align-items:fl
                     <span class="text-sky-600">확실한 영상 퀄리티!</span>
                   </h3>
                   <p class="text-slate-600 text-xs sm:text-sm md:text-base leading-relaxed break-keep font-normal mb-5 md:mb-0">
-                    감동을 극대화하는 AI 부모님 감사영상부터 환상적인 디즈니풍 식전영상까지! 전문 색보정과 컷 편집을 거쳐 평생 간직할 소장용 영상 콘텐츠를 선사합니다.
+                    두 사람의 시간을 잇는 AI 타임랩스부터 환상적인 디즈니풍 식전영상까지! 전문 색보정과 컷 편집을 거쳐 평생 간직할 소장용 영상 콘텐츠를 선사합니다.
                   </p>
                 </div>
               </div>
@@ -1582,7 +1582,6 @@ footer>div{display:flex!important;flex-direction:column!important;align-items:fl
         // 상품별 유튜브 링크를 변경하려면 아래 주소를 수정하세요.
         const serviceVideoUrls = {
           'timelapse-video': 'https://youtu.be/BO1aJj9TsSc',
-          'parents-video': 'https://youtu.be/2blPs8N2UwM',
           'disney-video': 'https://youtu.be/si3z2KFPwh8'
         };
 
@@ -1643,23 +1642,6 @@ footer>div{display:flex!important;flex-direction:column!important;align-items:fl
             "price": "140,000원",
             "unit": "CUSTOM",
             "bookingValue": "AI 타임랩스 식전영상 (할인가 14만원 / 정가 28만원)"
-          },
-          {
-            "title": "AI 부모님 감사영상",
-            "badge": "POPULAR",
-            "badgeColor": "bg-cyan-600/30 text-cyan-300 border-cyan-500/40",
-            "features": [
-              "부모님의 옛날 흑백·빛바랜 사진 고화질 AI 복원 및 자연스러운 모션 생성",
-              "마음을 울리는 1:1 맞춤 스토리 & 감성 편지글 구성",
-              "환갑·칠순, 결혼식, 은퇴식 분위기에 맞춘 눈물 감동 연출",
-              "예식장 스크린 최적화 FULL HD / 4K 고화질 영상 파일 제공"
-            ],
-            "price": "65,000원~",
-            "unit": "PACKAGE",
-            "id": "parents-video",
-            "category": "wedding",
-            "bookingValue": "AI 부모님 감사영상 (6.5만원~)",
-            "mediaType": "youtube"
           },
           {
             "title": "디즈니풍 감성 식전영상",
@@ -1818,6 +1800,7 @@ footer>div{display:flex!important;flex-direction:column!important;align-items:fl
             try { 
               const parsed = JSON.parse(saved);
               siteData.value = { ...defaultData, ...parsed };
+              if (siteData.value.heroSubtitle === '음악&영상 올인원 웨딩 콘텐츠 스튜디오.') siteData.value.heroSubtitle = defaultData.heroSubtitle;
             } catch (e) {}
           } else {
             siteData.value = { ...defaultData };
